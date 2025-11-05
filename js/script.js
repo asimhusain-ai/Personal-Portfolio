@@ -778,7 +778,7 @@ function submitContactForm() {
     }
 
     sendBtn.disabled = true;
-    sendBtn.textContent = "Sending...";
+    sendBtn.textContent = "Sending";
 
     emailjs.send("service_cqsx379", "template_u0ioohf", {
         from_name: name,
@@ -1662,3 +1662,4 @@ $(document).ready(function() {
     initializePage();
     initializeEventListeners();
 });
+
