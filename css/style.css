@@ -399,13 +399,13 @@ body.smooth-cursor-active button {
 /* Contact icon sizing: images used for contact icons (message.png) should match SVG icon sizes */
 .contact-icons {
   display: flex;
-  gap: 0px;
+  gap: 6px;
   align-items: center;
 }
 
 .contact-img {
-  width: 35px; 
-  height: 35px;
+  width: 28px;
+  height: 28px;
   display: inline-block;
   vertical-align: middle;
   object-fit: contain;
@@ -465,20 +465,27 @@ body.smooth-cursor-active button {
 .social-icon {
   color: var(--text);
   opacity: 0.85;
-  margin: 6px;
+  margin: 8px;
   --mag-x: 0px;
   --mag-y: 0px;
   --mag-scale: 1;
   transition: transform 0.36s cubic-bezier(.2,.9,.2,1), color 0.18s ease, opacity 0.18s ease;
   transform: translate(var(--mag-x), var(--mag-y)) scale(var(--mag-scale));
 }
-.social-icon svg { width: 30px; height: 30px; display: block; fill: currentColor; }
-.social-icon img { width: 27px; height: 27px; display: block; }
+.social-icon svg { width: 22px; height: 22px; display: block; fill: currentColor; }
+/* Specific GitHub icon size */
+.social-icon img { width: 20px; height: 20px; display: block; }
 .social-icon:hover { color: var(--primary); opacity: 1; /* use var-driven scale so translate is preserved */ --mag-scale: 1.3; }
 
 /* Hover tooltips for social and contact icons */
 .social-icon,
-.contact-icon { position: relative; }
+.contact-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
 
 /* Base bubble */
 .social-icon::after,
@@ -491,8 +498,8 @@ body.smooth-cursor-active button {
   visibility: hidden;
   background: #2b2b2b;
   color: #ffffff;
-  padding: 8px 12px;
-  font-size: 12px;
+  padding: 6px 7px;
+  font-size: 10px;
   line-height: 1;
   border-radius: 6px;
   white-space: nowrap;
@@ -533,8 +540,8 @@ body.smooth-cursor-active button {
 /* All social icons are unified via the base rule above. */
 .social-icon[aria-label="GitHub"] svg,
 .social-icon[title="GitHub"] svg {
-  width: 26px;
-  height: 26px;
+  width: 21px;
+  height: 21px;
   fill: currentColor;
 }
 
@@ -607,7 +614,7 @@ body.smooth-cursor-active button {
   transition: transform 0.36s cubic-bezier(.2,.9,.2,1), color 0.18s ease, opacity 0.18s ease;
   transform: translate(var(--mag-x), var(--mag-y)) scale(var(--mag-scale));
 }
-.contact-icon svg { width: 28px; height: 28px; display: block; }
+.contact-icon svg { width: 23px; height: 23px; display: block; }
 .contact-icon:hover { color: var(--primary); opacity: 1; /* var-driven scale */ --mag-scale: 1.4; }
 
 .accent-color {
@@ -1992,8 +1999,8 @@ body.freeze-scroll {
   }
 
   .topic-button::after {
-    width: 35px;
-    height: 35px;
+    width: 24px;
+    height: 24px;
   }
 
   .main-footer {
