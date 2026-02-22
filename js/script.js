@@ -1,9 +1,296 @@
+const blogData = [
+    {
+        title: "Generative AI Shift",
+        content: `<p>Generative AI has moved from experimentation to enterprise infrastructure in 2025–2026. Models are no longer just chatbots; they are copilots embedded inside productivity software, developer environments, and customer support systems. The real change is workflow automation — AI now drafts emails, writes code, summarizes meetings, and analyzes business data in real time.</p><p>Organizations are shifting from “AI features” to “AI-first processes.” Instead of employees using tools, tools are coordinating employees. Retrieval-augmented generation (RAG) is widely adopted because it combines internal company data with LLM reasoning while avoiding hallucinations. Companies also increasingly deploy smaller private models rather than only relying on massive cloud models due to cost and privacy.</p><p>The biggest challenge now is evaluation, not capability. Businesses need guardrails, monitoring, and human review pipelines. AI literacy is becoming a core workplace skill similar to spreadsheets in the 1990s.</p><p><strong>Reference:</strong><br><a href="https://ai.googleblog.com/" target="_blank" rel="noopener">https://ai.googleblog.com/</a><br><a href="https://openai.com/research" target="_blank" rel="noopener">https://openai.com/research</a></p>`
+    },
+    {
+        title: "Edge AI Growth",
+        content: `<p>Edge AI means running machine learning directly on devices instead of cloud servers. Smartphones, cameras, vehicles, and industrial sensors now process data locally. This reduces latency and protects privacy because sensitive information never leaves the device.</p><p>In 2026, most modern mobile processors include dedicated neural processing units (NPUs). These chips handle image recognition, voice commands, and real-time translation without internet connectivity. Autonomous vehicles heavily rely on edge inference since milliseconds matter for safety decisions.</p><p>Businesses benefit through bandwidth reduction and faster response times. Factories use predictive maintenance models locally to detect machine failure before breakdowns occur. Retail stores deploy smart shelves that detect inventory automatically.</p><p>The trend also supports AI democratization. Developers can ship applications globally without maintaining expensive servers. However, model compression and quantization are critical skills because edge hardware has strict memory limits.</p><p><strong>Reference:</strong><br><a href="https://developer.nvidia.com/blog" target="_blank" rel="noopener">https://developer.nvidia.com/blog</a><br><a href="https://www.arm.com/blogs" target="_blank" rel="noopener">https://www.arm.com/blogs</a></p>`
+    },
+    {
+        title: "Quantum Advantage Near",
+        content: `<p>Quantum computing is transitioning from theory to specialized utility. We are not replacing classical computers, but solving specific problems faster — optimization, material simulation, and cryptography research.</p><p>Companies like IBM and Google have demonstrated systems beyond 1000 qubits, though error correction remains the main barrier. The industry now focuses on “useful noisy quantum computers.” Hybrid quantum-classical algorithms are the practical path: classical computers manage logic while quantum circuits solve probabilistic sub-problems.</p><p>Financial modeling and pharmaceutical discovery show promising results. Drug interactions that previously required years of simulation can be approximated in hours using quantum chemistry models.</p><p>The immediate impact is research acceleration rather than consumer computing. Within this decade, industries will access quantum processing through cloud APIs instead of owning hardware.</p><p><strong>Reference:</strong><br><a href="https://quantum.ibm.com/blog" target="_blank" rel="noopener">https://quantum.ibm.com/blog</a><br><a href="https://research.google/quantum" target="_blank" rel="noopener">https://research.google/quantum</a></p>`
+    },
+    {
+        title: "Data Engineering Era",
+        content: `<p>Data science success now depends more on data engineering than modeling. Modern AI pipelines require clean, versioned, and continuously updated datasets. Companies learned that a simple model with reliable data beats a complex model with messy data.</p><p>Lakehouse architectures combine data lakes and warehouses, allowing analytics and machine learning on the same storage layer. Tools like Apache Iceberg and Delta Lake enable time-travel queries and reproducibility — critical for regulatory compliance.</p><p>Streaming data is also dominating. Instead of daily reports, organizations monitor live dashboards powered by event streams from applications and IoT devices.</p><p>The role of data scientist is evolving toward analytics engineering — building pipelines, metrics definitions, and reliable transformations rather than only predictive modeling.</p><p><strong>Reference:</strong><br><a href="https://databricks.com/blog" target="_blank" rel="noopener">https://databricks.com/blog</a><br><a href="https://towardsdatascience.com" target="_blank" rel="noopener">https://towardsdatascience.com</a></p>`
+    },
+    {
+        title: "MLOps Standardization",
+        content: `<p>Machine Learning Operations (MLOps) has become essential because models degrade over time. Real-world data changes — customer behavior, weather patterns, and markets shift — causing model accuracy to drop.</p><p>Modern MLOps pipelines include automated training, validation tests, deployment, and monitoring. Drift detection systems now alert teams when predictions become unreliable. Instead of manual retraining, systems schedule updates automatically.</p><p>Containers and Kubernetes play a central role, making model deployment similar to software deployment. Feature stores ensure consistent data between training and inference environments.</p><p>Companies adopting MLOps experience faster iteration cycles and fewer production failures. The industry is moving from experimental notebooks to production-grade AI services.</p><p><strong>Reference:</strong><br><a href="https://ml-ops.org/" target="_blank" rel="noopener">https://ml-ops.org/</a><br><a href="https://kubernetes.io/blog" target="_blank" rel="noopener">https://kubernetes.io/blog</a></p>`
+    },
+    {
+        title: "Responsible AI Rules",
+        content: `<p>Governments worldwide are introducing AI regulations focused on transparency and accountability. The EU AI Act and similar policies require explainability, bias checks, and risk classification.</p><p>Responsible AI frameworks now include dataset documentation, model cards, and fairness testing. Organizations must track training data sources and demonstrate non-discrimination in predictions.</p><p>Bias mitigation techniques include re-sampling datasets and constraint-based optimization during training. Auditable AI pipelines are becoming mandatory in finance and healthcare.</p><p>The future of AI adoption depends on trust. Companies investing early in governance avoid legal risk and gain user confidence.</p><p><strong>Reference:</strong><br><a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">https://oecd.ai/en/ai-principles</a><br><a href="https://ai.meta.com/blog" target="_blank" rel="noopener">https://ai.meta.com/blog</a></p>`
+    },
+    {
+        title: "Cloud Native AI",
+        content: `<p>Cloud providers now offer specialized AI infrastructure: GPU clusters, vector databases, and inference endpoints. Developers focus on applications while platforms handle scaling.</p><p>Serverless AI inference allows applications to run models only when needed, dramatically reducing costs. Vector search is a key innovation powering semantic search and recommendation systems.</p><p>Multi-cloud strategies are rising because organizations want flexibility and risk distribution. AI workloads can move across providers using container orchestration and open standards.</p><p>Cloud computing is no longer just storage — it’s becoming an AI execution platform.</p><p><strong>Reference:</strong><br><a href="https://aws.amazon.com/blogs/machine-learning/" target="_blank" rel="noopener">https://aws.amazon.com/blogs/machine-learning/</a><br><a href="https://cloud.google.com/blog" target="_blank" rel="noopener">https://cloud.google.com/blog</a></p>`
+    },
+    {
+        title: "Computer Vision Retail",
+        content: `<p>Retail stores are adopting computer vision for automation. Cameras detect customer movement, product interaction, and checkout behavior.</p><p>Autonomous checkout systems eliminate billing queues. Customers pick items and walk out while the system automatically charges their account. Inventory management also improves because shelves report stock in real time.</p><p>Privacy-preserving vision techniques blur faces while tracking actions. Businesses gain analytics without storing personal identity.</p><p>The technology reduces labor costs and enhances customer experience simultaneously.</p><p><strong>Reference:</strong><br><a href="https://research.amazon/science" target="_blank" rel="noopener">https://research.amazon/science</a><br><a href="https://opencv.org/blog" target="_blank" rel="noopener">https://opencv.org/blog</a></p>`
+    },
+    {
+        title: "AI in Healthcare",
+        content: `<p>AI is assisting doctors rather than replacing them. Medical imaging models detect tumors and anomalies earlier than traditional analysis.</p><p>Large language models summarize patient history and clinical notes, reducing administrative workload. Predictive analytics identifies high-risk patients for early intervention.</p><p>Hospitals deploy AI triage systems to prioritize emergency cases during high demand.</p><p>Regulation remains strict, so models undergo extensive validation. The focus is safety and decision support.</p><p><strong>Reference:</strong><br><a href="https://www.nature.com/subjects/machine-learning" target="_blank" rel="noopener">https://www.nature.com/subjects/machine-learning</a><br><a href="https://stanfordmlgroup.github.io/" target="_blank" rel="noopener">https://stanfordmlgroup.github.io/</a></p>`
+    },
+    {
+        title: "Future of Work",
+        content: `<p>AI tools are transforming knowledge work. Instead of replacing jobs, they reshape tasks. Workers supervise systems, validate outputs, and focus on creative decision making.</p><p>New roles are emerging: AI trainers, prompt engineers, and model auditors. Education systems now include AI collaboration skills.</p><p>Productivity gains allow smaller teams to handle larger workloads. Companies prioritize employees who can guide AI rather than compete with it.</p><p>Human judgment remains essential — AI generates options, humans choose direction.</p><p><strong>Reference:</strong><br><a href="https://www.weforum.org/agenda/archive/artificial-intelligence/" target="_blank" rel="noopener">https://www.weforum.org/agenda/archive/artificial-intelligence/</a><br><a href="https://mitsloan.mit.edu/ideas-made-to-matter" target="_blank" rel="noopener">https://mitsloan.mit.edu/ideas-made-to-matter</a></p>`
+    },
+    {
+        title: "Federated Learning Rise",
+        content: `<p>Federated learning allows machine learning models to train across multiple devices without collecting raw data centrally. Instead of uploading sensitive data to servers, devices send only model updates. This approach significantly improves privacy while still benefiting from collective learning.</p><p>Smartphones already use federated learning for keyboard prediction and personalization. Healthcare institutions also adopt it to collaborate on disease prediction without sharing patient records. Banks similarly train fraud detection models while keeping customer data secure.</p><p>The biggest technical challenge is handling heterogeneous data distributions and unreliable network connections. Researchers are improving aggregation algorithms and communication efficiency to stabilize training.</p><p>Federated learning is expected to become essential as privacy regulations tighten worldwide. It provides a compromise between performance and confidentiality.</p><p><strong>Reference:</strong><br><a href="https://ai.googleblog.com/" target="_blank" rel="noopener">https://ai.googleblog.com/</a><br><a href="https://arxiv.org/" target="_blank" rel="noopener">https://arxiv.org/</a></p>`
+    },
+    {
+        title: "AutoML Expansion",
+        content: `<p>AutoML automates model selection, feature engineering, and hyperparameter tuning. This allows non-experts to build strong predictive systems without deep machine learning expertise.</p><p>In 2026, AutoML platforms are embedded inside analytics tools. Business analysts can upload datasets and receive predictions, dashboards, and explanations automatically. This reduces dependency on large data science teams.</p><p>However, AutoML does not eliminate experts. Professionals still design problem framing, evaluation criteria, and deployment architecture. AutoML accelerates iteration rather than replacing understanding.</p><p>The most powerful use is rapid prototyping — testing multiple approaches quickly before committing to custom models.</p><p><strong>Reference:</strong><br><a href="https://cloud.google.com/automl" target="_blank" rel="noopener">https://cloud.google.com/automl</a><br><a href="https://azure.microsoft.com/en-us/products/machine-learning/" target="_blank" rel="noopener">https://azure.microsoft.com/en-us/products/machine-learning/</a></p>`
+    },
+    {
+        title: "Vector Databases Boom",
+        content: `<p>Vector databases store embeddings instead of traditional rows and columns. They enable similarity search — finding meaning rather than exact matches.</p><p>Modern AI assistants rely on vector search to retrieve context documents. Recommendation systems also use embeddings to match user preferences with products.</p><p>Popular algorithms like HNSW optimize approximate nearest neighbor search, allowing fast retrieval even with billions of vectors. This makes real-time semantic search practical.</p><p>As language models grow, vector databases become a core infrastructure layer, similar to relational databases in traditional software systems.</p><p><strong>Reference:</strong><br><a href="https://pinecone.io/learn/" target="_blank" rel="noopener">https://pinecone.io/learn/</a><br><a href="https://weaviate.io/blog" target="_blank" rel="noopener">https://weaviate.io/blog</a></p>`
+    },
+    {
+        title: "TinyML Devices",
+        content: `<p>TinyML focuses on running machine learning on microcontrollers with extremely limited memory and power consumption. Devices like sensors and wearables can now perform inference for weeks on a battery.</p><p>Applications include fall detection in elderly care, wildlife monitoring, and predictive maintenance in remote locations. The benefit is continuous intelligence without network connectivity.</p><p>Model pruning and quantization are essential techniques, compressing models to kilobyte scale. Developers design models specifically for constraints rather than adapting large networks.</p><p>TinyML is critical for scaling IoT because transmitting raw data continuously would be inefficient and expensive.</p><p><strong>Reference:</strong><br><a href="https://tinyml.org/" target="_blank" rel="noopener">https://tinyml.org/</a><br><a href="https://blog.tensorflow.org/" target="_blank" rel="noopener">https://blog.tensorflow.org/</a></p>`
+    },
+    {
+        title: "Reinforcement Learning Robotics",
+        content: `<p>Reinforcement learning trains machines through trial and error rather than labeled data. Robotics benefits greatly because manual labeling of physical movement is difficult.</p><p>Modern robots learn grasping and navigation in simulation first, then transfer knowledge to the real world using domain randomization. Warehouses deploy robots that adapt to new object shapes without reprogramming.</p><p>Safety constraints remain important. Engineers combine classical control systems with learned policies for reliability.</p><p>The future includes collaborative robots that work alongside humans rather than isolated industrial machines.</p><p><strong>Reference:</strong><br><a href="https://deepmind.google/discover/blog/" target="_blank" rel="noopener">https://deepmind.google/discover/blog/</a><br><a href="https://robotics.sciencemag.org/" target="_blank" rel="noopener">https://robotics.sciencemag.org/</a></p>`
+    },
+    {
+        title: "Data Privacy Computing",
+        content: `<p>Privacy-preserving computation techniques allow analysis on encrypted data. Homomorphic encryption and secure enclaves enable organizations to collaborate without exposing sensitive information.</p><p>Financial institutions analyze joint risk patterns without sharing raw transaction records. Healthcare research benefits from combining datasets while maintaining compliance.</p><p>Though computationally expensive, hardware acceleration is improving feasibility. Cloud providers now offer confidential computing environments as standard features.</p><p>Privacy computing will become foundational infrastructure for cross-organization AI collaboration.</p><p><strong>Reference:</strong><br><a href="https://confidentialcomputing.io/blog/" target="_blank" rel="noopener">https://confidentialcomputing.io/blog/</a><br><a href="https://research.microsoft.com/" target="_blank" rel="noopener">https://research.microsoft.com/</a></p>`
+    },
+    {
+        title: "Multimodal Models",
+        content: `<p>Multimodal AI processes text, images, audio, and video simultaneously. Instead of separate models, one system understands multiple information types.</p><p>Applications include visual search, automated video editing, and accessible interfaces for visually impaired users. These models connect speech to objects and actions in real environments.</p><p>Training requires massive aligned datasets and advanced attention mechanisms. Evaluation is complex because correctness depends on context understanding.</p><p>Multimodal systems represent a step toward general-purpose intelligence by bridging perception and reasoning.</p><p><strong>Reference:</strong><br><a href="https://openai.com/research" target="_blank" rel="noopener">https://openai.com/research</a><br><a href="https://ai.facebook.com/blog/" target="_blank" rel="noopener">https://ai.facebook.com/blog/</a></p>`
+    },
+    {
+        title: "Serverless Data Pipelines",
+        content: `<p>Serverless computing allows data pipelines to run only when triggered by events. Instead of maintaining servers, developers define functions reacting to file uploads or database changes.</p><p>Streaming architectures integrate with serverless systems to process logs, transactions, and telemetry instantly. Companies pay only for execution time, reducing idle infrastructure costs.</p><p>Cold start latency remains a challenge, but caching and prewarming techniques mitigate delays.</p><p>Serverless pipelines accelerate experimentation and scale automatically during peak workloads.</p><p><strong>Reference:</strong><br><a href="https://aws.amazon.com/serverless/" target="_blank" rel="noopener">https://aws.amazon.com/serverless/</a><br><a href="https://cloud.google.com/serverless" target="_blank" rel="noopener">https://cloud.google.com/serverless</a></p>`
+    },
+    {
+        title: "Explainable AI Demand",
+        content: `<p>As AI decisions affect loans, hiring, and medical diagnosis, stakeholders require explanations. Explainable AI techniques reveal which inputs influenced predictions.</p><p>Methods like SHAP and LIME approximate feature importance. Interpretable models sometimes replace black-box networks in high-risk domains.</p><p>Transparency builds trust and simplifies debugging. Developers can detect bias and unexpected correlations earlier.</p><p>Regulators increasingly require explainability for automated decision systems.</p><p><strong>Reference:</strong><br><a href="https://christophm.github.io/interpretable-ml-book/" target="_blank" rel="noopener">https://christophm.github.io/interpretable-ml-book/</a><br><a href="https://www.ibm.com/topics/explainable-ai" target="_blank" rel="noopener">https://www.ibm.com/topics/explainable-ai</a></p>`
+    },
+    {
+        title: "Sustainable Computing",
+        content: `<p>AI models consume large energy resources. Researchers now focus on efficient architectures and renewable-powered data centers.</p><p>Sparse models activate only necessary neurons, reducing computation. Hardware accelerators improve performance per watt. Cloud providers publish carbon dashboards to track usage impact.</p><p>Sustainable AI balances innovation with environmental responsibility. Efficiency optimization becomes a design objective rather than an afterthought.</p><p>Green computing will shape future system design standards.</p><p><strong>Reference:</strong><br><a href="https://www.nature.com/articles/d41586-020-03448-5" target="_blank" rel="noopener">https://www.nature.com/articles/d41586-020-03448-5</a><br><a href="https://cloud.google.com/sustainability" target="_blank" rel="noopener">https://cloud.google.com/sustainability</a></p>`
+    },
+    {
+        title: "Synthetic Data Era",
+        content: `<p>Synthetic data is artificially generated information used to train machine learning models. It solves privacy and scarcity problems where real datasets are limited or sensitive. Industries like healthcare and finance use synthetic datasets to develop models without exposing personal records.</p><p>Generative models simulate realistic patterns while removing identifiable information. Autonomous driving companies create virtual traffic environments to train perception systems safely. This approach accelerates development while reducing legal risk.</p><p>The key challenge is maintaining statistical realism. Poor synthetic data produces misleading models. Researchers now measure fidelity using distribution similarity metrics and downstream model accuracy.</p><p>Synthetic data will become standard practice in regulated industries where collecting real data is expensive or restricted.</p><p><strong>Reference:</strong><br><a href="https://mostly.ai/blog" target="_blank" rel="noopener">https://mostly.ai/blog</a><br><a href="https://synthesis.ai/blog" target="_blank" rel="noopener">https://synthesis.ai/blog</a></p>`
+    },
+    {
+        title: "AI Powered Search",
+        content: `<p>Search engines are shifting from keyword matching to answer generation. Instead of returning links only, systems summarize information directly using large language models combined with retrieval systems.</p><p>Semantic search understands intent rather than literal wording. Enterprise knowledge bases now provide conversational interfaces where employees ask questions naturally.</p><p>Ranking is evolving from page authority to contextual relevance. However, verification remains important because generated answers may still contain inaccuracies.</p><p>Hybrid architectures combining search indexes with reasoning models are becoming the dominant pattern across software platforms.</p><p><strong>Reference:</strong><br><a href="https://blog.google/products/search/" target="_blank" rel="noopener">https://blog.google/products/search/</a><br><a href="https://elastic.co/blog" target="_blank" rel="noopener">https://elastic.co/blog</a></p>`
+    },
+    {
+        title: "Graph Machine Learning",
+        content: `<p>Graph machine learning analyzes relationships rather than isolated data points. Social networks, fraud detection, and recommendation systems benefit from modeling connections between entities.</p><p>Graph neural networks propagate information across neighbors to capture patterns like influence or anomaly clusters. Banks detect coordinated fraud rings that traditional models miss.</p><p>Data preparation is complex because building graphs requires defining meaningful relationships. Scalability also challenges large datasets.</p><p>As data becomes interconnected, graph-based approaches will increasingly outperform tabular methods in relational problems.</p><p><strong>Reference:</strong><br><a href="https://distill.pub/" target="_blank" rel="noopener">https://distill.pub/</a><br><a href="https://neo4j.com/blog" target="_blank" rel="noopener">https://neo4j.com/blog</a></p>`
+    },
+    {
+        title: "AI Code Assistants",
+        content: `<p>AI coding assistants now integrate directly into development environments. They generate functions, explain errors, and suggest architecture improvements.</p><p>Developers spend less time writing boilerplate and more time reviewing logic. Junior programmers learn faster because suggestions act like real-time mentorship.</p><p>However, reviewing generated code remains essential. Teams adopt guidelines for verification, testing, and security validation.</p><p>The main productivity gain comes from reducing repetitive work rather than replacing engineers. Software development becomes more design-oriented.</p><p><strong>Reference:</strong><br><a href="https://github.blog/ai-and-ml/" target="_blank" rel="noopener">https://github.blog/ai-and-ml/</a><br><a href="https://stackoverflow.blog/" target="_blank" rel="noopener">https://stackoverflow.blog/</a></p>`
+    },
+    {
+        title: "Hybrid Cloud Strategy",
+        content: `<p>Organizations increasingly combine private infrastructure with public cloud services. Sensitive workloads remain on-premise while scalable AI training runs in the cloud.</p><p>Container orchestration enables portability across environments. This prevents vendor lock-in and improves reliability during outages.</p><p>Networking and identity management are key challenges in hybrid setups. Secure connectivity and consistent access control policies are essential.</p><p>Hybrid cloud balances flexibility, compliance, and cost optimization, making it a common enterprise architecture.</p><p><strong>Reference:</strong><br><a href="https://www.redhat.com/en/topics/hybrid-cloud" target="_blank" rel="noopener">https://www.redhat.com/en/topics/hybrid-cloud</a><br><a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-hybrid-cloud/" target="_blank" rel="noopener">https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-hybrid-cloud/</a></p>`
+    },
+    {
+        title: "Time Series Forecasting",
+        content: `<p>Time series machine learning predicts future values based on historical patterns. Applications include demand forecasting, energy consumption prediction, and financial analysis.</p><p>Deep learning models like temporal convolution networks and transformers now outperform classical statistical methods in complex datasets. However, simple models still perform well in stable environments.</p><p>Feature engineering such as seasonality and trend decomposition remains critical for accuracy.</p><p>Businesses rely on forecasting for inventory planning and operational efficiency, making it one of the most economically impactful AI applications.</p><p><strong>Reference:</strong><br><a href="https://otexts.com/fpp3/" target="_blank" rel="noopener">https://otexts.com/fpp3/</a><br><a href="https://huggingface.co/blog/time-series-transformers" target="_blank" rel="noopener">https://huggingface.co/blog/time-series-transformers</a></p>`
+    },
+    {
+        title: "AI Security Defense",
+        content: `<p>Cybersecurity systems increasingly use machine learning to detect anomalies in network traffic and user behavior. AI identifies attacks faster than signature-based methods.</p><p>Behavioral models detect compromised accounts even when attackers use valid credentials. Real-time monitoring systems automatically isolate suspicious activity.</p><p>Adversarial attacks remain a challenge because attackers attempt to fool models intentionally. Defensive techniques include ensemble detection and continuous retraining.</p><p>AI security will remain an arms race between attackers and defenders.</p><p><strong>Reference:</strong><br><a href="https://security.googleblog.com/" target="_blank" rel="noopener">https://security.googleblog.com/</a><br><a href="https://unit42.paloaltonetworks.com/" target="_blank" rel="noopener">https://unit42.paloaltonetworks.com/</a></p>`
+    },
+    {
+        title: "Quantum Machine Learning",
+        content: `<p>Quantum machine learning explores combining quantum circuits with classical training methods. Certain optimization problems may benefit from quantum sampling.</p><p>Current implementations remain experimental, but research suggests advantages in chemistry simulations and probabilistic modeling.</p><p>The main limitation is noise and limited qubit stability. Hybrid algorithms help mitigate these issues by offloading heavy computation to classical systems.</p><p>Practical impact will emerge gradually as hardware improves.</p><p><strong>Reference:</strong><br><a href="https://pennylane.ai/blog" target="_blank" rel="noopener">https://pennylane.ai/blog</a><br><a href="https://qiskit.org/documentation/" target="_blank" rel="noopener">https://qiskit.org/documentation/</a></p>`
+    },
+    {
+        title: "Feature Store Adoption",
+        content: `<p>Feature stores centralize reusable data features for machine learning models. They ensure consistency between training and inference environments.</p><p>Teams avoid duplicating preprocessing logic across projects. Real-time feature serving supports online prediction systems like recommendations and fraud detection.</p><p>Governance improves because feature lineage and ownership are tracked systematically.</p><p>Feature stores reduce production errors and accelerate collaboration across data teams.</p><p><strong>Reference:</strong><br><a href="https://feast.dev/" target="_blank" rel="noopener">https://feast.dev/</a><br><a href="https://tecton.ai/blog" target="_blank" rel="noopener">https://tecton.ai/blog</a></p>`
+    },
+    {
+        title: "Human AI Collaboration",
+        content: `<p>The future of AI is cooperative intelligence. Systems provide suggestions while humans provide judgment, ethics, and context.</p><p>In creative fields, AI generates drafts while professionals refine ideas. In business, analytics tools propose strategies that managers evaluate.</p><p>Organizations that train employees to work with AI outperform those treating it only as automation. Skill adaptation becomes more important than replacement fear.</p><p>The goal is augmentation — increasing human capability rather than eliminating it.</p><p><strong>Reference:</strong><br><a href="https://hbr.org/topic/artificial-intelligence" target="_blank" rel="noopener">https://hbr.org/topic/artificial-intelligence</a><br><a href="https://mitsloan.mit.edu/artificial-intelligence" target="_blank" rel="noopener">https://mitsloan.mit.edu/artificial-intelligence</a></p>`
+    }
+];
+
+const blogExtra = [];
+
+/* ========================================================================== */
+/* 1) Core Utilities */
+/* ========================================================================== */
+
+function byId(id) {
+    return document.getElementById(id);
+}
+
+function addListener(element, eventName, handler, options) {
+    if (!element) return;
+    element.addEventListener(eventName, handler, options);
+}
+
 // Device detection
 function isMobileDevice() {
     return ('ontouchstart' in window) ||
         (navigator.maxTouchPoints > 0) ||
         (navigator.msMaxTouchPoints > 0);
 }
+
+function initializeParticleBackground() {
+    const canvas = byId('particleBackgroundCanvas');
+    const heroSection = byId('hero');
+    if (!canvas || !heroSection) return;
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const mouse = { x: -10000, y: -10000, active: false };
+    let particles = [];
+    let rafId = null;
+    let width = 0;
+    let height = 0;
+    let paused = false;
+
+    const colors = [
+        '#2755d2',
+        '#14b8a6',
+        '#7c3aed',
+        '#22d3ee',
+        '#a78bfa'
+    ];
+
+    const areaToCount = () => {
+        const area = Math.max(320, width) * Math.max(320, height);
+        const target = Math.floor(area / (isMobileDevice() ? 4200 : 1900));
+        return Math.max(230, Math.min(target, isMobileDevice() ? 520 : 1200));
+    };
+
+    const randomRange = (min, max) => min + Math.random() * (max - min);
+
+    const createParticle = () => {
+        const driftX = randomRange(-0.2, 0.2);
+        const driftY = randomRange(-0.2, 0.2);
+        return {
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: driftX,
+            vy: driftY,
+            driftX,
+            driftY,
+            radius: randomRange(0.7, 2.0),
+            color: colors[Math.floor(Math.random() * colors.length)],
+            alpha: randomRange(0.38, 0.85)
+        };
+    };
+
+    const resize = () => {
+        width = heroSection.clientWidth;
+        height = heroSection.clientHeight;
+        canvas.width = Math.max(1, Math.floor(width * dpr));
+        canvas.height = Math.max(1, Math.floor(height * dpr));
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const desired = areaToCount();
+        if (particles.length > desired) {
+            particles = particles.slice(0, desired);
+        } else {
+            while (particles.length < desired) particles.push(createParticle());
+        }
+    };
+
+    const onPointerMove = (event) => {
+        const rect = heroSection.getBoundingClientRect();
+        mouse.x = event.clientX - rect.left;
+        mouse.y = event.clientY - rect.top;
+        mouse.active = true;
+    };
+
+    const onPointerLeave = () => {
+        mouse.active = false;
+        mouse.x = -10000;
+        mouse.y = -10000;
+    };
+
+    const onVisibility = () => {
+        paused = document.hidden;
+        if (!paused && rafId === null) {
+            rafId = requestAnimationFrame(frame);
+        }
+    };
+
+    const frame = () => {
+        if (paused) {
+            rafId = null;
+            return;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        const repelRadius = isMobileDevice() ? 70 : 110;
+        const repelRadiusSq = repelRadius * repelRadius;
+        const repelForce = isMobileDevice() ? 0.16 : 0.24;
+
+        for (let i = 0; i < particles.length; i++) {
+            const particle = particles[i];
+
+            particle.vx += (particle.driftX - particle.vx) * 0.015;
+            particle.vy += (particle.driftY - particle.vy) * 0.015;
+
+            if (!prefersReduced && mouse.active) {
+                const dx = particle.x - mouse.x;
+                const dy = particle.y - mouse.y;
+                const distSq = dx * dx + dy * dy;
+
+                if (distSq > 0.01 && distSq < repelRadiusSq) {
+                    const dist = Math.sqrt(distSq);
+                    const strength = (1 - dist / repelRadius) * repelForce;
+                    particle.vx += (dx / dist) * strength;
+                    particle.vy += (dy / dist) * strength;
+                }
+            }
+
+            particle.vx *= 0.985;
+            particle.vy *= 0.985;
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+
+            if (particle.x < -8) particle.x = width + 8;
+            if (particle.x > width + 8) particle.x = -8;
+            if (particle.y < -8) particle.y = height + 8;
+            if (particle.y > height + 8) particle.y = -8;
+
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+            ctx.fillStyle = particle.color;
+            ctx.globalAlpha = particle.alpha;
+            ctx.fill();
+        }
+
+        ctx.globalAlpha = 1;
+        rafId = requestAnimationFrame(frame);
+    };
+
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+    heroSection.addEventListener('pointermove', onPointerMove, { passive: true });
+    heroSection.addEventListener('pointerleave', onPointerLeave, { passive: true });
+    document.addEventListener('visibilitychange', onVisibility, { passive: true });
+
+    rafId = requestAnimationFrame(frame);
+}
+
+/* ========================================================================== */
+/* 2) Cursor System */
+/* ========================================================================== */
 
 // Custom cursor initialization
 function initializeCursor() {
@@ -41,7 +328,7 @@ function initializeCursor() {
     animateCursor();
 
     // Interactive elements cursor effects
-    const interactiveElements = document.querySelectorAll("a, button, .social-icon, .contact-icon, .project-button, .service-card, .topic-button");
+    const interactiveElements = document.querySelectorAll("a, button, .social-icon, .project-button, .service-card, .topic-button");
 
     interactiveElements.forEach(el => {
         el.addEventListener("mouseenter", () => {
@@ -128,7 +415,6 @@ function initializeSmoothCursor() {
         if (speed > 0.001) {
             const desired = Math.atan2(smVy, smVx) * 180 / Math.PI + 90;
             rot = lerpAngle(rot, desired, ROT_LERP);
-            prevAngle = desired;
         }
 
         // Smooth scale towards target based on speed
@@ -148,9 +434,15 @@ function initializeSmoothCursor() {
     return true;
 }
 
+/* ========================================================================== */
+/* 3) Page Initialization */
+/* ========================================================================== */
+
 // Page initialization
 function initializePage() {
+    initializeParticleBackground();
     initializeThemeToggle();
+    initializeRecruiterMode();
     initializeTypewriter();
     // Prefer the new smooth cursor; fall back to legacy if not available
     if (!initializeSmoothCursor()) {
@@ -160,52 +452,84 @@ function initializePage() {
     initializeMagneticButtons();
     initializeHeroNameWave();
     initializeIconSideReveal();
+    initializeRightSidebar();
+    initializeTopControlsReveal();
     initializeSectionTitlesWave();
     initializeBlogs();
     initializeCertificationsSlider();
+    initializeGameHub();
+    initializeCosmicClock();
+    initializeCoursesExplorer();
 }
+
+// Delayed top reveal for theme toggle and header buttons
+function initializeTopControlsReveal() {
+    const themeToggle = byId('themeToggle');
+    const topNav = document.querySelector('.top-right-nav');
+    if (!themeToggle && !topNav) return;
+
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced) {
+        if (themeToggle) themeToggle.classList.add('is-revealed');
+        if (topNav) topNav.classList.add('is-revealed');
+        return;
+    }
+
+    setTimeout(() => {
+        if (themeToggle) themeToggle.classList.add('is-revealed');
+        setTimeout(() => {
+            if (topNav) topNav.classList.add('is-revealed');
+        }, 120);
+    }, 2500);
+}
+
+/* ========================================================================== */
+/* 4) Global Event Wiring */
+/* ========================================================================== */
 
 // Event listeners setup
 function initializeEventListeners() {
     // Contact form
-    const footerContactTrigger = document.getElementById('footer-contact-trigger');
-    if (footerContactTrigger) footerContactTrigger.addEventListener('click', openContactForm);
-    document.getElementById('closeContactPopup').addEventListener('click', closeContactForm);
-    document.getElementById('sendMessageBtn').addEventListener('click', submitContactForm);
-    const hireBtn = document.getElementById('hireMeBtn');
-    if (hireBtn) hireBtn.addEventListener('click', openContactForm);
-    
-    // Resume tooltip
-    document.getElementById('resume-trigger').addEventListener('click', toggleResumeTooltip);
+    const footerContactTrigger = byId('footer-contact-trigger');
+    const closeContactPopup = byId('closeContactPopup');
+    const sendMessageBtn = byId('sendMessageBtn');
+    const hireBtn = byId('hireMeBtn');
+    const recruiterContactBtn = byId('recruiterContactBtn');
+    const recruiterViewProjectsBtn = byId('recruiterViewProjectsBtn');
+
+    addListener(footerContactTrigger, 'click', openContactForm);
+    addListener(closeContactPopup, 'click', closeContactForm);
+    addListener(sendMessageBtn, 'click', submitContactForm);
+    addListener(hireBtn, 'click', openContactForm);
+    addListener(recruiterContactBtn, 'click', openContactForm);
+    addListener(recruiterViewProjectsBtn, 'click', () => {
+        setRecruiterMode(false);
+        const projects = byId('projects');
+        if (projects) projects.scrollIntoView({ behavior: 'smooth' });
+    });
     
     // Privacy popup
-    document.getElementById('privacy-trigger').addEventListener('click', openPrivacyPopup);
-    document.getElementById('closePrivacyPopup').addEventListener('click', closePrivacyPopup);
+    addListener(byId('privacy-trigger'), 'click', openPrivacyPopup);
+    addListener(byId('closePrivacyPopup'), 'click', closePrivacyPopup);
     
     // Blog popup
-    document.getElementById('closeBlogPopup').addEventListener('click', closeBlogPopup);
+    addListener(byId('closeBlogPopup'), 'click', closeBlogPopup);
     
     // Blog speaker
     setupBlogSpeaker();
 
-    // Initialize gooey pointer handlers for header nav buttons (safe if none present)
-    try {
-        const gooeys = document.querySelectorAll('.gooey-btn');
-        gooeys.forEach(el => {
-            el.style.setProperty('--x', 50);
-            el.style.setProperty('--y', 50);
-            el.style.setProperty('--a', '0%');
-        });
-    } catch(_) {}
-
     // Global event handlers
     document.addEventListener('click', handleOutsideClick);
-    window.addEventListener('scroll', hideResumeTooltip);
     window.addEventListener('keydown', handleGlobalKeyDown, { passive: true });
 
     // About section speaker
     setupAboutSpeaker();
 }
+
+/* ========================================================================== */
+/* 5) Navigation & Micro-Interactions */
+/* ========================================================================== */
 
 // Gooey header nav interaction: track pointer on each .gooey element
 function initializeGooeyButtons() {
@@ -238,7 +562,7 @@ function initializeGooeyButtons() {
         });
 
         // click navigation for buttons with data-target
-        el.addEventListener('click', (e) => {
+        el.addEventListener('click', () => {
             const tgt = el.getAttribute('data-target');
             if (tgt) {
                 const dest = document.querySelector(tgt);
@@ -280,8 +604,6 @@ function initializeMagneticButtons() {
         '#hireMeBtn',
         '#themeToggle',
         '#sendMessageBtn',
-        '.social-icon',
-        '.contact-icon',
         '.contact-form .gooey-btn',
         '.main-footer .gooey-btn',
         '.footer-nav .gooey-btn'
@@ -292,42 +614,20 @@ function initializeMagneticButtons() {
 
     elems.forEach(el => {
         let raf = null;
-        let tx = 0, ty = 0;  
-        let targetTx = 0, targetTy = 0; 
+        let tx = 0, ty = 0;
+        let targetTx = 0, targetTy = 0;
 
-    // Default magnetic params (applies to buttons and most targets)
-    const DEFAULT_MAX = 60;
-    const DEFAULT_STRENGTH = 2;
-    const DEFAULT_LERP = 0.32;
-    const DEFAULT_SCALE_DIV = 100;
-
-    // Stronger and smoother params for small icons (social/contact)
-    const ICON_MAX = 120;
-    const ICON_STRENGTH = 1.2;
-    const ICON_LERP = 0.50;
-    const ICON_SCALE_DIV = 55;
+        // Default magnetic params (applies to buttons and most targets)
+        const DEFAULT_MAX = 60;
+        const DEFAULT_STRENGTH = 2;
+        const DEFAULT_LERP = 0.32;
+        const DEFAULT_SCALE_DIV = 100;
 
         // per-element params (start with defaults)
         let elMax = DEFAULT_MAX;
         let elStrength = DEFAULT_STRENGTH;
         let lerpFactor = DEFAULT_LERP;
         let scaleDiv = DEFAULT_SCALE_DIV;
-
-        // if this is a social/contact icon, use the stronger icon params
-        if (el.matches && el.matches('.social-icon, .contact-icon')) {
-            elMax = ICON_MAX;
-            elStrength = ICON_STRENGTH;
-            lerpFactor = ICON_LERP;
-            scaleDiv = ICON_SCALE_DIV;
-        }
-
-        // Make footer gooey buttons magnetically stronger (closer to header feel)
-        if (el.matches && el.matches('.main-footer .gooey-btn, .footer-nav .gooey-btn')) {
-            elMax = 80;        
-            elStrength = 1.8;   
-            lerpFactor = 0.40;
-            scaleDiv = 85;       
-        }
 
         function update() {
             // lerp toward target for smooth motion (faster follow for smaller lerpFactor values)
@@ -396,6 +696,10 @@ function initializeMagneticButtons() {
     });
 }
 
+/* ========================================================================== */
+/* 6) Text Effects */
+/* ========================================================================== */
+
 // Wave hover effect for hero name
 function initializeHeroNameWave() {
     const container = document.querySelector('.hero-name');
@@ -422,7 +726,6 @@ function initializeHeroNameWave() {
             const span = document.createElement('span');
             span.className = 'wave-char';
             if (seg.accent) span.classList.add('accent-color');
-            span.dataset.i = String(index);
             // preserve spaces
             span.textContent = ch === ' ' ? '\u00A0' : ch;
             frag.appendChild(span);
@@ -464,14 +767,12 @@ function initializeSectionTitlesWave() {
         if (!original.trim()) return;
 
         const frag = document.createDocumentFragment();
-        let i = 0;
         for (const ch of original) {
             const span = document.createElement('span');
             span.className = 'wave-char';
             // Preserve normal spaces as nbsp to maintain visual gaps inside inline-flex
             span.textContent = (ch === ' ') ? '\u00A0' : ch;
             frag.appendChild(span);
-            i++;
         }
 
         el.textContent = '';
@@ -490,17 +791,25 @@ function initializeSectionTitlesWave() {
     });
 }
 
-// Delayed side reveal + fade-in for social and contact icons
+// Delayed side reveal + fade-in for social icons
 function initializeIconSideReveal() {
     const social = document.querySelector('.social-links');
-    const contact = document.querySelector('.contact-icons');
-    if (!social && !contact) return;
+    if (!social) return;
+
+    const socialIcons = Array.from(social.querySelectorAll('.social-icon'));
+    const revealIconsSequentially = () => {
+        socialIcons.forEach((icon, index) => {
+            setTimeout(() => {
+                icon.classList.add('is-revealed');
+            }, index * 90);
+        });
+    };
 
     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const reveal = () => {
         if (social) social.classList.add('is-revealed');
-        if (contact) contact.classList.add('is-revealed');
+        revealIconsSequentially();
     };
 
     if (prefersReduced) {
@@ -510,20 +819,527 @@ function initializeIconSideReveal() {
                 social.style.transition = 'none';
                 social.classList.add('is-revealed');
             }
-            if (contact) {
-                contact.style.transition = 'none';
-                contact.classList.add('is-revealed');
-            }
+            socialIcons.forEach((icon) => icon.classList.add('is-revealed'));
             // allow layout to apply then clear inline transition to not affect future responsive changes
             requestAnimationFrame(() => {
                 if (social) social.style.transition = '';
-                if (contact) contact.style.transition = '';
             });
         }, 2500);
     } else {
         setTimeout(reveal, 2500);
     }
 }
+
+// Delayed reveal and interaction wiring for right quick sidebar
+function initializeRightSidebar() {
+    const sidebar = document.querySelector('.right-sidebar');
+    if (!sidebar) return;
+
+    const items = Array.from(sidebar.querySelectorAll('.right-sidebar-link'));
+    const recruiterItem = sidebar.querySelector('[data-action="recruiter"]');
+    const sidebarToggleItem = sidebar.querySelector('[data-action="toggle-sidebar"]');
+    const availabilityCard = byId('sidebarAvailabilityCard');
+    const voiceCard = byId('sidebarVoiceCard');
+    const techRadarCard = byId('sidebarTechRadarCard');
+    const voicePlayBtn = byId('sidebarVoicePlayBtn');
+    const radarCanvas = byId('sidebarTechRadarCanvas');
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const cards = {
+        availability: availabilityCard,
+        voice: voiceCard,
+        radar: techRadarCard
+    };
+    let activeCard = null;
+    let radarRafId = null;
+    let radarPhase = 0;
+    let voiceUtterance = null;
+    let voiceCancelRequested = false;
+
+    const voiceIntroFallbackText = 'Hi, I am Asim Husain, an AI and software engineer. I design end to end machine learning workflows, build clean web interfaces, and create robust backend services with cloud deployment. I focus on practical products that are responsive, maintainable, and impact driven. I enjoy turning ideas into scalable systems that combine performance, automation, and strong user experience.';
+
+    const getVoiceIntroText = () => {
+        const aboutDesc = byId('aboutDescription');
+        const fullAbout = (aboutDesc?.innerText || aboutDesc?.textContent || '').replace(/\s+/g, ' ').trim();
+        return fullAbout || voiceIntroFallbackText;
+    };
+
+    const buildVoiceChunks = (text, maxLen = 1200) => {
+        const trimmed = (text || '').trim();
+        if (!trimmed) return [];
+
+        const sentences = trimmed.split(/(?<=[.!?])\s+/);
+        const chunks = [];
+        let current = '';
+
+        for (let i = 0; i < sentences.length; i++) {
+            const sentence = sentences[i];
+            if (!sentence) continue;
+            const merged = (current ? `${current} ${sentence}` : sentence).trim();
+            if (merged.length > maxLen && current) {
+                chunks.push(current.trim());
+                current = sentence;
+            } else {
+                current = merged;
+            }
+        }
+
+        if (current.trim()) {
+            chunks.push(current.trim());
+        }
+
+        return chunks;
+    };
+
+    const closeVoiceIntro = () => {
+        voiceCancelRequested = true;
+        try {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+        } catch (_) {}
+        voiceUtterance = null;
+        if (voicePlayBtn) {
+            voicePlayBtn.textContent = 'Play Intro';
+            voicePlayBtn.setAttribute('aria-pressed', 'false');
+        }
+    };
+
+    const speakVoiceChunks = (chunks, index = 0) => {
+        if (!Array.isArray(chunks) || chunks.length === 0 || voiceCancelRequested) {
+            closeVoiceIntro();
+            return;
+        }
+
+        if (index >= chunks.length) {
+            closeVoiceIntro();
+            return;
+        }
+
+        voiceUtterance = new SpeechSynthesisUtterance(chunks[index]);
+        const voice = typeof selectPreferredVoice === 'function' ? selectPreferredVoice() : null;
+        if (voice) {
+            voiceUtterance.voice = voice;
+            if (voice.lang) voiceUtterance.lang = voice.lang;
+        } else {
+            voiceUtterance.lang = 'en-US';
+        }
+        voiceUtterance.rate = 1;
+        voiceUtterance.pitch = 1;
+        voiceUtterance.onend = () => {
+            if (voiceCancelRequested) {
+                closeVoiceIntro();
+                return;
+            }
+            if (index + 1 < chunks.length) {
+                speakVoiceChunks(chunks, index + 1);
+                return;
+            }
+            if (voicePlayBtn) {
+                voicePlayBtn.textContent = 'Play Intro';
+                voicePlayBtn.setAttribute('aria-pressed', 'false');
+            }
+            voiceUtterance = null;
+        };
+        voiceUtterance.onerror = () => {
+            closeVoiceIntro();
+        };
+
+        try {
+            window.speechSynthesis.speak(voiceUtterance);
+        } catch (_) {
+            closeVoiceIntro();
+        }
+    };
+
+    const drawRadar = () => {
+        if (!radarCanvas || !techRadarCard || !techRadarCard.classList.contains('show')) return;
+        const ctx = radarCanvas.getContext('2d');
+        if (!ctx) return;
+
+        const width = radarCanvas.width;
+        const height = radarCanvas.height;
+        const cx = width / 2;
+        const cy = height / 2;
+        const radius = Math.min(width, height) * 0.34;
+        const labels = ['AI/ML', 'Web', 'Backend', 'Deploy'];
+        const values = [0.92, 0.88, 0.84, 0.8];
+        radarPhase += 0.025;
+        const pulse = 0.96 + Math.sin(radarPhase) * 0.04;
+
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = 'rgba(0,0,0,0)';
+        ctx.fillRect(0, 0, width, height);
+
+        for (let ring = 1; ring <= 4; ring++) {
+            const r = (radius * ring) / 4;
+            ctx.beginPath();
+            for (let i = 0; i < 4; i++) {
+                const angle = (-Math.PI / 2) + (i * Math.PI * 2 / 4);
+                const x = cx + Math.cos(angle) * r;
+                const y = cy + Math.sin(angle) * r;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.strokeStyle = 'rgba(148, 163, 184, 0.26)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+
+        for (let i = 0; i < 4; i++) {
+            const angle = (-Math.PI / 2) + (i * Math.PI * 2 / 4);
+            const x = cx + Math.cos(angle) * radius;
+            const y = cy + Math.sin(angle) * radius;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(x, y);
+            ctx.strokeStyle = 'rgba(148, 163, 184, 0.26)';
+            ctx.stroke();
+
+            ctx.fillStyle = '#000000';
+            ctx.font = '600 10px Poppins';
+            ctx.textAlign = 'center';
+            ctx.fillText(labels[i], cx + Math.cos(angle) * (radius + 15), cy + Math.sin(angle) * (radius + 15));
+        }
+
+        ctx.beginPath();
+        values.forEach((value, i) => {
+            const angle = (-Math.PI / 2) + (i * Math.PI * 2 / 4);
+            const r = radius * value * pulse;
+            const x = cx + Math.cos(angle) * r;
+            const y = cy + Math.sin(angle) * r;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        });
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(39, 85, 210, 0.35)';
+        ctx.strokeStyle = 'rgba(39, 85, 210, 0.9)';
+        ctx.lineWidth = 1.5;
+        ctx.fill();
+        ctx.stroke();
+
+        radarRafId = requestAnimationFrame(drawRadar);
+    };
+
+    const stopRadar = () => {
+        if (radarRafId) {
+            cancelAnimationFrame(radarRafId);
+            radarRafId = null;
+        }
+    };
+
+    const closeMiniCards = () => {
+        Object.values(cards).forEach((card) => {
+            if (!card) return;
+            card.classList.remove('show');
+            card.setAttribute('aria-hidden', 'true');
+        });
+        activeCard = null;
+        stopRadar();
+        closeVoiceIntro();
+    };
+
+    const toggleMiniCard = (name) => {
+        const card = cards[name];
+        if (!card) return;
+        if (activeCard === name) {
+            closeMiniCards();
+            return;
+        }
+
+        closeMiniCards();
+        card.classList.add('show');
+        card.setAttribute('aria-hidden', 'false');
+        activeCard = name;
+        if (name === 'radar') {
+            drawRadar();
+        }
+    };
+
+    const reveal = () => {
+        sidebar.classList.add('is-revealed');
+        items.forEach((item, idx) => {
+            if (prefersReduced) {
+                item.classList.add('is-revealed');
+                return;
+            }
+            setTimeout(() => item.classList.add('is-revealed'), idx * 80);
+        });
+    };
+
+    if (prefersReduced) {
+        reveal();
+    } else {
+        setTimeout(reveal, 2200);
+    }
+
+    items.forEach((item) => {
+        item.addEventListener('click', () => {
+            const action = item.getAttribute('data-action');
+            const targetSelector = item.getAttribute('data-target');
+
+            if (action === 'toggle-sidebar') {
+                closeMiniCards();
+                const collapsed = !sidebar.classList.contains('is-collapsed');
+                sidebar.classList.toggle('is-collapsed', collapsed);
+                item.setAttribute('data-label', collapsed ? 'Show Sidebar' : 'Hide Sidebar');
+                item.setAttribute('aria-label', collapsed ? 'Show sidebar' : 'Hide sidebar');
+                item.setAttribute('title', collapsed ? 'Show Sidebar' : 'Hide Sidebar');
+                return;
+            }
+
+            if (action === 'availability') {
+                toggleMiniCard('availability');
+                return;
+            }
+
+            if (action === 'voice-intro') {
+                toggleMiniCard('voice');
+                return;
+            }
+
+            if (action === 'tech-radar') {
+                toggleMiniCard('radar');
+                return;
+            }
+
+            if (action === 'cosmic-clock') {
+                closeMiniCards();
+                openCosmicClockPopup();
+                return;
+            }
+
+            if (action === 'courses') {
+                closeMiniCards();
+                openCoursesExplorer();
+                return;
+            }
+
+            if (action === 'recruiter') {
+                closeMiniCards();
+                const enabled = !document.body.classList.contains('recruiter-mode');
+                setRecruiterMode(enabled);
+                return;
+            }
+
+            if (action === 'games') {
+                closeMiniCards();
+                openGameHub();
+                return;
+            }
+
+            if (!targetSelector) return;
+            const destination = document.querySelector(targetSelector);
+            if (!destination) return;
+
+            closeMiniCards();
+            setRecruiterMode(false);
+            destination.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    if (voicePlayBtn) {
+        voicePlayBtn.addEventListener('click', () => {
+            if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === 'undefined') {
+                voicePlayBtn.textContent = 'Audio not supported';
+                return;
+            }
+
+            const speaking = window.speechSynthesis.speaking;
+            if (speaking) {
+                closeVoiceIntro();
+                return;
+            }
+
+            voiceCancelRequested = false;
+            const fullText = getVoiceIntroText();
+            const chunks = buildVoiceChunks(fullText);
+            if (chunks.length === 0) {
+                voicePlayBtn.textContent = 'Play Intro';
+                voicePlayBtn.setAttribute('aria-pressed', 'false');
+                return;
+            }
+
+            voicePlayBtn.textContent = 'Stop Intro';
+            voicePlayBtn.setAttribute('aria-pressed', 'true');
+            speakVoiceChunks(chunks, 0);
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        if (!activeCard) return;
+        if (sidebar.contains(e.target)) return;
+        closeMiniCards();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeMiniCards();
+        }
+    });
+
+    if (recruiterItem) {
+        recruiterItem.classList.toggle('is-active', document.body.classList.contains('recruiter-mode'));
+    }
+
+    if (sidebarToggleItem && sidebar.classList.contains('is-collapsed')) {
+        sidebarToggleItem.setAttribute('data-label', 'Show Sidebar');
+        sidebarToggleItem.setAttribute('aria-label', 'Show sidebar');
+        sidebarToggleItem.setAttribute('title', 'Show Sidebar');
+    }
+}
+
+/* ========================================================================== */
+/* 7) Recruiter Mode */
+/* ========================================================================== */
+
+function initializeRecruiterMode() {
+    const panel = byId('recruiterModePanel');
+    if (!panel) return;
+
+    initializeRecruiterModeEffects(panel);
+
+    let saved = null;
+    try {
+        saved = localStorage.getItem('recruiterMode');
+    } catch (_) {
+        saved = null;
+    }
+
+    setRecruiterMode(saved === 'true');
+}
+
+function setRecruiterMode(enabled) {
+    const panel = byId('recruiterModePanel');
+    const sidebarRecruiterItem = document.querySelector('.right-sidebar [data-action="recruiter"]');
+    document.body.classList.toggle('recruiter-mode', enabled);
+
+    if (sidebarRecruiterItem) {
+        sidebarRecruiterItem.classList.toggle('is-active', enabled);
+        sidebarRecruiterItem.setAttribute('data-label', enabled ? 'Exit Recruiter' : 'Recruiter');
+        sidebarRecruiterItem.setAttribute('aria-label', enabled ? 'Exit recruiter mode' : 'Recruiter mode');
+        sidebarRecruiterItem.setAttribute('title', enabled ? 'Exit Recruiter Mode' : 'Recruiter Mode');
+    }
+
+    if (panel) {
+        panel.classList.remove('recruiter-animate-in');
+        if (enabled) {
+            panel.offsetHeight;
+            panel.classList.add('recruiter-animate-in');
+            animateRecruiterMetrics(panel);
+            animateRecruiterSkillFills(panel);
+            if (window.scrollY > 100) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+    }
+
+    try {
+        localStorage.setItem('recruiterMode', enabled ? 'true' : 'false');
+    } catch (_) {}
+}
+
+function initializeRecruiterModeEffects(panel) {
+    if (!panel || panel.dataset.effectsReady === 'true') return;
+    panel.dataset.effectsReady = 'true';
+
+    initializeRecruiterParallax(panel);
+}
+
+function animateRecruiterMetrics(panel) {
+    const metrics = panel.querySelectorAll('.recruiter-metric-number[data-value]');
+    if (!metrics || metrics.length === 0) return;
+
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const runId = String(Date.now());
+    panel.dataset.metricsRunId = runId;
+
+    metrics.forEach((metric, idx) => {
+        const target = parseInt(metric.getAttribute('data-value') || '0', 10);
+        const suffix = metric.getAttribute('data-suffix') || '';
+        const delay = idx * 90;
+        const duration = 900;
+
+        if (!Number.isFinite(target) || target < 0) {
+            metric.textContent = `0${suffix}`;
+            return;
+        }
+
+        if (prefersReduced) {
+            metric.textContent = `${target}${suffix}`;
+            return;
+        }
+
+        metric.textContent = `0${suffix}`;
+        setTimeout(() => {
+            const start = performance.now();
+
+            const tick = (now) => {
+                if (!panel || panel.dataset.metricsRunId !== runId) return;
+
+                const progress = Math.min(1, (now - start) / duration);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const value = Math.round(target * eased);
+                metric.textContent = `${value}${suffix}`;
+
+                if (progress < 1) requestAnimationFrame(tick);
+            };
+
+            requestAnimationFrame(tick);
+        }, delay);
+    });
+}
+
+function animateRecruiterSkillFills(panel) {
+    const fills = panel.querySelectorAll('.recruiter-skill-fill[data-level]');
+    if (!fills || fills.length === 0) return;
+
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const runId = String(Date.now());
+    panel.dataset.skillsRunId = runId;
+
+    fills.forEach((fill, idx) => {
+        const level = Math.max(0, Math.min(100, parseInt(fill.getAttribute('data-level') || '0', 10)));
+        fill.style.width = '0%';
+
+        const delay = prefersReduced ? 0 : 180 + (idx * 90);
+        setTimeout(() => {
+            if (!panel || panel.dataset.skillsRunId !== runId) return;
+            fill.style.width = `${level}%`;
+        }, delay);
+    });
+}
+
+function initializeRecruiterParallax(panel) {
+    const inner = panel.querySelector('.recruiter-mode-inner');
+    if (!inner) return;
+
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || isMobileDevice()) return;
+
+    function onMove(e) {
+        if (!document.body.classList.contains('recruiter-mode')) return;
+        const rect = inner.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+        const ry = (px - 0.5) * 5;
+        const rx = (0.5 - py) * 4;
+        inner.style.setProperty('--recruiter-rx', `${rx.toFixed(2)}deg`);
+        inner.style.setProperty('--recruiter-ry', `${ry.toFixed(2)}deg`);
+    }
+
+    function onLeave() {
+        inner.style.setProperty('--recruiter-rx', '0deg');
+        inner.style.setProperty('--recruiter-ry', '0deg');
+    }
+
+    panel.addEventListener('pointermove', onMove);
+    panel.addEventListener('pointerleave', onLeave);
+}
+
+/* ========================================================================== */
+/* 8) Theme Management */
+/* ========================================================================== */
 
 // Theme toggle and persistence
 function initializeThemeToggle() {
@@ -643,6 +1459,10 @@ function initializeThemeToggle() {
     }
 }
 
+/* ========================================================================== */
+/* 8) Typewriter */
+/* ========================================================================== */
+
 // Typewriter effect
 function initializeTypewriter() {
     const TxtRotate = function(el, toRotate, period) {
@@ -699,10 +1519,15 @@ function initializeTypewriter() {
     document.body.appendChild(css);
 }
 
+/* ========================================================================== */
+/* 9) Contact Form */
+/* ========================================================================== */
+
 // Contact form functions
 function openContactForm() {
-    const popup = document.getElementById('contactPopup');
+    const popup = byId('contactPopup');
     const form = document.querySelector('.contact-form');
+    if (!popup || !form) return;
 
     document.body.classList.add('freeze-scroll');
     popup.style.display = 'flex';
@@ -710,47 +1535,54 @@ function openContactForm() {
     form.classList.add('show');
     // Focus the first field for quicker input
     setTimeout(() => {
-        const nameInput = document.getElementById('contactName');
+        const nameInput = byId('contactName');
         if (nameInput) try { nameInput.focus(); } catch(_) {}
         // Clear any prior error
-        const err = document.getElementById('contactError');
+        const err = byId('contactError');
         if (err) { err.textContent = ''; err.classList.remove('show'); }
         // Reset invalid markers
         ['contactName','contactEmail','contactMessage'].forEach(id => {
-            const el = document.getElementById(id);
+            const el = byId(id);
             if (el) el.removeAttribute('aria-invalid');
         });
     }, 120);
 }
 
 function closeContactForm() {
-    const popup = document.getElementById('contactPopup');
+    const popup = byId('contactPopup');
     const form = document.querySelector('.contact-form');
+    if (!popup || !form) return;
 
     form.classList.remove('show');
     setTimeout(() => {
         popup.style.display = 'none';
         document.body.classList.remove('freeze-scroll');
-        const err = document.getElementById('contactError');
+        const err = byId('contactError');
         if (err) { err.textContent = ''; err.classList.remove('show'); }
     }, 400);
 }
 
 function submitContactForm() {
-    const name = document.getElementById('contactName').value.trim();
-    const emailInput = document.getElementById('contactEmail');
+    const nameInput = byId('contactName');
+    const emailInput = byId('contactEmail');
+    const messageInput = byId('contactMessage');
+    if (!nameInput || !emailInput || !messageInput) return;
+
+    const name = nameInput.value.trim();
     const email = emailInput.value.trim();
-    const message = document.getElementById('contactMessage').value.trim();
-    const hp = (document.getElementById('hpField') && document.getElementById('hpField').value.trim()) || '';
-    const sendBtn = document.getElementById('sendMessageBtn');
-    const err = document.getElementById('contactError');
+    const message = messageInput.value.trim();
+    const hpField = byId('hpField');
+    const hp = (hpField && hpField.value.trim()) || '';
+    const sendBtn = byId('sendMessageBtn');
+    const err = byId('contactError');
+    if (!sendBtn) return;
     if (err) { err.textContent = ''; err.classList.remove('show'); }
 
     // Honeypot check: if filled, silently accept and do not send
     if (hp) {
-        document.getElementById('contactName').value = "";
-        document.getElementById('contactEmail').value = "";
-        document.getElementById('contactMessage').value = "";
+        nameInput.value = '';
+        emailInput.value = '';
+        messageInput.value = '';
         showToast("Thanks! I'll get back to you soon.");
         setTimeout(closeContactForm, 600);
         return;
@@ -759,9 +1591,9 @@ function submitContactForm() {
     if (!name || !email || !message) {
         if (err) { err.textContent = 'Please fill in all fields.'; err.classList.add('show'); }
         // Mark empties as invalid
-        if (!name) document.getElementById('contactName').setAttribute('aria-invalid','true');
+        if (!name) nameInput.setAttribute('aria-invalid','true');
         if (!email) emailInput.setAttribute('aria-invalid','true');
-        if (!message) document.getElementById('contactMessage').setAttribute('aria-invalid','true');
+        if (!message) messageInput.setAttribute('aria-invalid','true');
         return;
     }
 
@@ -780,15 +1612,15 @@ function submitContactForm() {
     sendBtn.disabled = true;
     sendBtn.textContent = "Sending";
 
-    emailjs.send("service_cqsx379", "template_u0ioohf", {
+    emailjs.send("service_asimsite", "template_x1tmvth", {
         from_name: name,
         reply_to: email,
         message: message
     }).then(() => {
         sendBtn.textContent = "Sent ✓";
-        document.getElementById('contactName').value = "";
-        document.getElementById('contactEmail').value = "";
-        document.getElementById('contactMessage').value = "";
+        nameInput.value = '';
+        emailInput.value = '';
+        messageInput.value = '';
         showToast("Message sent! I'll reply shortly.");
 
         setTimeout(() => {
@@ -804,10 +1636,14 @@ function submitContactForm() {
     });
 }
 
+/* ========================================================================== */
+/* 10) Toast */
+/* ========================================================================== */
+
 // Simple toast helper
 let toastTimer = null;
 function showToast(msg, duration = 2000) {
-    const el = document.getElementById('toast');
+    const el = byId('toast');
     if (!el) return;
     el.textContent = msg;
     el.classList.add('show');
@@ -817,53 +1653,13 @@ function showToast(msg, duration = 2000) {
     }, duration);
 }
 
-// Resume tooltip functions
-let tooltipVisible = false;
-let hideTooltipTimeout;
-
-function toggleResumeTooltip(event) {
-    event.preventDefault();
-    tooltipVisible ? hideResumeTooltip() : showResumeTooltip();
-}
-
-function showResumeTooltip() {
-    const tooltip = document.getElementById("resumeTooltip");
-    const button = document.getElementById("resume-trigger");
-    const rect = button.getBoundingClientRect();
-
-    tooltip.style.position = "fixed";
-    tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2 - 100) + "px";
-    tooltip.style.top = (rect.top - tooltip.offsetHeight - -60) + "px";
-    tooltip.style.display = "block";
-
-    tooltipVisible = true;
-    hideTooltipTimeout = setTimeout(hideResumeTooltip, 4000);
-    document.addEventListener("click", handleTooltipOutsideClick);
-}
-
-function hideResumeTooltip() {
-    const tooltip = document.getElementById("resumeTooltip");
-    const button = document.getElementById("resume-trigger");
-
-    tooltip.style.display = "none";
-    tooltipVisible = false;
-    button.blur();
-    clearTimeout(hideTooltipTimeout);
-    document.removeEventListener("click", handleTooltipOutsideClick);
-}
-
-function handleTooltipOutsideClick(event) {
-    const tooltip = document.getElementById("resumeTooltip");
-    const button = document.getElementById("resume-trigger");
-
-    if (!tooltip.contains(event.target) && !button.contains(event.target)) {
-        hideResumeTooltip();
-    }
-}
+/* ========================================================================== */
+/* 11) About Text-to-Speech */
+/* ========================================================================== */
 
 // Text-to-Speech: About description
 function setupAboutSpeaker() {
-    const btn = document.getElementById('aboutSpeakBtn');
+    const btn = byId('aboutSpeakBtn');
     if (!btn) return;
 
     const supported = ('speechSynthesis' in window) && (typeof window.SpeechSynthesisUtterance !== 'undefined');
@@ -910,8 +1706,8 @@ function selectPreferredVoice() {
 }
 
 function toggleSpeakAbout() {
-    const btn = document.getElementById('aboutSpeakBtn');
-    const desc = document.getElementById('aboutDescription');
+    const btn = byId('aboutSpeakBtn');
+    const desc = byId('aboutDescription');
     if (!btn || !desc) return;
 
     const synth = window.speechSynthesis;
@@ -962,19 +1758,29 @@ function toggleSpeakAbout() {
     }
 }
 
+/* ========================================================================== */
+/* 12) Privacy Popup */
+/* ========================================================================== */
+
 // Privacy popup functions
 function openPrivacyPopup(event) {
     event.preventDefault();
-    document.getElementById("privacyPopup").style.display = "flex";
+    const popup = byId('privacyPopup');
+    if (popup) popup.style.display = 'flex';
 }
 
 function closePrivacyPopup() {
-    document.getElementById("privacyPopup").style.display = "none";
+    const popup = byId('privacyPopup');
+    if (popup) popup.style.display = 'none';
 }
+
+/* ========================================================================== */
+/* 13) Blog Data */
+/* ========================================================================== */
 
 // Blog data and functions
 
-const blogData = [
+const legacyBlogData = [
   { 
       title: "Islam: The Eternal Path of Peace, Purpose, and Divine Light ", 
       content: "Islam, derived from the Arabic root word “S-L-M”, meaning peace, submission, and safety, is not just a religion, but a complete and timeless way of life revealed by the One True God—Allah, to guide humanity toward peace, justice, mercy, and eternal salvation.<br><br>It is the final and universal message in the divine chain of revelation that began with Prophet Adam عليه السلام, continued through Noah, Abraham, Moses, and Jesus (peace be upon them all), and was completed through the final prophet, Muhammad ﷺ, over 1,400 years ago in the Arabian Peninsula — a message that transcends time, geography, race, and class, offering clarity to the confused, healing to the broken, and purpose to the wandering soul.<br><br>Islam is built upon five noble pillars: the Shahadah (declaration of faith), affirming that there is no god but Allah and Muhammad is His Messenger, Salah (daily prayers) performed five times a day to maintain constant connection with the Creator , Zakah (charity) to purify wealth and uplift the poor , Sawm (fasting in Ramadan) as a means of self-discipline and spiritual elevation , and Hajj (pilgrimage to Makkah), a sacred journey of devotion and unity performed once in a lifetime by those who are able.<br><br>but Islam is not limited to rituals, it encompasses every aspect of life, including ethics, justice, family, economics, governance, and spirituality, rooted deeply in two primary sources: the Qur’an, the unchanged word of Allah revealed in perfect Arabic, and the Sunnah, the teachings and actions of Prophet Muhammad ﷺ.<br><br>The word “Muslim” means one who submits peacefully to the will of Allah, and the essence of Islam lies in achieving peace — within oneself, with others, with nature, and ultimately with the Creator.<br><br>Its message is simple yet profound: that Allah is One, without partner, son, or equal, that He alone is worthy of worship, and that human beings were created not in vain, but for a higher purpose — to know, love, and serve their Lord, and to live in a way that brings benefit to others.<br><br>Islam elevates the status of every human being by teaching that no one is inherently superior due to race, wealth, or lineage, for “Indeed, the most noble of you in the sight of Allah is the most righteous of you.” (Qur’an 49:13) — a powerful declaration of universal human dignity and equality.<br><br>The faith also commands justice, kindness, forgiveness, and care for the vulnerable, while forbidding oppression, arrogance, and cruelty.<br><br>Muslims believe in life after death, divine judgment, and eternal reward or punishment, recognizing that this life is a temporary test and the Hereafter is the true home.<br><br>The Qur’an, a miracle both in language and content, addresses not only spiritual matters but also science, history, law, and human psychology — a living guide that continues to inspire reflection, reform, and transformation, despite widespread misconceptions, Islam firmly condemns violence, extremism, and injustice — stating that the killing of an innocent soul is as if killing all of humanity (Qur’an 5:32), and the Prophet ﷺ declared, “The best among you are those who are best in character,” teaching that the strongest believer is one who controls his anger and uplifts others.<br><br>Over the centuries, Islam gave rise to flourishing civilizations in science, medicine, architecture, literature, and philosophy, producing scholars like Ibn Sina, Al-Khwarizmi, and Al-Ghazali, while building societies where Jews, Christians, and people of various faiths lived and worked together in peace.<br><br>Today, with over 1.9 billion followers across every continent, Islam remains the fastest-growing religion in the world, attracting seekers of truth through its clarity, beauty, and sense of purpose.<br><br>In a world often filled with confusion and moral decline, Islam continues to offer light, balance, and hope — calling every heart to return to its Creator with sincerity and submission, to be Muslim is to live with intention, to walk humbly upon the earth, to seek knowledge, serve humanity, and remember Allah in every moment.<br><br>The Qur’an proclaims: “This day I have perfected for you your religion, completed My favor upon you, and have chosen for you Islam as your way.” (Surah Al-Ma'idah, 5:3) — a declaration that Islam is not just a faith, but a divine gift, a mercy, and a complete way to live and succeed both in this world and the next. <br><br>Truly, Islam is the eternal path to peace, purpose, and divine light, leading all who embrace it toward harmony, justice, and the everlasting pleasure of their Creator — a message of truth for every soul, in every age, until the end of time." 
@@ -1077,7 +1883,7 @@ const blogData = [
   },
 ];
 
-const blogExtra = [
+const legacyBlogExtra = [
     // 0 Islam
     "<br><br><strong>Deep dive: Core beliefs and lived practice</strong><br>At the heart of Islam are six Articles of Faith: belief in Allah; His angels; His revealed books (including the Qur’an as the final, preserved revelation); His messengers (from Adam to Muhammad, peace be upon them all); the Last Day; and divine decree (Qadar), encompassing both destiny and human responsibility. Sharia, often misunderstood, is best viewed as a comprehensive ethic that aims at justice, mercy, wisdom, and benefit. Its objectives (Maqasid al‑Sharia) safeguard faith, life, intellect, lineage, and property. In daily life this means honesty in trade, kindness to neighbors, humility in speech, and compassion toward the poor and vulnerable. Spiritual beautification (Ihsan) invites the believer to worship Allah as if seeing Him, cultivating sincerity, gratitude, and patience through prayer, fasting, charity, and remembrance (dhikr). Historically, Islamic civilization nurtured science, medicine, optics, algebra, astronomy, architecture, and the arts—motivated by a worldview that saw seeking knowledge as worship. For seekers, an authentic path forward includes reading the Qur’an with translation and commentary (tafsir), studying the Prophet’s life (sirah), keeping good company, and making heartfelt supplication (dua). Islam’s message is universal: peace through loving submission to the Creator and service to creation.",
     // 1 Prophet Muhammad ﷺ
@@ -1130,20 +1936,227 @@ const blogExtra = [
     "<br><br><strong>Deep dive: From alerts to action</strong><br>Combine detectors (statistical, distance‑based, autoencoders) and calibrate thresholds per entity. Embrace streaming and online learning to adapt to drift. Add human‑feedback loops to re‑label borderline cases. Provide rich context in alerts (who/what/where/why), automatic triage, and playbooks. The goal isn’t fewer alerts—it’s faster, more accurate response and learning over time."
 ];
 
+/* ========================================================================== */
+/* 14) Blog UI, Share & Popup */
+/* ========================================================================== */
+
 function initializeBlogs() {
-    const topicButtons = document.querySelectorAll('.topic-button');
-    topicButtons.forEach(button => {
+    const wheel = byId('blogWheel');
+    const track = byId('blogWheelTrack');
+    const activeTitle = byId('blogActiveTitle');
+    const readerPanel = document.querySelector('.blog-reader-panel');
+    const readerTitle = byId('blogReaderTitle');
+    const readerMeta = byId('blogReaderMeta');
+    const readerContent = byId('blogReaderContent');
+
+    if (!wheel || !track || !activeTitle || !readerPanel || !readerTitle || !readerMeta || !readerContent) return;
+    if (!Array.isArray(blogData) || blogData.length === 0) return;
+
+    const toPlainText = (html) => {
+        const div = document.createElement('div');
+        div.innerHTML = html || '';
+        return (div.innerText || div.textContent || '').trim();
+    };
+
+    const estimateReadingTime = (html) => {
+        const words = toPlainText(html).split(/\s+/).filter(Boolean).length;
+        const minutes = Math.max(3, Math.round(words / 220));
+        return `${minutes} min read`;
+    };
+
+    const getBlogIconSvg = (_title = '', index = 0) => {
+        const svg = (path, viewBox = '0 0 24 24') =>
+            `<svg viewBox="${viewBox}" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="${path}"/></svg>`;
+
+        // 30 unique, topic-aligned icons (one per blog, no duplicates)
+        const iconPaths = [
+            'M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3zM19 14l.9 2.1L22 17l-2.1.9L19 20l-.9-2.1L16 17l2.1-.9L19 14z',
+            'M3 7h18v10H3V7zm2 2v6h14V9H5zm3 1h2v2H8v-2zm3 0h2v2h-2v-2z',
+            'M12 2a9 9 0 1 0 9 9h-2a7 7 0 1 1-2.05-4.95l-2.45 2.45H22V2l-2.69 2.69A8.97 8.97 0 0 0 12 2z',
+            'M12 2C7 2 3 3.79 3 6v12c0 2.21 4 4 9 4s9-1.79 9-4V6c0-2.21-4-4-9-4zm0 2c4.42 0 7 .99 7 2s-2.58 2-7 2-7-.99-7-2 2.58-2 7-2zm0 16c-4.42 0-7-.99-7-2v-2c1.53 1.03 4.22 1.5 7 1.5s5.47-.47 7-1.5v2c0 1.01-2.58 2-7 2z',
+            'M19.4 13a7.95 7.95 0 0 0 .1-1 8 8 0 0 0-.1-1l2.1-1.6-2-3.4-2.5 1a8.02 8.02 0 0 0-1.7-1l-.4-2.7h-4l-.4 2.7c-.6.2-1.2.5-1.7 1l-2.5-1-2 3.4L4.6 11a7.95 7.95 0 0 0-.1 1c0 .34.03.67.1 1L2.5 14.6l2 3.4 2.5-1c.5.4 1.1.8 1.7 1l.4 2.7h4l.4-2.7c.6-.2 1.2-.5 1.7-1l2.5 1 2-3.4-2.3-1.6zM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5z',
+            'M12 2l8 4v6c0 5.25-3.4 9.74-8 11-4.6-1.26-8-5.75-8-11V6l8-4zm-1 11l-2-2-1.4 1.4L11 15.8l5.4-5.4L15 9l-4 4z',
+            'M19 18H6a4 4 0 1 1 .62-7.95A5 5 0 0 1 16.2 8.1 3.5 3.5 0 1 1 19 18z',
+            'M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z',
+            'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6.02 6.02 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z',
+            'M10 4h4a2 2 0 0 1 2 2v1h3a2 2 0 0 1 2 2v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9a2 2 0 0 1 2-2h3V6a2 2 0 0 1 2-2z',
+            'M4 12l4-4v3h4v2H8v3l-4-4zm16 0l-4 4v-3h-4v-2h4V8l4 4z',
+            'M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 4h8v4h-8v-4z',
+            'M4 4h16v2H4zm0 5h10v2H4zm0 5h16v2H4zm0 5h10v2H4z',
+            'M5 3h14v4h-2V5H7v2H5V3zm7 3 7 4v8l-7 4-7-4v-8l7-4zm0 2.2L7 11v6l5 2.8 5-2.8v-6l-5-2.8z',
+            'M9 2h6v2h-1v2.08A7 7 0 0 1 19 13v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-5a7 7 0 0 1 5-6.92V4H9V2z',
+            'M12 2l8 4v6c0 5.25-3.4 9.74-8 11-4.6-1.26-8-5.75-8-11V6l8-4zm1 6h-2v4h2V8zm0 6h-2v2h2v-2z',
+            'M3 4h8v8H3V4zm10 0h8v8h-8V4zM3 14h8v6H3v-6zm10 2h8v4h-8v-4z',
+            'M3 5h2v14H3V5zm4 4h2v10H7V9zm4-3h2v13h-2V6zm4 6h2v7h-2v-7zm4-5h2v12h-2V7z',
+            'M7.5 3A4.5 4.5 0 0 0 3 7.5v9A4.5 4.5 0 0 0 7.5 21h9a4.5 4.5 0 0 0 4.5-4.5v-9A4.5 4.5 0 0 0 16.5 3h-9zM12 7l2 3h3l-2.5 2 1 3-3-1.8L9.5 15l1-3L8 10h3l1-3z',
+            'M4 14h16v2H4zm2-4h3v3H6zm5-2h3v5h-3zm5-3h3v8h-3z',
+            'M12 4a8 8 0 0 1 8 8h-2a6 6 0 1 0-2.4 4.8l1.2 1.6A8 8 0 1 1 12 4zm4.2 8.2h-5v-5h2v3h3z',
+            'M3 12h18M12 3v18M5 5l14 14M19 5 5 19',
+            'M3 12a9 9 0 0 1 18 0v1H3v-1zm2 3h14v4H5v-4z',
+            'M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 2h6v4h-6v-4z',
+            'M4 4h16v3H4V4zm0 6h16v10H4V10zm2 2v6h12v-6H6z',
+            'M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-1 5h2v6h5v2h-7V7z',
+            'M3 12l4-4v3h5v2H7v3l-4-4zm18 0-4 4v-3h-5v-2h5V8l4 4z',
+            'M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 3h7v4h-7v-4z',
+            'M3 8l9-5 9 5-9 5-9-5zm2 5l7 4 7-4v3l-7 4-7-4v-3z',
+            'M12 2a5 5 0 0 1 5 5v2h1a2 2 0 0 1 2 2v9h-2v-2H6v2H4v-9a2 2 0 0 1 2-2h1V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v2h6V7a3 3 0 0 0-3-3z'
+        ];
+
+        return svg(iconPaths[index] || iconPaths[0]);
+    };
+
+    const makeEntry = (entry, index) => {
+        const mergedHtml = `${entry.content || ''}${blogExtra[index] || ''}`;
+        return {
+            id: `blog-${index + 1}`,
+            title: entry.title || 'Technical Insight',
+            icon: String(index + 1).padStart(2, '0'),
+            category: 'Technical Insight',
+            readingTime: estimateReadingTime(mergedHtml),
+            html: mergedHtml
+        };
+    };
+
+    const entries = blogData.map(makeEntry);
+    const total = entries.length;
+    const step = (Math.PI * 2) / total;
+
+    let rotation = Math.PI / 2;
+    let velocity = 0;
+    let dragging = false;
+    let lastY = 0;
+    let activeIndex = -1;
+    let updateTimer = null;
+
+    const buttons = entries.map((entry, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'blog-wheel-icon';
+        button.setAttribute('role', 'option');
+        button.setAttribute('aria-label', entry.title);
+        button.setAttribute('title', entry.title);
+        button.innerHTML = getBlogIconSvg(entry.title, index);
         button.addEventListener('click', () => {
-            const id = button.getAttribute('data-id');
-            openBlogPopup(id);
+            const target = Math.PI / 2 - index * step;
+            const diff = Math.atan2(Math.sin(target - rotation), Math.cos(target - rotation));
+            velocity += diff * 0.12;
+            setActive(index);
         });
+        track.appendChild(button);
+        return button;
     });
+
+    function buildArticle(entry) {
+        return `<div>${entry.html}</div>`;
+    }
+
+    function setActive(index) {
+        if (index < 0 || index >= total || index === activeIndex) return;
+        activeIndex = index;
+        const entry = entries[index];
+
+        activeTitle.textContent = entry.title;
+        buttons.forEach((button, i) => {
+            const isActive = i === index;
+            button.classList.toggle('is-active', isActive);
+            button.setAttribute('aria-current', isActive ? 'true' : 'false');
+        });
+
+        if (updateTimer) clearTimeout(updateTimer);
+        readerPanel.classList.add('is-updating');
+        updateTimer = setTimeout(() => {
+            readerTitle.textContent = entry.title;
+            readerMeta.innerHTML = `
+                <span class="blog-meta-pill">${entry.category}</span>
+                <span class="blog-meta-pill">${entry.readingTime}</span>
+            `;
+            readerContent.innerHTML = buildArticle(entry);
+            readerPanel.classList.remove('is-updating');
+        }, 140);
+    }
+
+    function nearestIndex() {
+        const raw = (Math.PI / 2 - rotation) / step;
+        return ((Math.round(raw) % total) + total) % total;
+    }
+
+    function layoutWheel() {
+        const rect = wheel.getBoundingClientRect();
+        const centerX = rect.width * 0.5;
+        const centerY = rect.height + 42;
+        const radius = Math.min(rect.width * 0.5, rect.height * 0.72);
+
+        buttons.forEach((button, index) => {
+            const angle = index * step + rotation;
+            const normalized = ((angle % (Math.PI * 2)) + (Math.PI * 2)) % (Math.PI * 2);
+            const visible = normalized >= 0 && normalized <= Math.PI;
+            const depth = Math.sin(normalized);
+
+            const x = centerX + Math.cos(angle) * radius;
+            const y = centerY - Math.sin(angle) * radius;
+            const scale = 0.72 + depth * 0.45;
+            const opacity = visible ? (0.22 + depth * 0.78) : 0;
+
+            button.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${scale})`;
+            button.style.opacity = String(opacity);
+            button.style.zIndex = String(10 + Math.round(depth * 100));
+            button.style.pointerEvents = visible ? 'auto' : 'none';
+        });
+
+        setActive(nearestIndex());
+    }
+
+    wheel.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        velocity += e.deltaY * 0.00008;
+    }, { passive: false });
+
+    wheel.addEventListener('pointerdown', (e) => {
+        dragging = true;
+        lastY = e.clientY;
+        try { wheel.setPointerCapture(e.pointerId); } catch (_) {}
+    });
+
+    wheel.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const dy = e.clientY - lastY;
+        lastY = e.clientY;
+        rotation += dy * 0.01;
+        velocity = dy * 0.006;
+    });
+
+    const endDrag = () => { dragging = false; };
+    wheel.addEventListener('pointerup', endDrag);
+    wheel.addEventListener('pointercancel', endDrag);
+    wheel.addEventListener('pointerleave', endDrag);
+
+    window.addEventListener('resize', layoutWheel);
+
+    function tick() {
+        rotation += velocity;
+        velocity *= 0.93;
+
+        if (!dragging && Math.abs(velocity) < 0.0008) {
+            const target = Math.PI / 2 - nearestIndex() * step;
+            const diff = Math.atan2(Math.sin(target - rotation), Math.cos(target - rotation));
+            rotation += diff * 0.14;
+            if (Math.abs(diff) < 0.0002) velocity = 0;
+        }
+
+        layoutWheel();
+        requestAnimationFrame(tick);
+    }
+
+    layoutWheel();
+    setActive(0);
+    requestAnimationFrame(tick);
 }
 
 function openBlogPopup(id) {
-    const popup = document.getElementById('blogPopup');
-    const title = document.getElementById('popupTitle');
-    const content = document.getElementById('popupText');
+    const popup = byId('blogPopup');
+    const title = byId('popupTitle');
+    const content = byId('popupText');
+    if (!popup || !title || !content) return;
     
     if (blogData[id]) {
         title.textContent = blogData[id].title;
@@ -1168,7 +2181,8 @@ function openBlogPopup(id) {
 }
 
 function closeBlogPopup() {
-    const popup = document.getElementById('blogPopup');
+    const popup = byId('blogPopup');
+    if (!popup) return;
     popup.classList.remove('show');
     document.body.classList.remove('freeze-scroll');
     try { window.speechSynthesis.cancel(); } catch(_) {}
@@ -1184,7 +2198,7 @@ function getBlogShareUrl(id) {
 }
 
 function updateBlogShareHandlers() {
-    const popup = document.getElementById('blogPopup');
+    const popup = byId('blogPopup');
     if (!popup) return;
     const id = popup.dataset.blogId || '';
     if (id === '') return;
@@ -1193,7 +2207,7 @@ function updateBlogShareHandlers() {
     const title = (blogData[id] && blogData[id].title) ? blogData[id].title : document.title;
 
     // Copy link
-    const copyBtn = document.getElementById('copyBlogLinkBtn');
+    const copyBtn = byId('copyBlogLinkBtn');
     if (copyBtn) {
         copyBtn.onclick = async (e) => {
             e.preventDefault();
@@ -1239,7 +2253,7 @@ function updateBlogShareHandlers() {
     }
 
     // X (Twitter)
-    const x = document.getElementById('shareXBtn');
+    const x = byId('shareXBtn');
     if (x) {
         const text = encodeURIComponent(title);
         const u = encodeURIComponent(shareUrl);
@@ -1247,64 +2261,3303 @@ function updateBlogShareHandlers() {
     }
 
     // LinkedIn
-    const li = document.getElementById('shareLinkedInBtn');
+    const li = byId('shareLinkedInBtn');
     if (li) {
         const u = encodeURIComponent(shareUrl);
         li.href = `https://www.linkedin.com/sharing/share-offsite/?url=${u}`;
     }
 }
 
+/* ========================================================================== */
+/* 15) Global Popup Controls */
+/* ========================================================================== */
+
 // Popup outside click handler
 function handleOutsideClick(event) {
     // Contact form
-    const contactPopup = document.getElementById('contactPopup');
+    const contactPopup = byId('contactPopup');
     const contactForm = document.querySelector('.contact-form');
-    if (contactPopup.style.display === 'flex' && !contactForm.contains(event.target) && 
+    if (contactPopup && contactForm && contactPopup.style.display === 'flex' && !contactForm.contains(event.target) && 
         !event.target.matches('#contact-trigger') && !event.target.matches('#footer-contact-trigger') &&
-        !event.target.matches('#hireMeBtn')) {
+        !event.target.matches('#hireMeBtn') && !event.target.matches('#recruiterContactBtn')) {
         closeContactForm();
     }
     
     // Privacy popup
-    const privacyPopup = document.getElementById('privacyPopup');
+    const privacyPopup = byId('privacyPopup');
     const privacyContent = document.querySelector('.privacy-content');
-    if (privacyPopup.style.display === 'flex' && !privacyContent.contains(event.target) && 
+    if (privacyPopup && privacyContent && privacyPopup.style.display === 'flex' && !privacyContent.contains(event.target) && 
         !event.target.matches('#privacy-trigger')) {
         closePrivacyPopup();
     }
     
     // Blog popup
-    const blogPopup = document.getElementById('blogPopup');
+    const blogPopup = byId('blogPopup');
     const blogContent = document.querySelector('.popup-content');
-    if (blogPopup.classList.contains('show') && !blogContent.contains(event.target) && 
+    if (blogPopup && blogContent && blogPopup.classList.contains('show') && !blogContent.contains(event.target) && 
         !event.target.matches('.topic-button')) {
         closeBlogPopup();
     }
 }
 
+/* ========================================================================== */
+/* 15.5) Cosmic Clock Popup */
+/* ========================================================================== */
+
+const COSMIC_CLOCK = {
+        overlay: null,
+        popup: null,
+        closeBtn: null,
+        sidebarIcon: null,
+        initialized: false,
+        start: null,
+        stop: null
+};
+
+function initializeCosmicClock() {
+        COSMIC_CLOCK.overlay = byId('cosmicClockOverlay');
+        COSMIC_CLOCK.popup = byId('cosmicClockPopup');
+        COSMIC_CLOCK.closeBtn = byId('cosmicClockCloseBtn');
+        COSMIC_CLOCK.sidebarIcon = document.querySelector('.right-sidebar [data-action="cosmic-clock"]');
+
+        if (!COSMIC_CLOCK.overlay || !COSMIC_CLOCK.popup) return;
+        if (COSMIC_CLOCK.initialized) return;
+
+        const root = COSMIC_CLOCK.popup.querySelector('.cosmic-clock-root');
+        const engine = createCosmicClockEngine(root, COSMIC_CLOCK.popup);
+        COSMIC_CLOCK.start = engine.start;
+        COSMIC_CLOCK.stop = engine.stop;
+
+        if (COSMIC_CLOCK.closeBtn) {
+                COSMIC_CLOCK.closeBtn.addEventListener('click', () => closeCosmicClockPopup());
+        }
+
+        COSMIC_CLOCK.overlay.addEventListener('click', (e) => {
+                if (e.target === COSMIC_CLOCK.overlay) closeCosmicClockPopup();
+        });
+
+        COSMIC_CLOCK.initialized = true;
+}
+
+function openCosmicClockPopup() {
+        initializeCosmicClock();
+        if (!COSMIC_CLOCK.overlay) return;
+
+        COSMIC_CLOCK.overlay.classList.add('show');
+        COSMIC_CLOCK.overlay.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('freeze-scroll');
+        if (COSMIC_CLOCK.sidebarIcon) COSMIC_CLOCK.sidebarIcon.classList.add('is-active');
+        if (typeof COSMIC_CLOCK.start === 'function') COSMIC_CLOCK.start();
+}
+
+function closeCosmicClockPopup() {
+        if (!COSMIC_CLOCK.overlay) return;
+
+        COSMIC_CLOCK.overlay.classList.remove('show');
+        COSMIC_CLOCK.overlay.setAttribute('aria-hidden', 'true');
+        const gamesOpen = byId('gamesOverlay') && byId('gamesOverlay').classList.contains('show');
+        if (!gamesOpen) document.body.classList.remove('freeze-scroll');
+        if (COSMIC_CLOCK.sidebarIcon) COSMIC_CLOCK.sidebarIcon.classList.remove('is-active');
+        if (typeof COSMIC_CLOCK.stop === 'function') COSMIC_CLOCK.stop();
+}
+
+function createCosmicClockEngine(root, popup) {
+        if (!root || !popup) return { start() {}, stop() {} };
+
+        const canvas = root.querySelector('#canvas');
+        const tooltip = root.querySelector('#tooltip');
+        const currentTimeEl = root.querySelector('#current-time');
+        const currentDateEl = root.querySelector('#current-date');
+    if (!canvas || !tooltip || !currentTimeEl || !currentDateEl) {
+                return { start() {}, stop() {} };
+        }
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return { start() {}, stop() {} };
+
+        let width = canvas.width = popup.clientWidth;
+        let height = canvas.height = popup.clientHeight;
+        let centerX = width / 2;
+        let centerY = height / 2;
+        let speedMultiplier = 1;
+        const EVENT_YEAR = 2025;
+        let running = false;
+        let rafId = null;
+
+        function nowInEventYear() {
+            const n = new Date();
+            const dim = new Date(EVENT_YEAR, n.getMonth() + 1, 0).getDate();
+            const day = Math.min(n.getDate(), dim);
+            return new Date(EVENT_YEAR, n.getMonth(), day, n.getHours(), n.getMinutes(), n.getSeconds(), n.getMilliseconds());
+        }
+
+        let simulatedTime = nowInEventYear();
+
+        const rings = [
+            { name: 'Seconds', color: '#ef4444', divisions: 60, radius: 45, thickness: 4, labels: Array.from({length: 60}, (_, i) => i % 10 === 0 ? i.toString() : ''), labelInterval: 10, getValue: (d) => d.getSeconds() + d.getMilliseconds() / 1000, maxValue: 60 },
+            { name: 'Minutes', color: '#f59e0b', divisions: 60, radius: 65, thickness: 5, labels: Array.from({length: 60}, (_, i) => i % 10 === 0 ? i.toString() : ''), labelInterval: 10, getValue: (d) => d.getMinutes() + d.getSeconds() / 60, maxValue: 60 },
+            { name: 'Hours', color: '#06b6d4', divisions: 24, radius: 88, thickness: 6, labels: Array.from({length: 24}, (_, i) => i % 3 === 0 ? i.toString().padStart(2, '0') : ''), labelInterval: 3, getValue: (d) => d.getHours() + d.getMinutes() / 60, maxValue: 24 },
+            { name: 'Day of Week', color: '#10b981', divisions: 7, radius: 115, thickness: 10, labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], labelInterval: 1, getValue: (d) => d.getDay() + d.getHours() / 24, maxValue: 7 },
+            { name: 'Week', color: '#8b5cf6', divisions: 52, radius: 145, thickness: 7, labels: Array.from({length: 52}, (_, i) => (i+1) % 4 === 0 ? `${i+1}` : ''), labelInterval: 4, getValue: (d) => getWeekOfYear(d), maxValue: 52 },
+            { name: 'Month', color: '#ec4899', divisions: 12, radius: 178, thickness: 12, labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], labelInterval: 1, getValue: (d) => d.getMonth() + d.getDate() / getDaysInMonth(d), maxValue: 12 },
+            { name: 'Quarter', color: '#3b82f6', divisions: 4, radius: 215, thickness: 10, labels: ['Q1', 'Q2', 'Q3', 'Q4'], labelInterval: 1, getValue: (d) => Math.floor(d.getMonth() / 3) + (d.getMonth() % 3 + d.getDate() / getDaysInMonth(d)) / 3, maxValue: 4 },
+            { name: 'Season', color: '#14b8a6', divisions: 4, radius: 248, thickness: 12, labels: ['Winter', 'Spring', 'Summer', 'Autumn'], labelInterval: 1, getValue: (d) => getSeasonValue(d), maxValue: 4, seasonColors: ['#64748b', '#22c55e', '#eab308', '#f97316'] },
+            { name: 'Year', color: '#f97316', divisions: 12, radius: 285, thickness: 8, labels: [], labelInterval: 12, getValue: (d) => { const start = new Date(d.getFullYear(), 0, 1); const end = new Date(d.getFullYear() + 1, 0, 1); return ((d - start) / (end - start)) * 12; }, maxValue: 12, showPercentage: true }
+        ];
+
+        function handleResize() {
+                width = canvas.width = popup.clientWidth;
+                height = canvas.height = popup.clientHeight;
+                centerX = width / 2;
+                centerY = height / 2;
+        }
+        window.addEventListener('resize', handleResize, { passive: true });
+
+        function getWeekOfYear(date) {
+            const start = new Date(date.getFullYear(), 0, 1);
+            const diff = date - start;
+            const oneWeek = 604800000;
+            return Math.floor(diff / oneWeek) + (date.getDay() + date.getHours() / 24) / 7;
+        }
+
+        function getDaysInMonth(date) {
+            return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+        }
+
+        function getSeasonValue(date) {
+            const month = date.getMonth();
+            const day = date.getDate();
+            if ((month === 11 && day >= 21) || month === 0 || month === 1 || (month === 2 && day < 20)) {
+                if (month === 11) return (day - 21) / 31 * 0.25;
+                if (month === 0) return 0.25 + day / 31 * 0.25;
+                if (month === 1) return 0.5 + day / 28 * 0.25;
+                return 0.75 + day / 20 * 0.25;
+            } else if ((month === 2 && day >= 20) || month === 3 || month === 4 || (month === 5 && day < 21)) {
+                if (month === 2) return 1 + (day - 20) / 12 * 0.25;
+                if (month === 3) return 1.25 + day / 30 * 0.25;
+                if (month === 4) return 1.5 + day / 31 * 0.25;
+                return 1.75 + day / 21 * 0.25;
+            } else if ((month === 5 && day >= 21) || month === 6 || month === 7 || (month === 8 && day < 22)) {
+                if (month === 5) return 2 + (day - 21) / 10 * 0.25;
+                if (month === 6) return 2.25 + day / 31 * 0.25;
+                if (month === 7) return 2.5 + day / 31 * 0.25;
+                return 2.75 + day / 22 * 0.25;
+            }
+            if (month === 8) return 3 + (day - 22) / 9 * 0.25;
+            if (month === 9) return 3.25 + day / 31 * 0.25;
+            if (month === 10) return 3.5 + day / 30 * 0.25;
+            return 3.75 + day / 21 * 0.25;
+        }
+
+        function drawRing(ring, value) {
+            const { radius, thickness, divisions, color, labels, labelInterval, seasonColors, showPercentage } = ring;
+            const baseRadius = Math.min(width, height) * 0.42 * (radius / 285);
+
+            for (let i = 0; i < divisions; i++) {
+                const startAngle = (i / divisions) * Math.PI * 2 - Math.PI / 2;
+                const endAngle = ((i + 1) / divisions) * Math.PI * 2 - Math.PI / 2;
+
+                let segmentColor = color;
+                if (seasonColors) segmentColor = seasonColors[i];
+
+                const segmentMidpoint = i + 0.5;
+                const isBeforeCurrent = segmentMidpoint < value;
+                const isCurrent = value >= i && value < i + 1;
+
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, baseRadius, startAngle, endAngle);
+
+                if (isBeforeCurrent) {
+                    ctx.strokeStyle = segmentColor;
+                } else if (isCurrent) {
+                    const partialEnd = startAngle + ((value - i) / 1) * (endAngle - startAngle);
+                    ctx.strokeStyle = `${segmentColor}33`;
+                    ctx.lineWidth = thickness;
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, baseRadius, startAngle, partialEnd);
+                    ctx.strokeStyle = segmentColor;
+                } else {
+                    ctx.strokeStyle = `${segmentColor}22`;
+                }
+
+                ctx.lineWidth = isCurrent ? thickness * 1.1 : thickness;
+                ctx.lineCap = 'butt';
+                ctx.stroke();
+            }
+
+            if (labels.some((l) => l)) {
+                ctx.font = `400 ${Math.max(6, thickness * 0.45)}px Inter, sans-serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+
+                for (let i = 0; i < divisions; i++) {
+                    if (i % labelInterval === 0 && labels[i]) {
+                        const angle = ((i + 0.5) / divisions) * Math.PI * 2 - Math.PI / 2;
+                        const labelRadius = baseRadius + thickness / 2 + 10;
+                        const x = centerX + Math.cos(angle) * labelRadius;
+                        const y = centerY + Math.sin(angle) * labelRadius;
+
+                        ctx.save();
+                        ctx.translate(x, y);
+                        let textAngle = angle + Math.PI / 2;
+                        if (angle > 0 && angle < Math.PI) textAngle += Math.PI;
+                        ctx.rotate(textAngle);
+
+                        ctx.fillStyle = value >= i && value < i + 1 ? '#fff' : 'rgba(255,255,255,0.25)';
+                        ctx.fillText(labels[i], 0, 0);
+                        ctx.restore();
+                    }
+                }
+            }
+
+            const indicatorAngle = (value / ring.maxValue) * Math.PI * 2 - Math.PI / 2;
+            ctx.beginPath();
+            ctx.arc(
+                centerX + Math.cos(indicatorAngle) * baseRadius,
+                centerY + Math.sin(indicatorAngle) * baseRadius,
+                thickness / 2 + 1, 0, Math.PI * 2
+            );
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+
+            if (showPercentage) {
+                const percentage = Math.round((value / ring.maxValue) * 100);
+                ctx.font = '500 10px Inter, sans-serif';
+                ctx.fillStyle = color;
+                ctx.textAlign = 'center';
+                ctx.fillText(`${percentage}%`, centerX, centerY + baseRadius + thickness + 16);
+            }
+        }
+
+        function drawCenter() {
+            const hubRadius = Math.min(width, height) * 0.024;
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, hubRadius, 0, Math.PI * 2);
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            ctx.font = '500 11px Inter, sans-serif';
+            ctx.fillStyle = '#fff';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(simulatedTime.getFullYear(), centerX, centerY);
+        }
+
+        function updateTimeDisplay() {
+            currentTimeEl.textContent = simulatedTime.toLocaleTimeString('en-US', { hour12: false });
+            currentDateEl.textContent = simulatedTime.toLocaleDateString('en-US', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+            });
+        }
+
+        function frame() {
+            if (!running) return;
+            ctx.clearRect(0, 0, width, height);
+
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.012)';
+            for (let x = 50; x < width; x += 50) {
+                for (let y = 50; y < height; y += 50) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, 1, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            for (let i = rings.length - 1; i >= 0; i--) {
+                drawRing(rings[i], rings[i].getValue(simulatedTime));
+            }
+            drawCenter();
+
+            if (speedMultiplier === 1) {
+                simulatedTime = nowInEventYear();
+            } else {
+                simulatedTime = new Date(simulatedTime.getTime() + 16 * speedMultiplier);
+            }
+
+            updateTimeDisplay();
+            rafId = requestAnimationFrame(frame);
+        }
+
+        root.querySelectorAll('.control-btn').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                root.querySelectorAll('.control-btn').forEach((b) => b.classList.remove('active'));
+                btn.classList.add('active');
+                speedMultiplier = parseInt(btn.dataset.speed, 10);
+                if (speedMultiplier === 1) simulatedTime = new Date();
+            });
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const rootRect = root.getBoundingClientRect();
+
+            function placeTooltipNearCursor() {
+                const offset = 12;
+                const tooltipW = tooltip.offsetWidth || 240;
+                const tooltipH = tooltip.offsetHeight || 100;
+                const pad = 8;
+
+                let left = (e.clientX - rootRect.left) + offset;
+                let top = (e.clientY - rootRect.top) + offset;
+
+                if (left + tooltipW > rootRect.width - pad) {
+                    left = (e.clientX - rootRect.left) - tooltipW - offset;
+                }
+                if (top + tooltipH > rootRect.height - pad) {
+                    top = (e.clientY - rootRect.top) - tooltipH - offset;
+                }
+
+                left = Math.max(pad, Math.min(left, rootRect.width - tooltipW - pad));
+                top = Math.max(pad, Math.min(top, rootRect.height - tooltipH - pad));
+
+                tooltip.style.left = `${left}px`;
+                tooltip.style.top = `${top}px`;
+            }
+
+            const dx = x - centerX;
+            const dy = y - centerY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            let hoveredRing = null;
+            for (const ring of rings) {
+                const baseRadius = Math.min(width, height) * 0.42 * (ring.radius / 285);
+                if (Math.abs(distance - baseRadius) < ring.thickness) {
+                    hoveredRing = ring;
+                    break;
+                }
+            }
+
+            if (hoveredRing) {
+                const angle = Math.atan2(dy, dx) + Math.PI / 2;
+                const normalizedAngle = angle < 0 ? angle + Math.PI * 2 : angle;
+                const segmentIndex = Math.floor((normalizedAngle / (Math.PI * 2)) * hoveredRing.divisions);
+                const label = hoveredRing.fullLabels ? hoveredRing.fullLabels[segmentIndex] : hoveredRing.labels[segmentIndex];
+
+                tooltip.style.display = 'block';
+                tooltip.innerHTML = `
+                    <h3>${hoveredRing.name}</h3>
+                    <div class="detail">${label || `Segment ${segmentIndex + 1}`}</div>
+                    <div class="detail" style="color:${hoveredRing.color}">${segmentIndex + 1} of ${hoveredRing.divisions}</div>
+                `;
+                placeTooltipNearCursor();
+                canvas.style.cursor = 'default';
+            } else {
+                tooltip.style.display = 'none';
+                canvas.style.cursor = 'default';
+            }
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            tooltip.style.display = 'none';
+            canvas.style.cursor = 'default';
+        });
+
+        return {
+            start() {
+                if (running) return;
+                handleResize();
+                updateTimeDisplay();
+                running = true;
+                frame();
+            },
+            stop() {
+                running = false;
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                    rafId = null;
+                }
+                tooltip.style.display = 'none';
+                canvas.style.cursor = 'default';
+            }
+        };
+}
+
+const COURSES_EXPLORER = {
+    overlay: null,
+    modal: null,
+    closeBtn: null,
+    tree: null,
+    stateEl: null,
+    loadingEl: null,
+    pdfViewer: null,
+    textViewer: null,
+    sidebarIcon: null,
+    initialized: false,
+    isOpen: false,
+    manifestRoot: null,
+    expanded: new Set(),
+    selectedPath: null,
+    lastOpenedPath: null,
+    visibleRows: [],
+    pathToNode: new Map()
+};
+
+function initializeCoursesExplorer() {
+    COURSES_EXPLORER.overlay = byId('coursesOverlay');
+    COURSES_EXPLORER.modal = byId('coursesModal');
+    COURSES_EXPLORER.closeBtn = byId('coursesCloseBtn');
+    COURSES_EXPLORER.tree = byId('coursesTree');
+    COURSES_EXPLORER.stateEl = byId('coursesViewerState');
+    COURSES_EXPLORER.loadingEl = byId('coursesViewerLoading');
+    COURSES_EXPLORER.pdfViewer = byId('coursesPdfViewer');
+    COURSES_EXPLORER.textViewer = byId('coursesTextViewer');
+    COURSES_EXPLORER.sidebarIcon = document.querySelector('.right-sidebar [data-action="courses"]');
+
+    if (!COURSES_EXPLORER.overlay || !COURSES_EXPLORER.tree || !COURSES_EXPLORER.pdfViewer || !COURSES_EXPLORER.textViewer) return;
+    if (COURSES_EXPLORER.initialized) return;
+
+    if (COURSES_EXPLORER.closeBtn) {
+        COURSES_EXPLORER.closeBtn.addEventListener('click', () => closeCoursesExplorer());
+    }
+
+    COURSES_EXPLORER.overlay.addEventListener('click', (event) => {
+        if (event.target === COURSES_EXPLORER.overlay) closeCoursesExplorer();
+    });
+
+    COURSES_EXPLORER.tree.addEventListener('click', (event) => {
+        const row = event.target.closest('.courses-tree-node');
+        if (!row) return;
+        const path = row.getAttribute('data-path');
+        const node = COURSES_EXPLORER.pathToNode.get(path);
+        if (!node) return;
+
+        if (node.type === 'folder') {
+            toggleCoursesFolder(node.path);
+            return;
+        }
+        openCoursesFile(node);
+    });
+
+    COURSES_EXPLORER.tree.addEventListener('keydown', (event) => handleCoursesTreeKeydown(event));
+    COURSES_EXPLORER.initialized = true;
+}
+
+async function openCoursesExplorer() {
+    initializeCoursesExplorer();
+    if (!COURSES_EXPLORER.overlay) return;
+
+    COURSES_EXPLORER.overlay.classList.add('show');
+    COURSES_EXPLORER.overlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('freeze-scroll');
+    COURSES_EXPLORER.isOpen = true;
+    if (COURSES_EXPLORER.sidebarIcon) COURSES_EXPLORER.sidebarIcon.classList.add('is-active');
+
+    if (!COURSES_EXPLORER.manifestRoot) {
+        setCoursesState('Loading courses explorer...');
+        await loadCoursesManifest();
+    }
+
+    renderCoursesTree();
+    if (COURSES_EXPLORER.lastOpenedPath) {
+        const node = COURSES_EXPLORER.pathToNode.get(COURSES_EXPLORER.lastOpenedPath);
+        if (node && node.type === 'file') {
+            openCoursesFile(node, false);
+        }
+    }
+
+    try { COURSES_EXPLORER.tree.focus(); } catch (_) {}
+}
+
+function closeCoursesExplorer() {
+    if (!COURSES_EXPLORER.overlay) return;
+    COURSES_EXPLORER.overlay.classList.remove('show');
+    COURSES_EXPLORER.overlay.setAttribute('aria-hidden', 'true');
+    COURSES_EXPLORER.isOpen = false;
+    if (COURSES_EXPLORER.sidebarIcon) COURSES_EXPLORER.sidebarIcon.classList.remove('is-active');
+
+    const gamesOpen = byId('gamesOverlay') && byId('gamesOverlay').classList.contains('show');
+    const cosmicOpen = byId('cosmicClockOverlay') && byId('cosmicClockOverlay').classList.contains('show');
+    if (!gamesOpen && !cosmicOpen) document.body.classList.remove('freeze-scroll');
+
+    COURSES_EXPLORER.loadingEl.classList.remove('show');
+    COURSES_EXPLORER.pdfViewer.src = 'about:blank';
+    COURSES_EXPLORER.textViewer.innerHTML = '';
+    showCoursesState('Select a file from Notes to open it here.');
+}
+
+async function loadCoursesManifest() {
+    try {
+        const response = await fetch(`Notes/notes-index.json?v=${Date.now()}`);
+        if (!response.ok) throw new Error('Could not load Notes index');
+        const payload = await response.json();
+        COURSES_EXPLORER.manifestRoot = normalizeCoursesNode(payload.root || payload);
+        if (COURSES_EXPLORER.manifestRoot && COURSES_EXPLORER.manifestRoot.path) {
+            COURSES_EXPLORER.expanded.add(COURSES_EXPLORER.manifestRoot.path);
+        }
+        hideCoursesState();
+    } catch (_) {
+        setCoursesState('Unable to load Notes folder index. Please ensure Notes/notes-index.json exists.');
+    }
+}
+
+function normalizeCoursesNode(node) {
+    if (!node || typeof node !== 'object') return null;
+    const normalized = {
+        name: node.name || 'Untitled',
+        type: node.type === 'folder' ? 'folder' : 'file',
+        path: node.path || '',
+        ext: (node.ext || '').toLowerCase(),
+        children: []
+    };
+    if (normalized.type === 'folder') {
+        if (Array.isArray(node.children)) {
+            normalized.children = node.children.map(normalizeCoursesNode).filter(Boolean);
+        } else if (node.children && typeof node.children === 'object') {
+            const single = normalizeCoursesNode(node.children);
+            normalized.children = single ? [single] : [];
+        }
+    }
+    return normalized;
+}
+
+function renderCoursesTree() {
+    const root = COURSES_EXPLORER.manifestRoot;
+    if (!COURSES_EXPLORER.tree || !root) return;
+
+    COURSES_EXPLORER.visibleRows = [];
+    COURSES_EXPLORER.pathToNode.clear();
+
+    const rows = [];
+    const walk = (node, depth, parentPath = null) => {
+        if (!node) return;
+        COURSES_EXPLORER.pathToNode.set(node.path, node);
+
+        const isFolder = node.type === 'folder';
+        const isOpen = isFolder && COURSES_EXPLORER.expanded.has(node.path);
+        COURSES_EXPLORER.visibleRows.push({ path: node.path, type: node.type, parentPath, isOpen });
+
+        const selected = COURSES_EXPLORER.selectedPath === node.path ? ' is-selected' : '';
+        const openClass = isOpen ? ' is-open' : '';
+        const arrowClass = isFolder ? '' : ' is-file';
+        const icon = isFolder ? '📁' : (node.ext === '.pdf' ? '📕' : (isCoursesImageExt(node.ext) ? '🖼️' : '📄'));
+
+        rows.push(
+            `<div class="courses-tree-node${selected}${openClass}" data-path="${escapeCoursesAttr(node.path)}" data-type="${node.type}" style="padding-left:${8 + depth * 16}px">` +
+                `<span class="courses-tree-arrow${arrowClass}">▸</span>` +
+                `<span class="courses-tree-icon">${icon}</span>` +
+                `<span class="courses-tree-label">${escapeCoursesHtml(node.name)}</span>` +
+            `</div>`
+        );
+
+        if (isFolder && isOpen && Array.isArray(node.children)) {
+            node.children.forEach((child) => walk(child, depth + 1, node.path));
+        }
+    };
+
+    walk(root, 0);
+    COURSES_EXPLORER.tree.innerHTML = rows.join('');
+}
+
+function toggleCoursesFolder(path) {
+    if (COURSES_EXPLORER.expanded.has(path)) {
+        COURSES_EXPLORER.expanded.delete(path);
+    } else {
+        COURSES_EXPLORER.expanded.add(path);
+    }
+    COURSES_EXPLORER.selectedPath = path;
+    renderCoursesTree();
+}
+
+async function openCoursesFile(node, showLoading = true) {
+    if (!node || node.type !== 'file') return;
+    COURSES_EXPLORER.selectedPath = node.path;
+    COURSES_EXPLORER.lastOpenedPath = node.path;
+    renderCoursesTree();
+
+    const extension = (node.ext || '').toLowerCase();
+    if (showLoading) showCoursesLoading();
+
+    if (extension === '.pdf') {
+        showCoursesPdf(node.path);
+        return;
+    }
+
+    if (isCoursesImageExt(extension)) {
+        showCoursesImage(node.path, node.name || 'Image preview');
+        return;
+    }
+
+    if (extension === '.md' || extension === '.txt') {
+        try {
+            const response = await fetch(encodeURI(node.path));
+            if (!response.ok) throw new Error('Failed to open text file');
+            const raw = await response.text();
+            if (extension === '.md') {
+                showCoursesText(markdownToCoursesHtml(raw));
+            } else {
+                showCoursesText(`<pre>${escapeCoursesHtml(raw)}</pre>`);
+            }
+        } catch (_) {
+            showCoursesState('Unable to open this text file.');
+        } finally {
+            hideCoursesLoading();
+        }
+        return;
+    }
+
+    hideCoursesLoading();
+    showCoursesState('Preview is available for PDF, Markdown, text, and image files.');
+}
+
+function isCoursesImageExt(extension) {
+    return ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg', '.bmp', '.avif'].includes((extension || '').toLowerCase());
+}
+
+function showCoursesPdf(path) {
+    hideCoursesState();
+    COURSES_EXPLORER.textViewer.style.display = 'none';
+    COURSES_EXPLORER.textViewer.innerHTML = '';
+    COURSES_EXPLORER.pdfViewer.style.display = 'block';
+    COURSES_EXPLORER.pdfViewer.onload = () => hideCoursesLoading();
+    COURSES_EXPLORER.pdfViewer.onerror = () => {
+        hideCoursesLoading();
+        showCoursesState('Unable to load PDF preview.');
+    };
+    COURSES_EXPLORER.pdfViewer.src = `${encodeURI(path)}#toolbar=1&navpanes=1&scrollbar=1`;
+}
+
+function showCoursesText(html) {
+    hideCoursesState();
+    COURSES_EXPLORER.pdfViewer.style.display = 'none';
+    COURSES_EXPLORER.pdfViewer.src = 'about:blank';
+    COURSES_EXPLORER.textViewer.style.display = 'block';
+    COURSES_EXPLORER.textViewer.innerHTML = html;
+}
+
+function showCoursesImage(path, altText) {
+    hideCoursesState();
+    COURSES_EXPLORER.pdfViewer.style.display = 'none';
+    COURSES_EXPLORER.pdfViewer.src = 'about:blank';
+    COURSES_EXPLORER.textViewer.style.display = 'block';
+    COURSES_EXPLORER.textViewer.innerHTML =
+        `<div class="courses-image-preview">` +
+            `<img class="courses-image-preview-img" src="${encodeURI(path)}" alt="${escapeCoursesAttr(altText || 'Image preview')}" loading="lazy" />` +
+        `</div>`;
+
+    const imageEl = COURSES_EXPLORER.textViewer.querySelector('.courses-image-preview-img');
+    if (!imageEl) {
+        hideCoursesLoading();
+        return;
+    }
+    imageEl.addEventListener('load', () => hideCoursesLoading(), { once: true });
+    imageEl.addEventListener('error', () => {
+        hideCoursesLoading();
+        showCoursesState('Unable to load image preview.');
+    }, { once: true });
+}
+
+function showCoursesState(message) {
+    COURSES_EXPLORER.pdfViewer.style.display = 'none';
+    COURSES_EXPLORER.textViewer.style.display = 'none';
+    COURSES_EXPLORER.stateEl.style.display = 'flex';
+    COURSES_EXPLORER.stateEl.textContent = message;
+}
+
+function setCoursesState(message) {
+    showCoursesState(message);
+}
+
+function hideCoursesState() {
+    COURSES_EXPLORER.stateEl.style.display = 'none';
+}
+
+function showCoursesLoading() {
+    COURSES_EXPLORER.loadingEl.classList.add('show');
+}
+
+function hideCoursesLoading() {
+    COURSES_EXPLORER.loadingEl.classList.remove('show');
+}
+
+function handleCoursesTreeKeydown(event) {
+    if (!COURSES_EXPLORER.isOpen) return;
+    if (!COURSES_EXPLORER.visibleRows.length) return;
+
+    const currentIndex = Math.max(0, COURSES_EXPLORER.visibleRows.findIndex((row) => row.path === COURSES_EXPLORER.selectedPath));
+    let nextIndex = currentIndex;
+
+    if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        nextIndex = Math.min(COURSES_EXPLORER.visibleRows.length - 1, currentIndex + 1);
+        COURSES_EXPLORER.selectedPath = COURSES_EXPLORER.visibleRows[nextIndex].path;
+        renderCoursesTree();
+        ensureCoursesSelectionVisible();
+        return;
+    }
+
+    if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        nextIndex = Math.max(0, currentIndex - 1);
+        COURSES_EXPLORER.selectedPath = COURSES_EXPLORER.visibleRows[nextIndex].path;
+        renderCoursesTree();
+        ensureCoursesSelectionVisible();
+        return;
+    }
+
+    const currentRow = COURSES_EXPLORER.visibleRows[currentIndex];
+    const currentNode = COURSES_EXPLORER.pathToNode.get(currentRow.path);
+
+    if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        if (currentNode && currentNode.type === 'folder' && !COURSES_EXPLORER.expanded.has(currentNode.path)) {
+            COURSES_EXPLORER.expanded.add(currentNode.path);
+            renderCoursesTree();
+            ensureCoursesSelectionVisible();
+        }
+        return;
+    }
+
+    if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        if (currentNode && currentNode.type === 'folder' && COURSES_EXPLORER.expanded.has(currentNode.path)) {
+            COURSES_EXPLORER.expanded.delete(currentNode.path);
+            renderCoursesTree();
+            ensureCoursesSelectionVisible();
+            return;
+        }
+        if (currentRow.parentPath) {
+            COURSES_EXPLORER.selectedPath = currentRow.parentPath;
+            renderCoursesTree();
+            ensureCoursesSelectionVisible();
+        }
+        return;
+    }
+
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        if (!currentNode) return;
+        if (currentNode.type === 'folder') {
+            toggleCoursesFolder(currentNode.path);
+            return;
+        }
+        openCoursesFile(currentNode);
+    }
+}
+
+function ensureCoursesSelectionVisible() {
+    const node = COURSES_EXPLORER.tree.querySelector('.courses-tree-node.is-selected');
+    if (!node) return;
+    try {
+        node.scrollIntoView({ block: 'nearest' });
+    } catch (_) {}
+}
+
+function escapeCoursesHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function escapeCoursesAttr(value) {
+    return escapeCoursesHtml(value);
+}
+
+function markdownToCoursesHtml(markdownText) {
+    const lines = String(markdownText || '').replace(/\r/g, '').split('\n');
+    const html = [];
+    let inList = false;
+
+    const inline = (text) => {
+        let out = escapeCoursesHtml(text);
+        out = out.replace(/`([^`]+)`/g, '<code>$1</code>');
+        out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+        out = out.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+        out = out.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+        return out;
+    };
+
+    lines.forEach((line) => {
+        const trimmed = line.trim();
+        if (!trimmed) {
+            if (inList) {
+                html.push('</ul>');
+                inList = false;
+            }
+            return;
+        }
+
+        if (/^###\s+/.test(trimmed)) {
+            if (inList) {
+                html.push('</ul>');
+                inList = false;
+            }
+            html.push(`<h3>${inline(trimmed.replace(/^###\s+/, ''))}</h3>`);
+            return;
+        }
+        if (/^##\s+/.test(trimmed)) {
+            if (inList) {
+                html.push('</ul>');
+                inList = false;
+            }
+            html.push(`<h2>${inline(trimmed.replace(/^##\s+/, ''))}</h2>`);
+            return;
+        }
+        if (/^#\s+/.test(trimmed)) {
+            if (inList) {
+                html.push('</ul>');
+                inList = false;
+            }
+            html.push(`<h1>${inline(trimmed.replace(/^#\s+/, ''))}</h1>`);
+            return;
+        }
+        if (/^[-*]\s+/.test(trimmed)) {
+            if (!inList) {
+                html.push('<ul>');
+                inList = true;
+            }
+            html.push(`<li>${inline(trimmed.replace(/^[-*]\s+/, ''))}</li>`);
+            return;
+        }
+
+        if (inList) {
+            html.push('</ul>');
+            inList = false;
+        }
+        html.push(`<p>${inline(trimmed)}</p>`);
+    });
+
+    if (inList) html.push('</ul>');
+    return html.join('');
+}
+
 // Close open popups on Escape key for accessibility and consistency
 function handleGlobalKeyDown(e) {
     if (e.key !== 'Escape') return;
-    const blogPopup = document.getElementById('blogPopup');
-    const privacyPopup = document.getElementById('privacyPopup');
-    const contactPopup = document.getElementById('contactPopup');
+    const coursesOverlay = byId('coursesOverlay');
+    const cosmicClockOverlay = byId('cosmicClockOverlay');
+    const gamesOverlay = byId('gamesOverlay');
+    const blogPopup = byId('blogPopup');
+    const privacyPopup = byId('privacyPopup');
+    const contactPopup = byId('contactPopup');
+    if (coursesOverlay && coursesOverlay.classList.contains('show')) {
+        closeCoursesExplorer();
+        return;
+    }
+    if (cosmicClockOverlay && cosmicClockOverlay.classList.contains('show')) {
+        closeCosmicClockPopup();
+        return;
+    }
+    if (gamesOverlay && gamesOverlay.classList.contains('show')) {
+        closeGameHub();
+        return;
+    }
     if (blogPopup && blogPopup.classList.contains('show')) closeBlogPopup();
     if (privacyPopup && privacyPopup.style.display === 'flex') closePrivacyPopup();
     if (contactPopup && contactPopup.style.display === 'flex') closeContactForm();
 }
 
-// ===== Blog TTS with word highlighting =====
-let blogUtter = null;
+/* ========================================================================== */
+/* 16) Games Hub (Snake / Ludo) */
+/* ========================================================================== */
+
+const GAME_HUB = {
+    overlay: null,
+    modal: null,
+    canvas: null,
+    ctx: null,
+    viewport: null,
+    loader: null,
+    startOverlay: null,
+    startBtn: null,
+    statusText: null,
+    highScoreText: null,
+    pauseBtn: null,
+    restartBtn: null,
+    soundBtn: null,
+    closeBtn: null,
+    tabs: [],
+    gamesIcon: null,
+    isOpen: false,
+    isPaused: false,
+    activeGameId: 'snake',
+    activeGame: null,
+    rafId: null,
+    lastTs: 0,
+    soundOn: true,
+    audioCtx: null,
+    resizeHandler: null,
+    keyHandler: null,
+    keyUpHandler: null,
+    waitingToStart: false,
+    gameStats: {
+        snake: { scoreKey: 'games.snake.highscore', skillKey: 'games.snake.skill' },
+        ludo: { scoreKey: 'games.ludo.highscore', skillKey: 'games.ludo.skill' },
+        breakout: { scoreKey: 'games.breakout.highscore', skillKey: 'games.breakout.skill' },
+        dodger: { scoreKey: 'games.dodger.highscore', skillKey: 'games.dodger.skill' },
+        targetrush: { scoreKey: 'games.targetrush.highscore', skillKey: 'games.targetrush.skill' },
+        pong: { scoreKey: 'games.pong.highscore', skillKey: 'games.pong.skill' },
+        memoryflip: { scoreKey: 'games.memoryflip.highscore', skillKey: 'games.memoryflip.skill' },
+        laneescape: { scoreKey: 'games.laneescape.highscore', skillKey: 'games.laneescape.skill' },
+        offlinerunner: { scoreKey: 'games.offlinerunner.highscore', skillKey: 'games.offlinerunner.skill' }
+    }
+};
+
+function initializeGameHub() {
+    const overlay = byId('gamesOverlay');
+    const modal = byId('gamesModal');
+    const canvas = byId('gamesCanvas');
+    if (!overlay || !modal || !canvas) return;
+
+    GAME_HUB.overlay = overlay;
+    GAME_HUB.modal = modal;
+    GAME_HUB.canvas = canvas;
+    GAME_HUB.ctx = canvas.getContext('2d');
+    GAME_HUB.viewport = byId('gamesViewport');
+    GAME_HUB.loader = byId('gamesLoader');
+    GAME_HUB.startOverlay = byId('gamesStartOverlay');
+    GAME_HUB.startBtn = byId('gamesStartBtn');
+    GAME_HUB.statusText = byId('gamesStatusText');
+    GAME_HUB.highScoreText = byId('gamesHighScoreText');
+    GAME_HUB.pauseBtn = byId('gamesPauseBtn');
+    GAME_HUB.restartBtn = byId('gamesRestartBtn');
+    GAME_HUB.soundBtn = byId('gamesSoundToggle');
+    GAME_HUB.closeBtn = byId('gamesCloseBtn');
+    GAME_HUB.tabs = Array.from(document.querySelectorAll('.games-tab'));
+    GAME_HUB.gamesIcon = document.querySelector('.right-sidebar [data-action="games"]');
+
+    try {
+        const storedSound = localStorage.getItem('games.soundOn');
+        GAME_HUB.soundOn = storedSound !== 'false';
+    } catch (_) {
+        GAME_HUB.soundOn = true;
+    }
+    updateGamesSoundButton();
+
+    if (GAME_HUB.closeBtn) {
+        GAME_HUB.closeBtn.addEventListener('click', () => closeGameHub());
+    }
+    if (GAME_HUB.pauseBtn) {
+        GAME_HUB.pauseBtn.addEventListener('click', () => toggleGamePause());
+    }
+    if (GAME_HUB.restartBtn) {
+        GAME_HUB.restartBtn.addEventListener('click', () => restartActiveGame());
+    }
+    if (GAME_HUB.soundBtn) {
+        GAME_HUB.soundBtn.addEventListener('click', () => {
+            GAME_HUB.soundOn = !GAME_HUB.soundOn;
+            try { localStorage.setItem('games.soundOn', GAME_HUB.soundOn ? 'true' : 'false'); } catch (_) {}
+            updateGamesSoundButton();
+            playGameBeep(660, 0.04);
+        });
+    }
+    if (GAME_HUB.startBtn) {
+        GAME_HUB.startBtn.addEventListener('click', () => beginCurrentGame());
+    }
+
+    GAME_HUB.tabs.forEach((tab) => {
+        tab.addEventListener('click', () => switchGameTab(tab.dataset.game || 'snake'));
+    });
+
+    GAME_HUB.resizeHandler = () => {
+        if (!GAME_HUB.isOpen) return;
+        resizeGamesCanvas();
+        if (GAME_HUB.activeGame && typeof GAME_HUB.activeGame.resize === 'function') {
+            GAME_HUB.activeGame.resize(getCanvasWidth(), getCanvasHeight());
+        }
+    };
+    window.addEventListener('resize', GAME_HUB.resizeHandler, { passive: true });
+
+    GAME_HUB.keyHandler = (e) => {
+        if (!GAME_HUB.isOpen) return;
+        if (GAME_HUB.waitingToStart && (e.key === 'Enter' || e.code === 'Space')) {
+            e.preventDefault();
+            beginCurrentGame();
+            return;
+        }
+        if (e.key === 'Tab') return;
+        if (GAME_HUB.activeGame && typeof GAME_HUB.activeGame.onKeyDown === 'function') {
+            GAME_HUB.activeGame.onKeyDown(e);
+        }
+    };
+    window.addEventListener('keydown', GAME_HUB.keyHandler);
+
+    GAME_HUB.keyUpHandler = (e) => {
+        if (!GAME_HUB.isOpen) return;
+        if (GAME_HUB.activeGame && typeof GAME_HUB.activeGame.onKeyUp === 'function') {
+            GAME_HUB.activeGame.onKeyUp(e);
+        }
+    };
+    window.addEventListener('keyup', GAME_HUB.keyUpHandler);
+}
+
+function openGameHub() {
+    if (!GAME_HUB.overlay || !GAME_HUB.modal || !GAME_HUB.canvas) return;
+
+    GAME_HUB.overlay.classList.add('show');
+    GAME_HUB.overlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('freeze-scroll');
+    GAME_HUB.isOpen = true;
+    GAME_HUB.isPaused = false;
+    if (GAME_HUB.gamesIcon) GAME_HUB.gamesIcon.classList.add('is-active');
+    updateGamesPauseButton();
+
+    switchGameTab(GAME_HUB.activeGameId || 'snake', true);
+    if (GAME_HUB.viewport) {
+        setTimeout(() => {
+            try { GAME_HUB.viewport.focus(); } catch (_) {}
+        }, 120);
+    }
+}
+
+function closeGameHub() {
+    if (!GAME_HUB.overlay) return;
+
+    GAME_HUB.isOpen = false;
+    GAME_HUB.overlay.classList.remove('show');
+    GAME_HUB.overlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('freeze-scroll');
+    if (GAME_HUB.gamesIcon) GAME_HUB.gamesIcon.classList.remove('is-active');
+    GAME_HUB.waitingToStart = false;
+    if (GAME_HUB.startOverlay) {
+        GAME_HUB.startOverlay.classList.remove('show');
+        GAME_HUB.startOverlay.setAttribute('aria-hidden', 'true');
+    }
+    destroyActiveGame();
+    stopGameLoop();
+}
+
+function switchGameTab(gameId, immediate = false) {
+    const next = Object.prototype.hasOwnProperty.call(GAME_HUB.gameStats, gameId) ? gameId : 'snake';
+    GAME_HUB.activeGameId = next;
+    GAME_HUB.tabs.forEach((tab) => {
+        const active = tab.dataset.game === next;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    showGamesLoader(true);
+    const wait = immediate ? 30 : 190;
+
+    setTimeout(async () => {
+        destroyActiveGame();
+        resizeGamesCanvas();
+        await createGameById(next);
+        if (GAME_HUB.activeGame && typeof GAME_HUB.activeGame.resize === 'function') {
+            GAME_HUB.activeGame.resize(getCanvasWidth(), getCanvasHeight());
+        }
+        GAME_HUB.isPaused = false;
+        armGameStartOverlay();
+        updateGamesPauseButton();
+        updateGamesHighScoreText(next);
+        showGamesLoader(false);
+        startGameLoop();
+    }, wait);
+}
+
+async function createGameById(gameId) {
+    const width = getCanvasWidth();
+    const height = getCanvasHeight();
+    if (gameId === 'ludo') {
+        GAME_HUB.activeGame = createLudoGame();
+    } else if (gameId === 'breakout') {
+        GAME_HUB.activeGame = createBreakoutGame();
+    } else if (gameId === 'dodger') {
+        GAME_HUB.activeGame = createDodgerGame();
+    } else if (gameId === 'targetrush') {
+        GAME_HUB.activeGame = createTargetRushGame();
+    } else if (gameId === 'pong') {
+        GAME_HUB.activeGame = createPongGame();
+    } else if (gameId === 'memoryflip') {
+        GAME_HUB.activeGame = createMemoryFlipGame();
+    } else if (gameId === 'laneescape') {
+        GAME_HUB.activeGame = createLaneEscapeGame();
+    } else if (gameId === 'offlinerunner') {
+        GAME_HUB.activeGame = createOfflineRunnerGame();
+    } else {
+        GAME_HUB.activeGame = createSnakeGame();
+    }
+    if (GAME_HUB.activeGame && typeof GAME_HUB.activeGame.init === 'function') {
+        GAME_HUB.activeGame.init(GAME_HUB.ctx, width, height);
+    }
+}
+
+function destroyActiveGame() {
+    if (GAME_HUB.activeGame && typeof GAME_HUB.activeGame.destroy === 'function') {
+        GAME_HUB.activeGame.destroy();
+    }
+    GAME_HUB.activeGame = null;
+}
+
+function startGameLoop() {
+    stopGameLoop();
+    GAME_HUB.lastTs = performance.now();
+    const loop = (ts) => {
+        if (!GAME_HUB.isOpen || !GAME_HUB.activeGame) return;
+        const dt = Math.min(0.05, (ts - GAME_HUB.lastTs) / 1000);
+        GAME_HUB.lastTs = ts;
+
+        if (!GAME_HUB.waitingToStart && !GAME_HUB.isPaused && typeof GAME_HUB.activeGame.update === 'function') {
+            GAME_HUB.activeGame.update(dt);
+        }
+        if (typeof GAME_HUB.activeGame.render === 'function') {
+            GAME_HUB.activeGame.render();
+        }
+        if (typeof GAME_HUB.activeGame.getStatus === 'function') {
+            const status = GAME_HUB.activeGame.getStatus();
+            if (GAME_HUB.statusText) GAME_HUB.statusText.textContent = enrichGameStatusWithHint(status || '', GAME_HUB.activeGameId);
+        }
+
+        GAME_HUB.rafId = requestAnimationFrame(loop);
+    };
+    GAME_HUB.rafId = requestAnimationFrame(loop);
+}
+
+function armGameStartOverlay() {
+    GAME_HUB.waitingToStart = true;
+    if (GAME_HUB.startOverlay) {
+        GAME_HUB.startOverlay.classList.add('show');
+        GAME_HUB.startOverlay.setAttribute('aria-hidden', 'false');
+    }
+    if (GAME_HUB.startBtn) {
+        const title = GAME_HUB.activeGameId ? GAME_HUB.activeGameId.replace(/(^\w)|(-\w)/g, (m) => m.replace('-', '').toUpperCase()) : 'Game';
+        GAME_HUB.startBtn.textContent = `▶ Play ${title}`;
+    }
+}
+
+function beginCurrentGame() {
+    if (!GAME_HUB.waitingToStart) return;
+    GAME_HUB.waitingToStart = false;
+    if (GAME_HUB.startOverlay) {
+        GAME_HUB.startOverlay.classList.remove('show');
+        GAME_HUB.startOverlay.setAttribute('aria-hidden', 'true');
+    }
+    playGameBeep(700, 0.03);
+    if (GAME_HUB.viewport) {
+        try { GAME_HUB.viewport.focus(); } catch (_) {}
+    }
+}
+
+function getGameControlHint(gameId) {
+    if (gameId === 'snake') return 'Hint: Arrows/WASD or Swipe';
+    if (gameId === 'ludo') return 'Hint: Click canvas or Space/Enter to roll';
+    if (gameId === 'breakout') return 'Hint: Arrows/A-D or mouse move';
+    if (gameId === 'dodger') return 'Hint: Arrows/WASD or mouse move';
+    if (gameId === 'targetrush') return 'Hint: Click target (Enter/Space quick hit)';
+    if (gameId === 'pong') return 'Hint: Up/Down or W/S';
+    if (gameId === 'memoryflip') return 'Hint: Click cards to match pairs';
+    if (gameId === 'laneescape') return 'Hint: Left/Right or A/D to switch lanes';
+    if (gameId === 'offlinerunner') return 'Hint: Space/↑/W jump · ↓/S duck · Tap jump';
+    return '';
+}
+
+function enrichGameStatusWithHint(status, gameId) {
+    const hint = getGameControlHint(gameId);
+    if (!hint) return status;
+    if (!status) return hint;
+    return `${status} · ${hint}`;
+}
+
+function stopGameLoop() {
+    if (GAME_HUB.rafId) {
+        cancelAnimationFrame(GAME_HUB.rafId);
+        GAME_HUB.rafId = null;
+    }
+}
+
+function toggleGamePause() {
+    if (!GAME_HUB.activeGame) return;
+    if (GAME_HUB.waitingToStart) return;
+    GAME_HUB.isPaused = !GAME_HUB.isPaused;
+    if (typeof GAME_HUB.activeGame.setPaused === 'function') {
+        GAME_HUB.activeGame.setPaused(GAME_HUB.isPaused);
+    }
+    updateGamesPauseButton();
+}
+
+function restartActiveGame() {
+    if (!GAME_HUB.activeGame || typeof GAME_HUB.activeGame.restart !== 'function') return;
+    GAME_HUB.activeGame.restart();
+    GAME_HUB.isPaused = false;
+    armGameStartOverlay();
+    updateGamesPauseButton();
+    playGameBeep(480, 0.05);
+}
+
+function updateGamesPauseButton() {
+    if (!GAME_HUB.pauseBtn) return;
+    GAME_HUB.pauseBtn.textContent = GAME_HUB.isPaused ? 'Resume' : 'Pause';
+}
+
+function updateGamesSoundButton() {
+    if (!GAME_HUB.soundBtn) return;
+    GAME_HUB.soundBtn.textContent = GAME_HUB.soundOn ? 'Sound: On' : 'Sound: Off';
+    GAME_HUB.soundBtn.setAttribute('aria-pressed', GAME_HUB.soundOn ? 'true' : 'false');
+}
+
+function showGamesLoader(show) {
+    if (!GAME_HUB.loader) return;
+    GAME_HUB.loader.classList.toggle('show', show);
+}
+
+function resizeGamesCanvas() {
+    if (!GAME_HUB.canvas || !GAME_HUB.viewport) return;
+    const rect = GAME_HUB.viewport.getBoundingClientRect();
+    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    GAME_HUB.canvas.width = Math.max(300, Math.floor(rect.width * dpr));
+    GAME_HUB.canvas.height = Math.max(240, Math.floor(rect.height * dpr));
+    if (GAME_HUB.ctx) {
+        GAME_HUB.ctx.setTransform(1, 0, 0, 1, 0, 0);
+        GAME_HUB.ctx.scale(dpr, dpr);
+    }
+}
+
+function getCanvasWidth() {
+    if (!GAME_HUB.canvas) return 0;
+    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    return Math.floor(GAME_HUB.canvas.width / dpr);
+}
+
+function getCanvasHeight() {
+    if (!GAME_HUB.canvas) return 0;
+    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    return Math.floor(GAME_HUB.canvas.height / dpr);
+}
+
+function getStoredNumber(key, fallback = 0) {
+    try {
+        const raw = localStorage.getItem(key);
+        if (raw == null) return fallback;
+        const val = Number(raw);
+        return Number.isFinite(val) ? val : fallback;
+    } catch (_) {
+        return fallback;
+    }
+}
+
+function setStoredNumber(key, val) {
+    try { localStorage.setItem(key, String(val)); } catch (_) {}
+}
+
+function updateGamesHighScoreText(gameId) {
+    if (!GAME_HUB.highScoreText) return;
+    const key = GAME_HUB.gameStats[gameId].scoreKey;
+    const value = getStoredNumber(key, 0);
+    GAME_HUB.highScoreText.textContent = `Highest Score: ${value}`;
+}
+
+function maybeUpdateHighScore(gameId, value) {
+    const key = GAME_HUB.gameStats[gameId].scoreKey;
+    const prev = getStoredNumber(key, 0);
+    if (value > prev) {
+        setStoredNumber(key, value);
+        if (GAME_HUB.activeGameId === gameId) updateGamesHighScoreText(gameId);
+    }
+}
+
+function playGameBeep(freq = 440, duration = 0.05) {
+    if (!GAME_HUB.soundOn) return;
+    try {
+        if (!GAME_HUB.audioCtx) {
+            const Ctx = window.AudioContext || window.webkitAudioContext;
+            if (!Ctx) return;
+            GAME_HUB.audioCtx = new Ctx();
+        }
+        const ctx = GAME_HUB.audioCtx;
+        const oscillator = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+        oscillator.type = 'sine';
+        oscillator.frequency.value = freq;
+        gainNode.gain.value = 0.03;
+        oscillator.connect(gainNode);
+        gainNode.connect(ctx.destination);
+        oscillator.start();
+        oscillator.stop(ctx.currentTime + duration);
+    } catch (_) {}
+}
+
+function createSnakeGame() {
+    const state = {
+        ctx: null,
+        width: 0,
+        height: 0,
+        cell: 22,
+        cols: 0,
+        rows: 0,
+        boardW: 0,
+        boardH: 0,
+        ox: 0,
+        oy: 0,
+        snake: [{ x: 6, y: 6 }],
+        dir: { x: 1, y: 0 },
+        nextDir: { x: 1, y: 0 },
+        food: { x: 12, y: 8 },
+        acc: 0,
+        speed: 7,
+        score: 0,
+        level: 0,
+        movesLeft: 3,
+        gameOver: false,
+        touchStart: null,
+        onPointerDown: null,
+        onPointerUp: null
+    };
+
+    function computeGrid() {
+        const adaptiveCell = Math.floor(Math.min(state.width / 30, state.height / 20));
+        state.cell = Math.max(14, Math.min(28, adaptiveCell));
+        state.cols = Math.max(16, Math.floor(state.width / state.cell));
+        state.rows = Math.max(12, Math.floor(state.height / state.cell));
+        state.boardW = state.cols * state.cell;
+        state.boardH = state.rows * state.cell;
+        state.ox = Math.floor((state.width - state.boardW) / 2);
+        state.oy = Math.floor((state.height - state.boardH) / 2);
+    }
+
+    function reset() {
+        computeGrid();
+        state.snake = [{ x: Math.floor(state.cols * 0.25), y: Math.floor(state.rows * 0.5) }];
+        state.dir = { x: 1, y: 0 };
+        state.nextDir = { x: 1, y: 0 };
+        state.acc = 0;
+        state.speed = 5;
+        state.score = 0;
+        state.level = 0;
+        state.movesLeft = 3;
+        state.gameOver = false;
+        spawnFood();
+    }
+
+    function spawnFood() {
+        let best = null;
+        let bestDist = -1;
+        for (let attempt = 0; attempt < 120; attempt++) {
+            const x = Math.floor(Math.random() * state.cols);
+            const y = Math.floor(Math.random() * state.rows);
+            if (state.snake.some((s) => s.x === x && s.y === y)) continue;
+            const head = state.snake[0];
+            const dist = Math.abs(x - head.x) + Math.abs(y - head.y);
+            if (dist > bestDist) {
+                bestDist = dist;
+                best = { x, y };
+            }
+        }
+        state.food = best || { x: 3, y: 3 };
+    }
+
+    function normalizeAfterResize() {
+        const maxX = Math.max(0, state.cols - 1);
+        const maxY = Math.max(0, state.rows - 1);
+
+        const seen = new Set();
+        const nextSnake = [];
+        state.snake.forEach((part) => {
+            const x = Math.min(maxX, Math.max(0, part.x));
+            const y = Math.min(maxY, Math.max(0, part.y));
+            const key = `${x},${y}`;
+            if (!seen.has(key)) {
+                seen.add(key);
+                nextSnake.push({ x, y });
+            }
+        });
+        if (nextSnake.length === 0) {
+            nextSnake.push({ x: Math.floor(state.cols * 0.5), y: Math.floor(state.rows * 0.5) });
+        }
+        state.snake = nextSnake;
+
+        const foodOutside = state.food.x < 0 || state.food.y < 0 || state.food.x >= state.cols || state.food.y >= state.rows;
+        const foodOnSnake = state.snake.some((s) => s.x === state.food.x && s.y === state.food.y);
+        if (foodOutside || foodOnSnake) {
+            spawnFood();
+        }
+    }
+
+    function setDirection(x, y) {
+        if (x === -state.dir.x && y === -state.dir.y) return;
+        state.nextDir = { x, y };
+        state.movesLeft = Math.max(1, 3 - state.level);
+    }
+
+    function onSwipe(dx, dy) {
+        if (Math.abs(dx) > Math.abs(dy)) {
+            setDirection(dx > 0 ? 1 : -1, 0);
+        } else {
+            setDirection(0, dy > 0 ? 1 : -1);
+        }
+    }
+
+    return {
+        init(ctx, width, height) {
+            state.ctx = ctx;
+            state.width = width;
+            state.height = height;
+            reset();
+            if (GAME_HUB.canvas) {
+                state.onPointerDown = (e) => {
+                    state.touchStart = { x: e.clientX, y: e.clientY };
+                };
+                state.onPointerUp = (e) => {
+                    if (!state.touchStart) return;
+                    const dx = e.clientX - state.touchStart.x;
+                    const dy = e.clientY - state.touchStart.y;
+                    if (Math.hypot(dx, dy) > 14) onSwipe(dx, dy);
+                    state.touchStart = null;
+                };
+                GAME_HUB.canvas.addEventListener('pointerdown', state.onPointerDown);
+                GAME_HUB.canvas.addEventListener('pointerup', state.onPointerUp);
+            }
+        },
+        resize(width, height) {
+            state.width = width;
+            state.height = height;
+            computeGrid();
+            normalizeAfterResize();
+        },
+        onKeyDown(e) {
+            if (e.key === 'ArrowUp' || e.key.toLowerCase() === 'w') setDirection(0, -1);
+            if (e.key === 'ArrowDown' || e.key.toLowerCase() === 's') setDirection(0, 1);
+            if (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'a') setDirection(-1, 0);
+            if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') setDirection(1, 0);
+        },
+        update(dt) {
+            if (state.gameOver) return;
+            state.acc += dt;
+            const step = 1 / state.speed;
+            if (state.acc < step) return;
+
+            let guard = 0;
+            while (state.acc >= step && guard < 3 && !state.gameOver) {
+                state.acc -= step;
+                guard += 1;
+
+                state.dir = state.nextDir;
+                const head = { x: state.snake[0].x + state.dir.x, y: state.snake[0].y + state.dir.y };
+
+                if (head.x < 0 || head.y < 0 || head.x >= state.cols || head.y >= state.rows || state.snake.some((s) => s.x === head.x && s.y === head.y)) {
+                    state.gameOver = true;
+                    maybeUpdateHighScore('snake', state.score);
+                    playGameBeep(180, 0.1);
+                    return;
+                }
+
+                state.snake.unshift(head);
+                if (head.x === state.food.x && head.y === state.food.y) {
+                    state.score += 10;
+                    state.level = Math.floor(state.score / 100);
+                    state.speed = Math.min(11, 5 + state.level * 0.22);
+                    spawnFood();
+                    playGameBeep(780, 0.04);
+                } else {
+                    state.snake.pop();
+                }
+            }
+        },
+        render() {
+            const ctx = state.ctx;
+            if (!ctx) return;
+            ctx.clearRect(0, 0, state.width, state.height);
+            ctx.fillStyle = 'rgba(39, 85, 210, 0.08)';
+            ctx.fillRect(0, 0, state.width, state.height);
+
+            ctx.fillStyle = 'rgba(39, 85, 210, 0.10)';
+            ctx.fillRect(state.ox, state.oy, state.boardW, state.boardH);
+            ctx.strokeStyle = 'rgba(39, 85, 210, 0.34)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(state.ox + 0.5, state.oy + 0.5, Math.max(0, state.boardW - 1), Math.max(0, state.boardH - 1));
+
+            ctx.strokeStyle = 'rgba(39, 85, 210, 0.14)';
+            for (let x = 0; x <= state.cols; x++) {
+                ctx.beginPath();
+                const gx = state.ox + x * state.cell;
+                ctx.moveTo(gx, state.oy);
+                ctx.lineTo(gx, state.oy + state.boardH);
+                ctx.stroke();
+            }
+            for (let y = 0; y <= state.rows; y++) {
+                ctx.beginPath();
+                const gy = state.oy + y * state.cell;
+                ctx.moveTo(state.ox, gy);
+                ctx.lineTo(state.ox + state.boardW, gy);
+                ctx.stroke();
+            }
+
+            state.snake.forEach((part, idx) => {
+                ctx.fillStyle = idx === 0 ? '#2755d2' : '#14b8a6';
+                ctx.fillRect(state.ox + part.x * state.cell + 2, state.oy + part.y * state.cell + 2, state.cell - 4, state.cell - 4);
+            });
+
+            ctx.fillStyle = '#ef4444';
+            ctx.fillRect(state.ox + state.food.x * state.cell + 3, state.oy + state.food.y * state.cell + 3, state.cell - 6, state.cell - 6);
+
+            if (state.gameOver) {
+                ctx.fillStyle = 'rgba(0,0,0,0.55)';
+                ctx.fillRect(state.ox, state.oy, state.boardW, state.boardH);
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '600 24px Poppins';
+                ctx.textAlign = 'center';
+                ctx.fillText('Game Over', state.ox + state.boardW / 2, state.oy + state.boardH / 2 - 8);
+                ctx.font = '500 14px Poppins';
+                ctx.fillText('Press Restart to play again', state.ox + state.boardW / 2, state.oy + state.boardH / 2 + 20);
+            }
+        },
+        getStatus() {
+            return `Snake · Score: ${state.score} · Speed: ${state.speed.toFixed(1)}x`;
+        },
+        restart() { reset(); },
+        setPaused() {},
+        destroy() {
+            if (GAME_HUB.canvas && state.onPointerDown) {
+                GAME_HUB.canvas.removeEventListener('pointerdown', state.onPointerDown);
+            }
+            if (GAME_HUB.canvas && state.onPointerUp) {
+                GAME_HUB.canvas.removeEventListener('pointerup', state.onPointerUp);
+            }
+            state.onPointerDown = null;
+            state.onPointerUp = null;
+        }
+    };
+}
+
+function createLudoGame() {
+    const state = {
+        ctx: null,
+        width: 0,
+        height: 0,
+        track: 24,
+        playerPos: 0,
+        aiPos: 0,
+        playerProgress: 0,
+        aiProgress: 0,
+        turn: 'player',
+        rollCooldown: 0,
+        score: 0,
+        aiLevel: Math.max(1, getStoredNumber(GAME_HUB.gameStats.ludo.skillKey, 1)),
+        message: 'Tap canvas or press Space to roll.',
+        wins: 0
+    };
+
+    function reset() {
+        state.playerPos = 0;
+        state.aiPos = 12;
+        state.playerProgress = 0;
+        state.aiProgress = 0;
+        state.turn = 'player';
+        state.rollCooldown = 0;
+        state.message = 'Tap canvas or press Space to roll.';
+    }
+
+    function strategicRoll(isAi) {
+        const base = 1 + Math.floor(Math.random() * 6);
+        if (!isAi) return base;
+        const bonusRoll = 1 + Math.floor(Math.random() * 6);
+        const captureNeed = (state.playerPos - state.aiPos + state.track) % state.track;
+        if (state.aiLevel >= 2 && captureNeed >= 1 && captureNeed <= 6) return captureNeed;
+        if (state.aiLevel >= 3) return Math.max(base, bonusRoll);
+        return base;
+    }
+
+    function moveToken(who, value) {
+        if (who === 'player') {
+            state.playerPos = (state.playerPos + value) % state.track;
+            state.playerProgress += value;
+            if (state.playerPos === state.aiPos) {
+                state.aiProgress = Math.max(0, state.aiProgress - 4);
+                state.message = 'You captured AI token!';
+                playGameBeep(760, 0.04);
+            }
+        } else {
+            state.aiPos = (state.aiPos + value) % state.track;
+            state.aiProgress += value;
+            if (state.aiPos === state.playerPos) {
+                state.playerProgress = Math.max(0, state.playerProgress - 4);
+                state.message = 'AI captured your token!';
+                playGameBeep(260, 0.06);
+            }
+        }
+    }
+
+    function checkWin() {
+        const finish = 48;
+        if (state.playerProgress >= finish) {
+            state.score += 1;
+            state.wins += 1;
+            state.message = 'You won! AI adapts gradually.';
+            if (state.wins % 3 === 0) {
+                state.aiLevel = Math.min(4, state.aiLevel + 1);
+            }
+            setStoredNumber(GAME_HUB.gameStats.ludo.skillKey, state.aiLevel);
+            maybeUpdateHighScore('ludo', state.score);
+            playGameBeep(880, 0.08);
+            reset();
+            return true;
+        }
+        if (state.aiProgress >= finish) {
+            state.message = 'AI won this round. Keep going!';
+            playGameBeep(180, 0.08);
+            reset();
+            return true;
+        }
+        return false;
+    }
+
+    function playerRoll() {
+        if (state.turn !== 'player' || state.rollCooldown > 0) return;
+        const roll = strategicRoll(false);
+        moveToken('player', roll);
+        if (!checkWin()) {
+            state.turn = 'ai';
+            state.rollCooldown = 0.55;
+            state.message = `You rolled ${roll}. AI thinking...`;
+        }
+    }
+
+    return {
+        init(ctx, width, height) {
+            state.ctx = ctx;
+            state.width = width;
+            state.height = height;
+            reset();
+            if (GAME_HUB.canvas) {
+                GAME_HUB.canvas.addEventListener('pointerdown', playerRoll);
+            }
+        },
+        resize(width, height) {
+            state.width = width;
+            state.height = height;
+        },
+        onKeyDown(e) {
+            if (e.code === 'Space' || e.key === 'Enter') {
+                e.preventDefault();
+                playerRoll();
+            }
+        },
+        update(dt) {
+            if (state.rollCooldown > 0) state.rollCooldown -= dt;
+            if (state.turn === 'ai' && state.rollCooldown <= 0) {
+                const roll = strategicRoll(true);
+                moveToken('ai', roll);
+                checkWin();
+                state.turn = 'player';
+                state.message = `AI rolled ${roll}. Your turn.`;
+            }
+        },
+        render() {
+            const ctx = state.ctx;
+            if (!ctx) return;
+            const w = state.width;
+            const h = state.height;
+            const cx = w * 0.5;
+            const cy = h * 0.5;
+            const radius = Math.min(w, h) * 0.33;
+
+            ctx.clearRect(0, 0, w, h);
+            ctx.fillStyle = 'rgba(20, 184, 166, 0.12)';
+            ctx.fillRect(0, 0, w, h);
+
+            for (let i = 0; i < state.track; i++) {
+                const a = (i / state.track) * Math.PI * 2 - Math.PI / 2;
+                const x = cx + Math.cos(a) * radius;
+                const y = cy + Math.sin(a) * radius;
+                ctx.fillStyle = i % 2 === 0 ? 'rgba(39,85,210,0.28)' : 'rgba(20,184,166,0.22)';
+                ctx.beginPath();
+                ctx.arc(x, y, 12, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            const playerAngle = (state.playerPos / state.track) * Math.PI * 2 - Math.PI / 2;
+            const aiAngle = (state.aiPos / state.track) * Math.PI * 2 - Math.PI / 2;
+            const px = cx + Math.cos(playerAngle) * radius;
+            const py = cy + Math.sin(playerAngle) * radius;
+            const ax = cx + Math.cos(aiAngle) * radius;
+            const ay = cy + Math.sin(aiAngle) * radius;
+
+            ctx.fillStyle = '#2755d2';
+            ctx.beginPath(); ctx.arc(px, py, 10, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#ef4444';
+            ctx.beginPath(); ctx.arc(ax, ay, 10, 0, Math.PI * 2); ctx.fill();
+
+            ctx.fillStyle = 'rgba(17,24,39,0.92)';
+            ctx.font = '600 14px Poppins';
+            ctx.textAlign = 'center';
+            ctx.fillText(state.message, cx, h - 26);
+        },
+        getStatus() {
+            return `Ludo · Wins: ${state.score} · AI Level: ${state.aiLevel} · Turn: ${state.turn}`;
+        },
+        restart() { reset(); },
+        setPaused() {},
+        destroy() {
+            if (GAME_HUB.canvas) {
+                GAME_HUB.canvas.removeEventListener('pointerdown', playerRoll);
+            }
+        }
+    };
+}
+
+function createBreakoutGame() {
+    const state = {
+        ctx: null,
+        width: 0,
+        height: 0,
+        paddle: { x: 0, y: 0, w: 120, h: 14, speed: 520, vx: 0 },
+        ball: { x: 0, y: 0, r: 9, vx: 240, vy: -260 },
+        bricks: [],
+        rows: 5,
+        cols: 10,
+        brickGap: 8,
+        brickH: 20,
+        score: 0,
+        lives: 3,
+        level: 1,
+        over: false,
+        message: 'Break all bricks. Arrow keys or swipe to move.',
+        pointerMove: null
+    };
+
+    function resetBall() {
+        state.ball.x = state.paddle.x + state.paddle.w * 0.5;
+        state.ball.y = state.paddle.y - state.ball.r - 2;
+        const speedBoost = 1 + (state.level - 1) * 0.03;
+        state.ball.vx = (Math.random() > 0.5 ? 1 : -1) * 230 * speedBoost;
+        state.ball.vy = -260 * speedBoost;
+    }
+
+    function buildBricks() {
+        state.bricks = [];
+        const padX = Math.max(14, Math.floor(state.width * 0.06));
+        const available = Math.max(260, state.width - padX * 2);
+        const brickW = (available - state.brickGap * (state.cols - 1)) / state.cols;
+        const topY = Math.max(24, Math.floor(state.height * 0.12));
+        for (let r = 0; r < state.rows; r++) {
+            for (let c = 0; c < state.cols; c++) {
+                state.bricks.push({
+                    x: padX + c * (brickW + state.brickGap),
+                    y: topY + r * (state.brickH + state.brickGap),
+                    w: brickW,
+                    h: state.brickH,
+                    hp: 1 + Math.floor(r / 2)
+                });
+            }
+        }
+    }
+
+    function rebuildLayout() {
+        state.paddle.w = Math.max(90, Math.min(150, Math.floor(state.width * 0.18)));
+        state.paddle.h = Math.max(12, Math.floor(state.height * 0.028));
+        state.paddle.y = state.height - state.paddle.h - 22;
+        state.paddle.x = Math.min(Math.max(0, state.paddle.x || (state.width - state.paddle.w) * 0.5), state.width - state.paddle.w);
+        state.ball.r = Math.max(7, Math.min(11, Math.floor(Math.min(state.width, state.height) * 0.014)));
+        buildBricks();
+        resetBall();
+    }
+
+    function fullReset() {
+        state.score = 0;
+        state.lives = 3;
+        state.level = 1;
+        state.over = false;
+        rebuildLayout();
+    }
+
+    function hitPaddle() {
+        const rel = (state.ball.x - state.paddle.x) / state.paddle.w;
+        const clamped = Math.max(0.05, Math.min(0.95, rel));
+        const angle = (clamped - 0.5) * 1.3;
+        const speed = Math.hypot(state.ball.vx, state.ball.vy) * 1.008;
+        state.ball.vx = Math.sin(angle) * speed;
+        state.ball.vy = -Math.cos(angle) * speed;
+        playGameBeep(630, 0.03);
+    }
+
+    function clearBricksIfNeeded() {
+        if (state.bricks.length > 0) return;
+        state.level += 1;
+        if (state.level % 3 === 0) {
+            state.rows = Math.min(8, state.rows + 1);
+        }
+        buildBricks();
+        resetBall();
+        state.message = `Level ${state.level} started`;
+        playGameBeep(920, 0.06);
+    }
+
+    return {
+        init(ctx, width, height) {
+            state.ctx = ctx;
+            state.width = width;
+            state.height = height;
+            fullReset();
+            if (GAME_HUB.canvas) {
+                state.pointerMove = (e) => {
+                    const rect = GAME_HUB.canvas.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    state.paddle.x = Math.max(0, Math.min(state.width - state.paddle.w, x - state.paddle.w * 0.5));
+                };
+                GAME_HUB.canvas.addEventListener('pointermove', state.pointerMove);
+            }
+        },
+        resize(width, height) {
+            state.width = width;
+            state.height = height;
+            rebuildLayout();
+        },
+        onKeyDown(e) {
+            const key = e.key.toLowerCase();
+            if (e.key === 'ArrowLeft' || key === 'a') state.paddle.vx = -state.paddle.speed;
+            if (e.key === 'ArrowRight' || key === 'd') state.paddle.vx = state.paddle.speed;
+        },
+        update(dt) {
+            if (state.over) return;
+
+            state.paddle.x += state.paddle.vx * dt;
+            state.paddle.vx *= 0.84;
+            if (Math.abs(state.paddle.vx) < 8) state.paddle.vx = 0;
+            state.paddle.x = Math.max(0, Math.min(state.width - state.paddle.w, state.paddle.x));
+
+            state.ball.x += state.ball.vx * dt;
+            state.ball.y += state.ball.vy * dt;
+
+            if (state.ball.x - state.ball.r <= 0) {
+                state.ball.x = state.ball.r;
+                state.ball.vx = Math.abs(state.ball.vx);
+            }
+            if (state.ball.x + state.ball.r >= state.width) {
+                state.ball.x = state.width - state.ball.r;
+                state.ball.vx = -Math.abs(state.ball.vx);
+            }
+            if (state.ball.y - state.ball.r <= 0) {
+                state.ball.y = state.ball.r;
+                state.ball.vy = Math.abs(state.ball.vy);
+            }
+
+            if (
+                state.ball.y + state.ball.r >= state.paddle.y &&
+                state.ball.y - state.ball.r <= state.paddle.y + state.paddle.h &&
+                state.ball.x >= state.paddle.x &&
+                state.ball.x <= state.paddle.x + state.paddle.w &&
+                state.ball.vy > 0
+            ) {
+                state.ball.y = state.paddle.y - state.ball.r;
+                hitPaddle();
+            }
+
+            for (let i = state.bricks.length - 1; i >= 0; i--) {
+                const brick = state.bricks[i];
+                if (
+                    state.ball.x + state.ball.r < brick.x ||
+                    state.ball.x - state.ball.r > brick.x + brick.w ||
+                    state.ball.y + state.ball.r < brick.y ||
+                    state.ball.y - state.ball.r > brick.y + brick.h
+                ) {
+                    continue;
+                }
+                const leftPen = Math.abs((state.ball.x + state.ball.r) - brick.x);
+                const rightPen = Math.abs((brick.x + brick.w) - (state.ball.x - state.ball.r));
+                const topPen = Math.abs((state.ball.y + state.ball.r) - brick.y);
+                const bottomPen = Math.abs((brick.y + brick.h) - (state.ball.y - state.ball.r));
+                const minPen = Math.min(leftPen, rightPen, topPen, bottomPen);
+                if (minPen === leftPen || minPen === rightPen) {
+                    state.ball.vx *= -1;
+                } else {
+                    state.ball.vy *= -1;
+                }
+
+                brick.hp -= 1;
+                if (brick.hp <= 0) {
+                    state.bricks.splice(i, 1);
+                    state.score += 12;
+                    maybeUpdateHighScore('breakout', state.score);
+                }
+                playGameBeep(520, 0.025);
+                break;
+            }
+
+            clearBricksIfNeeded();
+
+            if (state.ball.y - state.ball.r > state.height + 4) {
+                state.lives -= 1;
+                playGameBeep(190, 0.07);
+                if (state.lives <= 0) {
+                    state.over = true;
+                    state.message = 'Game over. Press Restart.';
+                    maybeUpdateHighScore('breakout', state.score);
+                } else {
+                    resetBall();
+                }
+            }
+        },
+        render() {
+            const ctx = state.ctx;
+            if (!ctx) return;
+            ctx.clearRect(0, 0, state.width, state.height);
+            ctx.fillStyle = 'rgba(39, 85, 210, 0.10)';
+            ctx.fillRect(0, 0, state.width, state.height);
+
+            state.bricks.forEach((brick) => {
+                const tone = brick.hp === 1 ? 'rgba(20,184,166,0.8)' : 'rgba(39,85,210,0.82)';
+                ctx.fillStyle = tone;
+                ctx.fillRect(brick.x, brick.y, brick.w, brick.h);
+            });
+
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(state.paddle.x, state.paddle.y, state.paddle.w, state.paddle.h);
+
+            ctx.fillStyle = '#ef4444';
+            ctx.beginPath();
+            ctx.arc(state.ball.x, state.ball.y, state.ball.r, 0, Math.PI * 2);
+            ctx.fill();
+
+            if (state.over) {
+                ctx.fillStyle = 'rgba(0,0,0,0.55)';
+                ctx.fillRect(0, 0, state.width, state.height);
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '600 24px Poppins';
+                ctx.textAlign = 'center';
+                ctx.fillText('Breakout Over', state.width * 0.5, state.height * 0.5 - 8);
+                ctx.font = '500 14px Poppins';
+                ctx.fillText('Press Restart to try again', state.width * 0.5, state.height * 0.5 + 20);
+            }
+        },
+        getStatus() {
+            return `Breakout · Score: ${state.score} · Lives: ${state.lives} · Level: ${state.level}`;
+        },
+        restart() { fullReset(); },
+        setPaused() {},
+        destroy() {
+            if (GAME_HUB.canvas && state.pointerMove) {
+                GAME_HUB.canvas.removeEventListener('pointermove', state.pointerMove);
+            }
+            state.pointerMove = null;
+        }
+    };
+}
+
+function createDodgerGame() {
+    const state = {
+        ctx: null,
+        width: 0,
+        height: 0,
+        player: { x: 0, y: 0, r: 13, vx: 0, vy: 0, speed: 300 },
+        danger: [],
+        spawnTimer: 0,
+        score: 0,
+        survival: 0,
+        difficulty: 1,
+        over: false,
+        keys: new Set(),
+        pointerMove: null
+    };
+
+    function reset() {
+        state.player.x = state.width * 0.5;
+        state.player.y = state.height * 0.7;
+        state.player.vx = 0;
+        state.player.vy = 0;
+        state.danger = [];
+        state.spawnTimer = 0;
+        state.score = 0;
+        state.survival = 0;
+        state.difficulty = 1;
+        state.over = false;
+        state.keys.clear();
+    }
+
+    function spawnDanger() {
+        const side = Math.floor(Math.random() * 4);
+        const size = 10 + Math.random() * 10;
+        const speed = 100 + Math.random() * 85 + state.difficulty * 8;
+        let x = 0;
+        let y = 0;
+        let vx = 0;
+        let vy = 0;
+        if (side === 0) {
+            x = -size;
+            y = Math.random() * state.height;
+            vx = speed;
+            vy = (Math.random() - 0.5) * 80;
+        } else if (side === 1) {
+            x = state.width + size;
+            y = Math.random() * state.height;
+            vx = -speed;
+            vy = (Math.random() - 0.5) * 80;
+        } else if (side === 2) {
+            x = Math.random() * state.width;
+            y = -size;
+            vx = (Math.random() - 0.5) * 80;
+            vy = speed;
+        } else {
+            x = Math.random() * state.width;
+            y = state.height + size;
+            vx = (Math.random() - 0.5) * 80;
+            vy = -speed;
+        }
+        state.danger.push({ x, y, vx, vy, r: size });
+    }
+
+    function applyControls(dt) {
+        let ax = 0;
+        let ay = 0;
+        if (state.keys.has('arrowleft') || state.keys.has('a')) ax -= 1;
+        if (state.keys.has('arrowright') || state.keys.has('d')) ax += 1;
+        if (state.keys.has('arrowup') || state.keys.has('w')) ay -= 1;
+        if (state.keys.has('arrowdown') || state.keys.has('s')) ay += 1;
+
+        const length = Math.hypot(ax, ay) || 1;
+        state.player.vx = (ax / length) * state.player.speed;
+        state.player.vy = (ay / length) * state.player.speed;
+
+        state.player.x += state.player.vx * dt;
+        state.player.y += state.player.vy * dt;
+
+        state.player.x = Math.max(state.player.r, Math.min(state.width - state.player.r, state.player.x));
+        state.player.y = Math.max(state.player.r, Math.min(state.height - state.player.r, state.player.y));
+    }
+
+    function moveDanger(dt) {
+        for (let i = state.danger.length - 1; i >= 0; i--) {
+            const d = state.danger[i];
+            d.x += d.vx * dt;
+            d.y += d.vy * dt;
+            if (
+                d.x < -80 ||
+                d.x > state.width + 80 ||
+                d.y < -80 ||
+                d.y > state.height + 80
+            ) {
+                state.danger.splice(i, 1);
+            }
+        }
+    }
+
+    function checkCollisions() {
+        const p = state.player;
+        for (let i = 0; i < state.danger.length; i++) {
+            const d = state.danger[i];
+            const dist = Math.hypot(d.x - p.x, d.y - p.y);
+            if (dist <= d.r + p.r - 2) {
+                state.over = true;
+                maybeUpdateHighScore('dodger', state.score);
+                playGameBeep(160, 0.09);
+                return;
+            }
+        }
+    }
+
+    return {
+        init(ctx, width, height) {
+            state.ctx = ctx;
+            state.width = width;
+            state.height = height;
+            reset();
+            if (GAME_HUB.canvas) {
+                state.pointerMove = (e) => {
+                    const rect = GAME_HUB.canvas.getBoundingClientRect();
+                    state.player.x = Math.max(state.player.r, Math.min(state.width - state.player.r, e.clientX - rect.left));
+                    state.player.y = Math.max(state.player.r, Math.min(state.height - state.player.r, e.clientY - rect.top));
+                };
+                GAME_HUB.canvas.addEventListener('pointermove', state.pointerMove);
+            }
+        },
+        resize(width, height) {
+            state.width = width;
+            state.height = height;
+            state.player.x = Math.max(state.player.r, Math.min(state.width - state.player.r, state.player.x));
+            state.player.y = Math.max(state.player.r, Math.min(state.height - state.player.r, state.player.y));
+        },
+        onKeyDown(e) {
+            state.keys.add(e.key.toLowerCase());
+            if (e.key === ' ' && state.over) {
+                e.preventDefault();
+                reset();
+            }
+        },
+        onKeyUp(e) {
+            state.keys.delete(e.key.toLowerCase());
+        },
+        update(dt) {
+            if (state.over) return;
+
+            state.survival += dt;
+            state.score = Math.floor(state.survival * 10);
+            maybeUpdateHighScore('dodger', state.score);
+            state.difficulty = 1 + Math.floor(state.survival / 28);
+
+            state.spawnTimer -= dt;
+            const spawnEvery = Math.max(0.56, 1.36 - state.difficulty * 0.045);
+            if (state.spawnTimer <= 0) {
+                spawnDanger();
+                if (Math.random() < Math.min(0.14, state.difficulty * 0.022)) spawnDanger();
+                state.spawnTimer = spawnEvery;
+            }
+
+            applyControls(dt);
+            moveDanger(dt);
+            checkCollisions();
+        },
+        render() {
+            const ctx = state.ctx;
+            if (!ctx) return;
+            ctx.clearRect(0, 0, state.width, state.height);
+            ctx.fillStyle = 'rgba(20, 184, 166, 0.11)';
+            ctx.fillRect(0, 0, state.width, state.height);
+
+            state.danger.forEach((d) => {
+                ctx.fillStyle = 'rgba(239, 68, 68, 0.82)';
+                ctx.beginPath();
+                ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            ctx.fillStyle = '#2755d2';
+            ctx.beginPath();
+            ctx.arc(state.player.x, state.player.y, state.player.r, 0, Math.PI * 2);
+            ctx.fill();
+
+            if (state.over) {
+                ctx.fillStyle = 'rgba(0,0,0,0.55)';
+                ctx.fillRect(0, 0, state.width, state.height);
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '600 24px Poppins';
+                ctx.textAlign = 'center';
+                ctx.fillText('Dodger Over', state.width * 0.5, state.height * 0.5 - 8);
+                ctx.font = '500 14px Poppins';
+                ctx.fillText('Press Restart to play again', state.width * 0.5, state.height * 0.5 + 20);
+            }
+        },
+        getStatus() {
+            return `Dodger · Score: ${state.score} · Difficulty: ${state.difficulty} · Hazards: ${state.danger.length}`;
+        },
+        restart() { reset(); },
+        setPaused() {},
+        destroy() {
+            if (GAME_HUB.canvas && state.pointerMove) {
+                GAME_HUB.canvas.removeEventListener('pointermove', state.pointerMove);
+            }
+            state.pointerMove = null;
+        }
+    };
+}
+
+function createTargetRushGame() {
+    const state = {
+        ctx: null,
+        width: 0,
+        height: 0,
+        target: { x: 0, y: 0, r: 28 },
+        timer: 45,
+        score: 0,
+        streak: 0,
+        over: false,
+        pulse: 0,
+        pointerDown: null
+    };
+
+    function nextTarget() {
+        const margin = Math.max(34, state.target.r + 8);
+        state.target.x = margin + Math.random() * Math.max(1, state.width - margin * 2);
+        state.target.y = margin + Math.random() * Math.max(1, state.height - margin * 2);
+        state.target.r = Math.max(20, 28 - Math.min(8, Math.floor(state.score / 18)));
+    }
+
+    function reset() {
+        state.timer = 45;
+        state.score = 0;
+        state.streak = 0;
+        state.over = false;
+        state.pulse = 0;
+        state.target.r = 28;
+        nextTarget();
+    }
+
+    function tryHit(clientX, clientY) {
+        if (state.over) return;
+        const rect = GAME_HUB.canvas ? GAME_HUB.canvas.getBoundingClientRect() : { left: 0, top: 0 };
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+        const hit = Math.hypot(x - state.target.x, y - state.target.y) <= state.target.r + 2;
+        if (hit) {
+            state.streak += 1;
+            const bonus = state.streak >= 4 ? 2 : 1;
+            state.score += bonus;
+            state.timer = Math.min(60, state.timer + 0.55);
+            maybeUpdateHighScore('targetrush', state.score);
+            state.pulse = 1;
+            playGameBeep(760, 0.03);
+            nextTarget();
+        } else {
+            state.streak = 0;
+            state.timer = Math.max(0, state.timer - 0.25);
+            playGameBeep(260, 0.02);
+        }
+    }
+
+    return {
+        init(ctx, width, height) {
+            state.ctx = ctx;
+            state.width = width;
+            state.height = height;
+            reset();
+            if (GAME_HUB.canvas) {
+                state.pointerDown = (e) => {
+                    tryHit(e.clientX, e.clientY);
+                };
+                GAME_HUB.canvas.addEventListener('pointerdown', state.pointerDown);
+            }
+        },
+        resize(width, height) {
+            state.width = width;
+            state.height = height;
+            nextTarget();
+        },
+        onKeyDown(e) {
+            if (e.key === 'Enter' || e.code === 'Space') {
+                e.preventDefault();
+                tryHit(state.target.x + (GAME_HUB.canvas ? GAME_HUB.canvas.getBoundingClientRect().left : 0), state.target.y + (GAME_HUB.canvas ? GAME_HUB.canvas.getBoundingClientRect().top : 0));
+            }
+        },
+        update(dt) {
+            if (state.over) return;
+            state.timer -= dt;
+            state.pulse = Math.max(0, state.pulse - dt * 2.4);
+            if (state.timer <= 0) {
+                state.timer = 0;
+                state.over = true;
+                maybeUpdateHighScore('targetrush', state.score);
+                playGameBeep(180, 0.1);
+            }
+        },
+        render() {
+            const ctx = state.ctx;
+            if (!ctx) return;
+            ctx.clearRect(0, 0, state.width, state.height);
+            ctx.fillStyle = 'rgba(39, 85, 210, 0.09)';
+            ctx.fillRect(0, 0, state.width, state.height);
+
+            const glow = 8 + state.pulse * 10;
+            ctx.save();
+            ctx.shadowColor = 'rgba(20, 184, 166, 0.55)';
+            ctx.shadowBlur = glow;
+            ctx.fillStyle = '#14b8a6';
+            ctx.beginPath();
+            ctx.arc(state.target.x, state.target.y, state.target.r, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+
+            ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(state.target.x, state.target.y, state.target.r + 6, 0, Math.PI * 2);
+            ctx.stroke();
+
+            if (state.over) {
+                ctx.fillStyle = 'rgba(0,0,0,0.55)';
+                ctx.fillRect(0, 0, state.width, state.height);
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '600 24px Poppins';
+                ctx.textAlign = 'center';
+                ctx.fillText('Time Up', state.width * 0.5, state.height * 0.5 - 8);
+                ctx.font = '500 14px Poppins';
+                ctx.fillText('Press Restart for another round', state.width * 0.5, state.height * 0.5 + 20);
+            }
+        },
+        getStatus() {
+            return `Target Rush · Score: ${state.score} · Time: ${state.timer.toFixed(1)}s · Streak: ${state.streak}`;
+        },
+        restart() { reset(); },
+        setPaused() {},
+        destroy() {
+            if (GAME_HUB.canvas && state.pointerDown) {
+                GAME_HUB.canvas.removeEventListener('pointerdown', state.pointerDown);
+            }
+            state.pointerDown = null;
+        }
+    };
+}
+
+function createPongGame() {
+    const state = {
+        ctx: null,
+        width: 0,
+        height: 0,
+        player: { x: 20, y: 0, w: 12, h: 92, speed: 360 },
+        ai: { x: 0, y: 0, w: 12, h: 92, speed: 290 },
+        ball: { x: 0, y: 0, r: 8, vx: 260, vy: 180 },
+        playerScore: 0,
+        aiScore: 0,
+        rounds: 0,
+        over: false,
+        keys: new Set(),
+        pointerMove: null
+    };
+
+    function resetBall(toPlayer = Math.random() > 0.5) {
+        state.ball.x = state.width * 0.5;
+        state.ball.y = state.height * 0.5;
+        const dir = toPlayer ? -1 : 1;
+        const speedMul = 1 + Math.min(0.1, state.rounds * 0.008);
+        state.ball.vx = 260 * dir * speedMul;
+        state.ball.vy = (Math.random() * 180 - 90) * speedMul;
+    }
+
+    function reset() {
+        state.playerScore = 0;
+        state.aiScore = 0;
+        state.rounds = 0;
+        state.over = false;
+        state.keys.clear();
+        state.player.h = Math.max(72, Math.min(100, Math.floor(state.height * 0.2)));
+        state.ai.h = state.player.h;
+        state.player.y = (state.height - state.player.h) * 0.5;
+        state.ai.y = (state.height - state.ai.h) * 0.5;
+        state.ai.x = state.width - state.ai.w - 20;
+        resetBall(false);
+    }
+
+    function movePaddles(dt) {
+        let dir = 0;
+        if (state.keys.has('arrowup') || state.keys.has('w')) dir -= 1;
+        if (state.keys.has('arrowdown') || state.keys.has('s')) dir += 1;
+        state.player.y += dir * state.player.speed * dt;
+        state.player.y = Math.max(0, Math.min(state.height - state.player.h, state.player.y));
+
+        const aiMid = state.ai.y + state.ai.h * 0.5;
+        const delta = state.ball.y - aiMid;
+        const aiDir = Math.sign(delta);
+        state.ai.y += aiDir * state.ai.speed * dt;
+        state.ai.y = Math.max(0, Math.min(state.height - state.ai.h, state.ai.y));
+    }
+
+    function paddleBounce(paddle, isPlayer) {
+        const rel = (state.ball.y - paddle.y) / paddle.h;
+        const angle = (Math.max(0.05, Math.min(0.95, rel)) - 0.5) * 1.35;
+        const speed = Math.min(460, Math.hypot(state.ball.vx, state.ball.vy) * 1.008);
+        const dir = isPlayer ? 1 : -1;
+        state.ball.vx = Math.cos(angle) * speed * dir;
+        state.ball.vy = Math.sin(angle) * speed;
+        playGameBeep(580, 0.025);
+    }
+
+    function checkRoundEnd() {
+        if (state.ball.x < -30) {
+            state.aiScore += 1;
+            state.rounds += 1;
+            playGameBeep(180, 0.07);
+            resetBall(false);
+        } else if (state.ball.x > state.width + 30) {
+            state.playerScore += 1;
+            state.rounds += 1;
+            maybeUpdateHighScore('pong', state.playerScore);
+            playGameBeep(760, 0.04);
+            resetBall(true);
+        }
+
+        if (state.playerScore >= 7 || state.aiScore >= 7) {
+            state.over = true;
+            maybeUpdateHighScore('pong', state.playerScore);
+        }
+    }
+
+    return {
+        init(ctx, width, height) {
+            state.ctx = ctx;
+            state.width = width;
+            state.height = height;
+            reset();
+            if (GAME_HUB.canvas) {
+                state.pointerMove = (e) => {
+                    const rect = GAME_HUB.canvas.getBoundingClientRect();
+                    const y = e.clientY - rect.top;
+                    state.player.y = Math.max(0, Math.min(state.height - state.player.h, y - state.player.h * 0.5));
+                };
+                GAME_HUB.canvas.addEventListener('pointermove', state.pointerMove);
+            }
+        },
+        resize(width, height) {
+            state.width = width;
+            state.height = height;
+            state.player.h = Math.max(72, Math.min(100, Math.floor(state.height * 0.2)));
+            state.ai.h = state.player.h;
+            state.ai.x = state.width - state.ai.w - 20;
+            state.player.y = Math.max(0, Math.min(state.height - state.player.h, state.player.y));
+            state.ai.y = Math.max(0, Math.min(state.height - state.ai.h, state.ai.y));
+            state.ball.x = Math.max(state.ball.r, Math.min(state.width - state.ball.r, state.ball.x));
+            state.ball.y = Math.max(state.ball.r, Math.min(state.height - state.ball.r, state.ball.y));
+        },
+        onKeyDown(e) {
+            state.keys.add(e.key.toLowerCase());
+        },
+        onKeyUp(e) {
+            state.keys.delete(e.key.toLowerCase());
+        },
+        update(dt) {
+            if (state.over) return;
+
+            movePaddles(dt);
+
+            state.ball.x += state.ball.vx * dt;
+            state.ball.y += state.ball.vy * dt;
+
+            if (state.ball.y - state.ball.r <= 0) {
+                state.ball.y = state.ball.r;
+                state.ball.vy = Math.abs(state.ball.vy);
+            }
+            if (state.ball.y + state.ball.r >= state.height) {
+                state.ball.y = state.height - state.ball.r;
+                state.ball.vy = -Math.abs(state.ball.vy);
+            }
+
+            if (
+                state.ball.x - state.ball.r <= state.player.x + state.player.w &&
+                state.ball.y >= state.player.y &&
+                state.ball.y <= state.player.y + state.player.h &&
+                state.ball.vx < 0
+            ) {
+                state.ball.x = state.player.x + state.player.w + state.ball.r;
+                paddleBounce(state.player, true);
+            }
+
+            if (
+                state.ball.x + state.ball.r >= state.ai.x &&
+                state.ball.y >= state.ai.y &&
+                state.ball.y <= state.ai.y + state.ai.h &&
+                state.ball.vx > 0
+            ) {
+                state.ball.x = state.ai.x - state.ball.r;
+                paddleBounce(state.ai, false);
+            }
+
+            checkRoundEnd();
+        },
+        render() {
+            const ctx = state.ctx;
+            if (!ctx) return;
+            ctx.clearRect(0, 0, state.width, state.height);
+            ctx.fillStyle = 'rgba(39, 85, 210, 0.10)';
+            ctx.fillRect(0, 0, state.width, state.height);
+
+            ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+            ctx.setLineDash([10, 12]);
+            ctx.beginPath();
+            ctx.moveTo(state.width * 0.5, 0);
+            ctx.lineTo(state.width * 0.5, state.height);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(state.player.x, state.player.y, state.player.w, state.player.h);
+            ctx.fillRect(state.ai.x, state.ai.y, state.ai.w, state.ai.h);
+
+            ctx.fillStyle = '#14b8a6';
+            ctx.beginPath();
+            ctx.arc(state.ball.x, state.ball.y, state.ball.r, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = 'rgba(255,255,255,0.9)';
+            ctx.font = '600 26px Poppins';
+            ctx.textAlign = 'center';
+            ctx.fillText(`${state.playerScore} : ${state.aiScore}`, state.width * 0.5, 42);
+
+            if (state.over) {
+                ctx.fillStyle = 'rgba(0,0,0,0.55)';
+                ctx.fillRect(0, 0, state.width, state.height);
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '600 24px Poppins';
+                ctx.fillText(state.playerScore > state.aiScore ? 'You Win' : 'AI Wins', state.width * 0.5, state.height * 0.5 - 8);
+                ctx.font = '500 14px Poppins';
+                ctx.fillText('Press Restart to play again', state.width * 0.5, state.height * 0.5 + 20);
+            }
+        },
+        getStatus() {
+            return `Pong · You ${state.playerScore} - ${state.aiScore} AI · First to 7`;
+        },
+        restart() { reset(); },
+        setPaused() {},
+        destroy() {
+            if (GAME_HUB.canvas && state.pointerMove) {
+                GAME_HUB.canvas.removeEventListener('pointermove', state.pointerMove);
+            }
+            state.pointerMove = null;
+        }
+    };
+}
+
+function createMemoryFlipGame() {
+    const state = {
+        ctx: null,
+        width: 0,
+        height: 0,
+        cards: [],
+        cols: 4,
+        rows: 3,
+        open: [],
+        locked: false,
+        lockTimer: 0,
+        cardW: 0,
+        cardH: 0,
+        gap: 12,
+        offsetX: 0,
+        offsetY: 0,
+        moves: 0,
+        matches: 0,
+        score: 0,
+        over: false,
+        pointerDown: null
+    };
+
+    function shuffle(values) {
+        for (let i = values.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [values[i], values[j]] = [values[j], values[i]];
+        }
+        return values;
+    }
+
+    function layout() {
+        const totalGapX = state.gap * (state.cols - 1);
+        const totalGapY = state.gap * (state.rows - 1);
+        const usableW = Math.max(280, state.width * 0.84);
+        const usableH = Math.max(220, state.height * 0.74);
+        state.cardW = Math.floor((usableW - totalGapX) / state.cols);
+        state.cardH = Math.floor((usableH - totalGapY) / state.rows);
+        const gridW = state.cardW * state.cols + totalGapX;
+        const gridH = state.cardH * state.rows + totalGapY;
+        state.offsetX = Math.floor((state.width - gridW) * 0.5);
+        state.offsetY = Math.floor((state.height - gridH) * 0.5);
+    }
+
+    function reset() {
+        state.open = [];
+        state.locked = false;
+        state.lockTimer = 0;
+        state.moves = 0;
+        state.matches = 0;
+        state.over = false;
+        const pairCount = (state.cols * state.rows) / 2;
+        const pool = [];
+        for (let i = 1; i <= pairCount; i++) {
+            pool.push(i, i);
+        }
+        const vals = shuffle(pool);
+        layout();
+        state.cards = vals.map((val, i) => {
+            const col = i % state.cols;
+            const row = Math.floor(i / state.cols);
+            return {
+                value: val,
+                revealed: false,
+                matched: false,
+                x: state.offsetX + col * (state.cardW + state.gap),
+                y: state.offsetY + row * (state.cardH + state.gap)
+            };
+        });
+    }
+
+    function recalcPositions() {
+        layout();
+        state.cards.forEach((card, i) => {
+            const col = i % state.cols;
+            const row = Math.floor(i / state.cols);
+            card.x = state.offsetX + col * (state.cardW + state.gap);
+            card.y = state.offsetY + row * (state.cardH + state.gap);
+        });
+    }
+
+    function pickCardAt(x, y) {
+        if (state.over || state.locked) return;
+        const card = state.cards.find((c) => (
+            x >= c.x && x <= c.x + state.cardW && y >= c.y && y <= c.y + state.cardH
+        ));
+        if (!card || card.matched || card.revealed) return;
+
+        card.revealed = true;
+        state.open.push(card);
+        playGameBeep(640, 0.02);
+
+        if (state.open.length === 2) {
+            state.moves += 1;
+            if (state.open[0].value === state.open[1].value) {
+                state.open[0].matched = true;
+                state.open[1].matched = true;
+                state.open = [];
+                state.matches += 1;
+                state.score += 20;
+                maybeUpdateHighScore('memoryflip', state.score);
+                playGameBeep(820, 0.04);
+                if (state.matches >= (state.cols * state.rows) / 2) {
+                    state.over = true;
+                    const bonus = Math.max(0, 120 - state.moves * 4);
+                    state.score += bonus;
+                    maybeUpdateHighScore('memoryflip', state.score);
+                }
+            } else {
+                state.locked = true;
+                state.lockTimer = 0.65;
+            }
+        }
+    }
+
+    return {
+        init(ctx, width, height) {
+            state.ctx = ctx;
+            state.width = width;
+            state.height = height;
+            reset();
+            if (GAME_HUB.canvas) {
+                state.pointerDown = (e) => {
+                    const rect = GAME_HUB.canvas.getBoundingClientRect();
+                    pickCardAt(e.clientX - rect.left, e.clientY - rect.top);
+                };
+                GAME_HUB.canvas.addEventListener('pointerdown', state.pointerDown);
+            }
+        },
+        resize(width, height) {
+            state.width = width;
+            state.height = height;
+            recalcPositions();
+        },
+        onKeyDown() {},
+        update(dt) {
+            if (!state.locked) return;
+            state.lockTimer -= dt;
+            if (state.lockTimer <= 0) {
+                state.locked = false;
+                state.open.forEach((card) => { card.revealed = false; });
+                state.open = [];
+            }
+        },
+        render() {
+            const ctx = state.ctx;
+            if (!ctx) return;
+            ctx.clearRect(0, 0, state.width, state.height);
+            ctx.fillStyle = 'rgba(20, 184, 166, 0.10)';
+            ctx.fillRect(0, 0, state.width, state.height);
+
+            state.cards.forEach((card) => {
+                const faceUp = card.revealed || card.matched;
+                ctx.fillStyle = faceUp ? 'rgba(39, 85, 210, 0.78)' : 'rgba(255,255,255,0.2)';
+                ctx.fillRect(card.x, card.y, state.cardW, state.cardH);
+                ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+                ctx.strokeRect(card.x + 0.5, card.y + 0.5, state.cardW - 1, state.cardH - 1);
+                if (faceUp) {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = `600 ${Math.max(18, Math.floor(state.cardH * 0.28))}px Poppins`;
+                    ctx.textAlign = 'center';
+                    ctx.fillText(String(card.value), card.x + state.cardW * 0.5, card.y + state.cardH * 0.62);
+                }
+            });
+
+            if (state.over) {
+                ctx.fillStyle = 'rgba(0,0,0,0.52)';
+                ctx.fillRect(0, 0, state.width, state.height);
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '600 24px Poppins';
+                ctx.textAlign = 'center';
+                ctx.fillText('All Pairs Matched', state.width * 0.5, state.height * 0.5 - 8);
+                ctx.font = '500 14px Poppins';
+                ctx.fillText('Press Restart for a new shuffle', state.width * 0.5, state.height * 0.5 + 20);
+            }
+        },
+        getStatus() {
+            return `Memory Flip · Score: ${state.score} · Moves: ${state.moves} · Pairs: ${state.matches}/${(state.cols * state.rows) / 2}`;
+        },
+        restart() { reset(); },
+        setPaused() {},
+        destroy() {
+            if (GAME_HUB.canvas && state.pointerDown) {
+                GAME_HUB.canvas.removeEventListener('pointerdown', state.pointerDown);
+            }
+            state.pointerDown = null;
+        }
+    };
+}
+
+function createLaneEscapeGame() {
+    const state = {
+        ctx: null,
+        width: 0,
+        height: 0,
+        lanes: 3,
+        laneCenters: [],
+        playerLane: 1,
+        playerY: 0,
+        obstacles: [],
+        spawnTimer: 0,
+        speed: 240,
+        score: 0,
+        over: false,
+        pointerDown: null
+    };
+
+    function updateLaneCenters() {
+        const margin = Math.max(30, Math.floor(state.width * 0.1));
+        const laneW = (state.width - margin * 2) / state.lanes;
+        state.laneCenters = Array.from({ length: state.lanes }, (_, i) => margin + laneW * (i + 0.5));
+    }
+
+    function reset() {
+        updateLaneCenters();
+        state.playerLane = 1;
+        state.playerY = state.height - Math.max(48, Math.floor(state.height * 0.13));
+        state.obstacles = [];
+        state.spawnTimer = 0;
+        state.speed = 200;
+        state.score = 0;
+        state.over = false;
+    }
+
+    function spawnObstacle() {
+        const lane = Math.floor(Math.random() * state.lanes);
+        const w = Math.max(28, Math.floor(state.width * 0.06));
+        const h = Math.max(36, Math.floor(state.height * 0.08));
+        state.obstacles.push({ lane, y: -h - 8, w, h });
+    }
+
+    function shiftLane(dir) {
+        if (state.over) return;
+        state.playerLane = Math.max(0, Math.min(state.lanes - 1, state.playerLane + dir));
+        playGameBeep(530, 0.02);
+    }
+
+    function playerRect() {
+        const w = Math.max(30, Math.floor(state.width * 0.065));
+        const h = Math.max(40, Math.floor(state.height * 0.085));
+        return {
+            x: state.laneCenters[state.playerLane] - w * 0.5,
+            y: state.playerY - h * 0.5,
+            w,
+            h
+        };
+    }
+
+    function collides(a, b) {
+        return (
+            a.x < b.x + b.w &&
+            a.x + a.w > b.x &&
+            a.y < b.y + b.h &&
+            a.y + a.h > b.y
+        );
+    }
+
+    return {
+        init(ctx, width, height) {
+            state.ctx = ctx;
+            state.width = width;
+            state.height = height;
+            reset();
+            if (GAME_HUB.canvas) {
+                state.pointerDown = (e) => {
+                    const rect = GAME_HUB.canvas.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const nearest = state.laneCenters.reduce((best, cx, i) => (
+                        Math.abs(x - cx) < Math.abs(x - state.laneCenters[best]) ? i : best
+                    ), 0);
+                    if (nearest < state.playerLane) shiftLane(-1);
+                    if (nearest > state.playerLane) shiftLane(1);
+                };
+                GAME_HUB.canvas.addEventListener('pointerdown', state.pointerDown);
+            }
+        },
+        resize(width, height) {
+            state.width = width;
+            state.height = height;
+            updateLaneCenters();
+            state.playerY = state.height - Math.max(48, Math.floor(state.height * 0.13));
+            state.playerLane = Math.max(0, Math.min(state.lanes - 1, state.playerLane));
+        },
+        onKeyDown(e) {
+            const key = e.key.toLowerCase();
+            if (e.key === 'ArrowLeft' || key === 'a') shiftLane(-1);
+            if (e.key === 'ArrowRight' || key === 'd') shiftLane(1);
+        },
+        update(dt) {
+            if (state.over) return;
+
+            state.score += dt * 7.2;
+            maybeUpdateHighScore('laneescape', Math.floor(state.score));
+            state.speed = Math.min(340, 200 + state.score * 0.28);
+
+            state.spawnTimer -= dt;
+            const spawnEvery = Math.max(0.5, 1.12 - state.score * 0.0011);
+            if (state.spawnTimer <= 0) {
+                spawnObstacle();
+                if (Math.random() < Math.min(0.12, state.score / 520)) spawnObstacle();
+                state.spawnTimer = spawnEvery;
+            }
+
+            const player = playerRect();
+            for (let i = state.obstacles.length - 1; i >= 0; i--) {
+                const o = state.obstacles[i];
+                o.y += state.speed * dt;
+                const ox = state.laneCenters[o.lane] - o.w * 0.5;
+                const rect = { x: ox, y: o.y, w: o.w, h: o.h };
+                if (collides(player, rect)) {
+                    state.over = true;
+                    maybeUpdateHighScore('laneescape', Math.floor(state.score));
+                    playGameBeep(170, 0.09);
+                    return;
+                }
+                if (o.y > state.height + 24) {
+                    state.obstacles.splice(i, 1);
+                }
+            }
+        },
+        render() {
+            const ctx = state.ctx;
+            if (!ctx) return;
+            ctx.clearRect(0, 0, state.width, state.height);
+            ctx.fillStyle = 'rgba(17,24,39,0.85)';
+            ctx.fillRect(0, 0, state.width, state.height);
+
+            for (let i = 0; i < state.lanes; i++) {
+                const x = state.laneCenters[i];
+                ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+                ctx.setLineDash([9, 10]);
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, state.height);
+                ctx.stroke();
+            }
+            ctx.setLineDash([]);
+
+            const player = playerRect();
+            ctx.fillStyle = '#14b8a6';
+            ctx.fillRect(player.x, player.y, player.w, player.h);
+
+            state.obstacles.forEach((o) => {
+                const ox = state.laneCenters[o.lane] - o.w * 0.5;
+                ctx.fillStyle = '#ef4444';
+                ctx.fillRect(ox, o.y, o.w, o.h);
+            });
+
+            if (state.over) {
+                ctx.fillStyle = 'rgba(0,0,0,0.55)';
+                ctx.fillRect(0, 0, state.width, state.height);
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '600 24px Poppins';
+                ctx.textAlign = 'center';
+                ctx.fillText('Crash!', state.width * 0.5, state.height * 0.5 - 8);
+                ctx.font = '500 14px Poppins';
+                ctx.fillText('Press Restart to run again', state.width * 0.5, state.height * 0.5 + 20);
+            }
+        },
+        getStatus() {
+            return `Lane Escape · Score: ${Math.floor(state.score)} · Speed: ${Math.floor(state.speed)} · Obstacles: ${state.obstacles.length}`;
+        },
+        restart() { reset(); },
+        setPaused() {},
+        destroy() {
+            if (GAME_HUB.canvas && state.pointerDown) {
+                GAME_HUB.canvas.removeEventListener('pointerdown', state.pointerDown);
+            }
+            state.pointerDown = null;
+        }
+    };
+}
+
+function createOfflineRunnerGame() {
+    const state = {
+        ctx: null,
+        width: 0,
+        height: 0,
+        groundY: 0,
+        gravity: 2200,
+        jumpImpulse: 760,
+        baseSpeed: 290,
+        speed: 290,
+        scoreFloat: 0,
+        score: 0,
+        over: false,
+        player: {
+            x: 78,
+            y: 0,
+            standingW: 42,
+            standingH: 46,
+            duckingW: 56,
+            duckingH: 28,
+            w: 42,
+            h: 46,
+            vy: 0,
+            onGround: true,
+            isDucking: false,
+            legPhase: 0
+        },
+        obstacles: [],
+        clouds: [],
+        groundBits: [],
+        spawnTimer: 0,
+        nextGap: 0,
+        distanceToNextObstacle: 0,
+        elapsed: 0,
+        roadPhase: 0,
+        highScore: 0,
+        isNight: false,
+        birdFlap: 0,
+        pointerDown: null
+    };
+
+    function formatScore(value) {
+        return String(Math.max(0, value | 0)).padStart(5, '0');
+    }
+
+    function syncPlayerFloor() {
+        state.player.y = state.groundY - state.player.h;
+        if (state.player.y < 0) state.player.y = 0;
+    }
+
+    function setDuck(isDucking) {
+        const player = state.player;
+        if (!player.onGround) return;
+        if (isDucking === player.isDucking) return;
+
+        player.isDucking = isDucking;
+        player.w = isDucking ? player.duckingW : player.standingW;
+        player.h = isDucking ? player.duckingH : player.standingH;
+        syncPlayerFloor();
+    }
+
+    function reset() {
+        state.groundY = Math.floor(state.height * 0.78);
+        state.player.w = state.player.standingW;
+        state.player.h = state.player.standingH;
+        state.player.isDucking = false;
+        syncPlayerFloor();
+        state.player.vy = 0;
+        state.player.onGround = true;
+        state.player.legPhase = 0;
+        state.obstacles = [];
+        state.clouds = [];
+        state.groundBits = [];
+        state.spawnTimer = 0;
+        state.nextGap = 0;
+        state.distanceToNextObstacle = 340;
+        state.elapsed = 0;
+        state.roadPhase = 0;
+        state.speed = state.baseSpeed;
+        state.scoreFloat = 0;
+        state.score = 0;
+        state.over = false;
+        state.isNight = false;
+        state.birdFlap = 0;
+        state.highScore = getGameHighScore('offlinerunner');
+
+        for (let i = 0; i < 4; i++) {
+            state.clouds.push({
+                x: Math.random() * state.width,
+                y: 28 + Math.random() * (state.height * 0.35),
+                w: 34 + Math.random() * 26,
+                v: 18 + Math.random() * 12
+            });
+        }
+
+        for (let i = 0; i < 16; i++) {
+            state.groundBits.push({
+                x: Math.random() * state.width,
+                y: state.groundY + 6 + Math.random() * 14,
+                w: 4 + Math.random() * 10,
+                h: 1 + Math.random() * 3,
+                v: 0.72 + Math.random() * 0.5
+            });
+        }
+    }
+
+    function jump() {
+        if (state.over) {
+            reset();
+            return;
+        }
+        if (!state.player.onGround) return;
+        setDuck(false);
+        state.player.vy = -state.jumpImpulse;
+        state.player.onGround = false;
+        playGameBeep(720, 0.03);
+    }
+
+    function spawnObstacle(type = 'cactus') {
+        if (type === 'bird') {
+            const flightBand = Math.random();
+            const h = 20;
+            const w = 38;
+            const y = state.groundY - (flightBand < 0.28 ? 34 : flightBand < 0.72 ? 64 : 92);
+            state.obstacles.push({ x: state.width + 12, y, w, h, type: 'bird', passed: false, flap: Math.random() * Math.PI * 2 });
+            return;
+        }
+
+        const shape = Math.random();
+        if (shape < 0.35) {
+            const h = 34;
+            const w = 16;
+            state.obstacles.push({ x: state.width + 12, y: state.groundY - h, w, h, type: 'cactus', passed: false });
+        } else if (shape < 0.7) {
+            const h = 46;
+            const w = 20;
+            state.obstacles.push({ x: state.width + 12, y: state.groundY - h, w, h, type: 'cactus', passed: false });
+        } else {
+            const h = 38;
+            const w = 14;
+            state.obstacles.push({ x: state.width + 12, y: state.groundY - h, w, h, type: 'cactus', passed: false });
+            state.obstacles.push({ x: state.width + 30, y: state.groundY - h, w, h, type: 'cactus', passed: false });
+        }
+    }
+
+    function collide(a, b) {
+        return (
+            a.x < b.x + b.w &&
+            a.x + a.w > b.x &&
+            a.y < b.y + b.h &&
+            a.y + a.h > b.y
+        );
+    }
+
+    return {
+        init(ctx, width, height) {
+            state.ctx = ctx;
+            state.width = width;
+            state.height = height;
+            reset();
+            if (GAME_HUB.canvas) {
+                state.pointerDown = () => jump();
+                GAME_HUB.canvas.addEventListener('pointerdown', state.pointerDown);
+            }
+        },
+        resize(width, height) {
+            state.width = width;
+            state.height = height;
+            const prevGround = state.groundY || Math.floor(height * 0.78);
+            state.groundY = Math.floor(state.height * 0.78);
+            state.player.y += state.groundY - prevGround;
+            if (state.player.y > state.groundY - state.player.h) {
+                syncPlayerFloor();
+                state.player.vy = 0;
+                state.player.onGround = true;
+            }
+            state.groundBits.forEach((bit) => {
+                bit.y = state.groundY + 6 + Math.random() * 14;
+            });
+        },
+        onKeyDown(e) {
+            const key = e.key.toLowerCase();
+            if (e.key === 'ArrowUp' || e.code === 'Space' || key === 'w') {
+                e.preventDefault();
+                jump();
+            } else if (e.key === 'ArrowDown' || key === 's') {
+                e.preventDefault();
+                setDuck(true);
+            }
+        },
+        onKeyUp(e) {
+            const key = e.key.toLowerCase();
+            if (e.key === 'ArrowDown' || key === 's') {
+                e.preventDefault();
+                setDuck(false);
+            }
+        },
+        update(dt) {
+            if (state.over) return;
+
+            state.elapsed += dt;
+            state.scoreFloat += dt * 46;
+            state.score = Math.floor(state.scoreFloat);
+            const targetSpeed = Math.min(570, state.baseSpeed + state.elapsed * 11 + state.score * 0.07);
+            state.speed += (targetSpeed - state.speed) * Math.min(1, dt * 3.2);
+            state.isNight = Math.floor(state.score / 1000) % 2 === 1;
+            state.roadPhase = (state.roadPhase + state.speed * dt) % 36;
+
+            const gravityScale = state.player.vy > 0 ? 1.1 : 1;
+            state.player.vy += state.gravity * gravityScale * dt;
+            state.player.y += state.player.vy * dt;
+            state.player.legPhase += dt * (state.speed / 120);
+            if (state.player.y >= state.groundY - state.player.h) {
+                syncPlayerFloor();
+                state.player.vy = 0;
+                state.player.onGround = true;
+            }
+
+            state.distanceToNextObstacle -= state.speed * dt;
+            if (state.distanceToNextObstacle <= 0) {
+                const canBird = state.score > 1200;
+                const spawnBird = canBird && Math.random() < 0.08;
+                spawnObstacle(spawnBird ? 'bird' : 'cactus');
+                const baseGap = Math.max(240, 380 - state.score * 0.035);
+                state.distanceToNextObstacle = baseGap + Math.random() * 190;
+            }
+
+            const playerBox = {
+                x: state.player.x + 8,
+                y: state.player.y + 6,
+                w: Math.max(12, state.player.w - 14),
+                h: Math.max(10, state.player.h - 8)
+            };
+            for (let i = state.obstacles.length - 1; i >= 0; i--) {
+                const obstacle = state.obstacles[i];
+                obstacle.x -= state.speed * dt;
+                if (obstacle.type === 'bird') {
+                    obstacle.flap += dt * 11;
+                }
+
+                if (!obstacle.passed && obstacle.x + obstacle.w < state.player.x) {
+                    obstacle.passed = true;
+                    playGameBeep(560, 0.012);
+                }
+
+                if (collide(playerBox, obstacle)) {
+                    state.over = true;
+                    maybeUpdateHighScore('offlinerunner', state.score);
+                    playGameBeep(160, 0.09);
+                    return;
+                }
+
+                if (obstacle.x + obstacle.w < -20) {
+                    state.obstacles.splice(i, 1);
+                }
+            }
+
+            state.highScore = maybeUpdateHighScore('offlinerunner', state.score);
+
+            state.birdFlap += dt * 12;
+
+            state.clouds.forEach((cloud) => {
+                cloud.x -= cloud.v * dt;
+                if (cloud.x + cloud.w < -10) {
+                    cloud.x = state.width + Math.random() * 80;
+                    cloud.y = 28 + Math.random() * (state.height * 0.35);
+                    cloud.w = 34 + Math.random() * 26;
+                    cloud.v = 18 + Math.random() * 12;
+                }
+            });
+
+            state.groundBits.forEach((bit) => {
+                bit.x -= state.speed * bit.v * dt;
+                if (bit.x + bit.w < -12) {
+                    bit.x = state.width + Math.random() * 40;
+                    bit.y = state.groundY + 6 + Math.random() * 14;
+                    bit.w = 4 + Math.random() * 10;
+                    bit.h = 1 + Math.random() * 3;
+                    bit.v = 0.72 + Math.random() * 0.5;
+                }
+            });
+        },
+        render() {
+            const ctx = state.ctx;
+            if (!ctx) return;
+            ctx.clearRect(0, 0, state.width, state.height);
+
+            const sky = state.isNight ? '#0b1020' : '#f8fafc';
+            const ink = state.isNight ? '#e5e7eb' : '#111827';
+            const subInk = state.isNight ? 'rgba(229, 231, 235, 0.45)' : 'rgba(17, 24, 39, 0.42)';
+
+            ctx.fillStyle = sky;
+            ctx.fillRect(0, 0, state.width, state.height);
+
+            ctx.fillStyle = state.isNight ? 'rgba(255,255,255,0.15)' : 'rgba(100, 116, 139, 0.16)';
+            state.clouds.forEach((cloud) => {
+                ctx.fillRect(cloud.x, cloud.y, cloud.w, 12);
+            });
+
+            ctx.strokeStyle = subInk;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(0, state.groundY + 0.5);
+            ctx.lineTo(state.width, state.groundY + 0.5);
+            ctx.stroke();
+
+            ctx.fillStyle = subInk;
+            for (let x = -state.roadPhase; x < state.width + 36; x += 36) {
+                ctx.fillRect(Math.round(x), state.groundY + 3, 20, 2);
+            }
+
+            ctx.fillStyle = subInk;
+            state.groundBits.forEach((bit) => {
+                ctx.fillRect(Math.round(bit.x), Math.round(bit.y), bit.w, bit.h);
+            });
+
+            ctx.fillStyle = ink;
+            state.obstacles.forEach((obstacle) => {
+                if (obstacle.type === 'bird') {
+                    const wingUp = Math.sin(obstacle.flap || state.birdFlap) > 0;
+                    const ox = Math.round(obstacle.x);
+                    const oy = Math.round(obstacle.y);
+                    ctx.fillRect(ox + 8, oy + 7, 18, 7);
+                    ctx.fillRect(ox + 20, oy + 4, 10, 5);
+                    ctx.fillRect(ox + 4, oy + (wingUp ? 2 : 10), 10, 3);
+                    ctx.fillRect(ox + 12, oy + (wingUp ? 10 : 2), 12, 3);
+                } else {
+                    const ox = Math.round(obstacle.x);
+                    const oy = Math.round(obstacle.y);
+                    ctx.fillRect(ox + 3, oy + 8, obstacle.w - 6, obstacle.h - 8);
+                    ctx.fillRect(ox, oy + 14, 6, 10);
+                    ctx.fillRect(ox + obstacle.w - 6, oy + 20, 6, 10);
+                }
+            });
+
+            const player = state.player;
+            ctx.fillStyle = ink;
+            if (player.isDucking) {
+                const px = Math.round(player.x);
+                const py = Math.round(player.y);
+                ctx.fillRect(px + 4, py + 8, 34, 14);
+                ctx.fillRect(px + 30, py + 4, 16, 10);
+                ctx.fillRect(px + 46, py + 10, 8, 4);
+                ctx.fillRect(px + 10, py + 20, 12, 6);
+                ctx.fillRect(px + 26, py + 20, 12, 6);
+            } else {
+                const legSwap = Math.floor(player.legPhase) % 2 === 0;
+                const px = Math.round(player.x);
+                const py = Math.round(player.y);
+                ctx.fillRect(px + 6, py + 6, 22, 30);
+                ctx.fillRect(px + 22, py, 18, 14);
+                ctx.fillRect(px + 38, py + 6, 6, 4);
+                ctx.fillRect(px + 12, py + 36, 8, legSwap ? 10 : 6);
+                ctx.fillRect(px + 22, py + 36, 8, legSwap ? 6 : 10);
+            }
+
+            ctx.textAlign = 'right';
+            ctx.font = '700 18px ui-monospace, SFMono-Regular, Menlo, monospace';
+            const scoreText = formatScore(state.score);
+            const hiText = `HI ${formatScore(state.highScore)}`;
+            ctx.fillStyle = subInk;
+            ctx.fillText(hiText, state.width - 128, 30);
+            ctx.fillStyle = ink;
+            ctx.fillText(scoreText, state.width - 20, 30);
+
+            if (state.over) {
+                ctx.fillStyle = ink;
+                ctx.font = '700 26px ui-monospace, SFMono-Regular, Menlo, monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText('GAME OVER', state.width * 0.5, state.height * 0.47);
+                ctx.font = '600 13px ui-monospace, SFMono-Regular, Menlo, monospace';
+                ctx.fillText('Press Restart / Space / Tap', state.width * 0.5, state.height * 0.53);
+            }
+        },
+        getStatus() {
+            return `Offline Runner · ${state.isNight ? 'Night' : 'Day'} · Score: ${state.score} · HI: ${state.highScore}`;
+        },
+        restart() { reset(); },
+        setPaused(paused) {
+            if (!paused) return;
+            setDuck(false);
+        },
+        destroy() {
+            if (GAME_HUB.canvas && state.pointerDown) {
+                GAME_HUB.canvas.removeEventListener('pointerdown', state.pointerDown);
+            }
+            state.pointerDown = null;
+        }
+    };
+}
+
+/* ========================================================================== */
+/* 17) Blog Text-to-Speech with Karaoke Highlight */
+/* ========================================================================== */
+
 let blogWordSpans = [];
 let blogCurrentWord = -1;
 let blogChunks = [];
 let blogChunkWordCounts = [];
-let blogCurrentChunk = 0;
 let blogBaseWordIndex = 0;
 let blogCancelRequested = false;
 
 function setupBlogSpeaker() {
-    const btn = document.getElementById('blogSpeakBtn');
+    const btn = byId('blogSpeakBtn');
     if (!btn) return;
 
     const supported = ('speechSynthesis' in window) && (typeof window.SpeechSynthesisUtterance !== 'undefined');
@@ -1331,7 +5584,7 @@ function setupBlogSpeaker() {
 
 function prepareBlogKaraoke() {
     clearBlogKaraoke();
-    const container = document.getElementById('popupText');
+    const container = byId('popupText');
     if (!container) return;
 
     // Walk text nodes and wrap words into spans
@@ -1385,7 +5638,7 @@ function highlightWord(index) {
 }
 
 function resetBlogSpeakUI() {
-    const btn = document.getElementById('blogSpeakBtn');
+    const btn = byId('blogSpeakBtn');
     if (btn) {
         btn.classList.remove('speaking');
         btn.setAttribute('aria-pressed', 'false');
@@ -1396,14 +5649,13 @@ function resetBlogSpeakUI() {
     blogCurrentWord = -1;
     blogChunks = [];
     blogChunkWordCounts = [];
-    blogCurrentChunk = 0;
     blogBaseWordIndex = 0;
     blogCancelRequested = false;
 }
 
 function toggleSpeakBlog() {
-    const btn = document.getElementById('blogSpeakBtn');
-    const container = document.getElementById('popupText');
+    const btn = byId('blogSpeakBtn');
+    const container = byId('popupText');
     if (!btn || !container) return;
 
     const synth = window.speechSynthesis;
@@ -1427,9 +5679,8 @@ function toggleSpeakBlog() {
     btn.setAttribute('aria-pressed', 'true');
     btn.setAttribute('aria-label', 'Stop speaking');
     blogCancelRequested = false;
-    blogCurrentChunk = 0;
     blogBaseWordIndex = 0;
-    speakBlogChunk(blogCurrentChunk);
+    speakBlogChunk(0);
 }
 
 function buildBlogChunks(text, maxLen) {
@@ -1460,7 +5711,7 @@ function speakBlogChunk(index) {
 
     const synth = window.speechSynthesis;
     const chunkText = blogChunks[index];
-    blogUtter = new SpeechSynthesisUtterance(chunkText);
+    const blogUtter = new SpeechSynthesisUtterance(chunkText);
     const voice = selectPreferredVoice();
     if (voice) {
         blogUtter.voice = voice;
@@ -1492,10 +5743,14 @@ function speakBlogChunk(index) {
     try { synth.speak(blogUtter); } catch(_) { resetBlogSpeakUI(); }
 }
 
+/* ========================================================================== */
+/* 17) Loader & Hero Animation */
+/* ========================================================================== */
+
 // Page load animation
 $(window).on('load', function() {
-    const loader = document.getElementById('loader');
-    const hero = document.getElementById('hero');
+    const loader = byId('loader');
+    const hero = byId('hero');
     
     if (loader) {
         gsap.to('#loader', {
@@ -1522,9 +5777,13 @@ $(window).on('load', function() {
     }
 });
 
+/* ========================================================================== */
+/* 18) Certifications Slider */
+/* ========================================================================== */
+
 // Certifications slider
 function initializeCertificationsSlider() {
-    const sequenceElement = document.getElementById("sequence");
+    const sequenceElement = byId('sequence');
     if (!sequenceElement) return;
 
     let currentSlide = 0;
@@ -1607,11 +5866,18 @@ function initializeCertificationsSlider() {
         nextButton.addEventListener('blur', () => sequenceElement.classList.remove('hover-right'));
     }
 
+    function onArrowKey(e) {
+        if (e.key === 'ArrowRight') {
+            updateSlide((currentSlide + 1) % totalSlides);
+            startAutoAdvance();
+        } else if (e.key === 'ArrowLeft') {
+            updateSlide((currentSlide - 1 + totalSlides) % totalSlides);
+            startAutoAdvance();
+        }
+    }
+
     // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') updateSlide((currentSlide + 1) % totalSlides);
-        else if (e.key === 'ArrowLeft') updateSlide((currentSlide - 1 + totalSlides) % totalSlides);
-    });
+    document.addEventListener('keydown', onArrowKey);
 
     // Auto-advance and touch support
     let autoAdvance = null;
@@ -1649,13 +5915,13 @@ function initializeCertificationsSlider() {
         prevButton.addEventListener('click', () => startAutoAdvance());
     }
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') startAutoAdvance();
-    });
-
     updateSlide(0);
     startAutoAdvance();
 }
+
+/* ========================================================================== */
+/* 19) Bootstrap */
+/* ========================================================================== */
 
 // Initialize when document is ready
 $(document).ready(function() {
