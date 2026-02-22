@@ -61,11 +61,11 @@ A modern, responsive portfolio website showcasing my expertise in AI/ML engineer
 ## 🚀 Deployment Journey
 
 ### Phase 1: Development & Setup
-- Local development with live server-
+- Local development with live server
 - Responsive design testing across devices
 - Performance optimization and testing
 
-### Phase 2: Development & Setup
+### Phase 2: Azure Deployment Setup
 - Created Azure Static Web App (Free Tier)
 - Configured GitHub repository connection
 - Set up automatic deployments via GitHub Actions
@@ -133,6 +133,20 @@ A modern, responsive portfolio website showcasing my expertise in AI/ML engineer
   ```bash
   git clone https://github.com/yourusername/portfolio.git
   ```
+2. Navigate to the project folder:
+  ```bash
+  cd Personal-Portfolio
+  ```
+3. Open the folder in VS Code and start a local server (for example, Live Server).
+4. Open `index.html` in your browser using the local server URL.
+
+### Project Structure
+- `index.html` - Main portfolio page
+- `css/style.css` - Styling and responsive layout
+- `js/script.js` - Interactive behavior and animations
+- `certificate/` - Certification images used in the achievements slider
+- `images/` - Site assets and graphics
+- `files/` - Supporting static files
 
 ---
 
