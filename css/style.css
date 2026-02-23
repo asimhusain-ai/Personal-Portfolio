@@ -794,7 +794,7 @@ body.recruiter-mode .top-right-nav {
   position: absolute;
   right: calc(100% + 12px);
   top: 0;
-  width: min(330px, 82vw);
+  width: min(460px, 92vw);
   pointer-events: none;
 }
 
@@ -823,12 +823,13 @@ body.recruiter-mode .top-right-nav {
 .sidebar-mini-card h4 {
   margin: 0 0 6px;
   color: var(--text);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 #sidebarAvailabilityCard {
-  min-height: 136px;
+  min-height: 248px;
+  width: min(460px, 92vw);
 }
 
 #sidebarTechRadarCard {
@@ -928,6 +929,101 @@ body.recruiter-mode .top-right-nav {
 .sidebar-mini-btn:hover,
 .sidebar-mini-btn:focus-visible {
   border-color: color-mix(in srgb, var(--primary) 45%, var(--border));
+}
+
+.sidebar-presence-card {
+  padding: 14px;
+  border-color: color-mix(in srgb, var(--primary) 48%, var(--border));
+}
+
+.sidebar-presence-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sidebar-presence-header h4 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.sidebar-presence-badge {
+  border: 1px solid color-mix(in srgb, var(--primary) 42%, var(--border));
+  background: color-mix(in srgb, var(--primary) 14%, var(--surface));
+  color: var(--text);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.sidebar-presence-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+
+.sidebar-presence-block {
+  border: none;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface) 97%, var(--bg));
+  padding: 11px;
+}
+
+.sidebar-presence-grid > .sidebar-presence-block:first-child {
+  min-height: 172px;
+}
+
+.sidebar-presence-block h5 {
+  margin: 0 0 7px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sidebar-presence-card .sidebar-mini-line {
+  font-size: 13.5px;
+}
+
+.sidebar-presence-card .sidebar-mini-sub {
+  font-size: 13px;
+}
+
+.sidebar-presence-card .sidebar-mini-pill {
+  font-size: 12.5px;
+}
+
+.sidebar-presence-card .sidebar-mini-meta p {
+  font-size: 13px;
+}
+
+.sidebar-presence-card .sidebar-mini-btn {
+  font-size: 13.5px;
+}
+
+.sidebar-voice-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 126px;
+}
+
+.sidebar-voice-block .sidebar-mini-sub {
+  margin-top: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.sidebar-voice-block .sidebar-mini-btn {
+  width: 100%;
+  margin-top: 12px;
+  min-height: 38px;
+  font-size: 14px;
 }
 
 #sidebarTechRadarCanvas {
@@ -4118,6 +4214,15 @@ body.freeze-scroll {
   .right-sidebar-link svg {
     width: 18px;
     height: 18px;
+  }
+
+  .sidebar-mini-panels,
+  #sidebarAvailabilityCard {
+    width: min(92vw, 360px);
+  }
+
+  .sidebar-presence-grid {
+    grid-template-columns: 1fr;
   }
 }
 

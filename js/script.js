@@ -839,14 +839,12 @@ function initializeRightSidebar() {
     const recruiterItem = sidebar.querySelector('[data-action="recruiter"]');
     const sidebarToggleItem = sidebar.querySelector('[data-action="toggle-sidebar"]');
     const availabilityCard = byId('sidebarAvailabilityCard');
-    const voiceCard = byId('sidebarVoiceCard');
     const techRadarCard = byId('sidebarTechRadarCard');
     const voicePlayBtn = byId('sidebarVoicePlayBtn');
     const radarCanvas = byId('sidebarTechRadarCanvas');
     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const cards = {
         availability: availabilityCard,
-        voice: voiceCard,
         radar: techRadarCard
     };
     let activeCard = null;
@@ -1090,11 +1088,6 @@ function initializeRightSidebar() {
 
             if (action === 'availability') {
                 toggleMiniCard('availability');
-                return;
-            }
-
-            if (action === 'voice-intro') {
-                toggleMiniCard('voice');
                 return;
             }
 
@@ -2380,18 +2373,10 @@ function createCosmicClockEngine(root, popup) {
         let centerX = width / 2;
         let centerY = height / 2;
         let speedMultiplier = 1;
-        const EVENT_YEAR = 2025;
         let running = false;
         let rafId = null;
-
-        function nowInEventYear() {
-            const n = new Date();
-            const dim = new Date(EVENT_YEAR, n.getMonth() + 1, 0).getDate();
-            const day = Math.min(n.getDate(), dim);
-            return new Date(EVENT_YEAR, n.getMonth(), day, n.getHours(), n.getMinutes(), n.getSeconds(), n.getMilliseconds());
-        }
-
-        let simulatedTime = nowInEventYear();
+        let lastFrameTimestamp = 0;
+        let simulatedTime = new Date();
 
         const rings = [
             { name: 'Seconds', color: '#ef4444', divisions: 60, radius: 45, thickness: 4, labels: Array.from({length: 60}, (_, i) => i % 10 === 0 ? i.toString() : ''), labelInterval: 10, getValue: (d) => d.getSeconds() + d.getMilliseconds() / 1000, maxValue: 60 },
@@ -2556,9 +2541,13 @@ function createCosmicClockEngine(root, popup) {
             });
         }
 
-        function frame() {
+        function frame(timestamp) {
             if (!running) return;
             ctx.clearRect(0, 0, width, height);
+
+            if (!lastFrameTimestamp) lastFrameTimestamp = timestamp;
+            const deltaMs = Math.max(0, Math.min(1000, timestamp - lastFrameTimestamp));
+            lastFrameTimestamp = timestamp;
 
             ctx.fillStyle = 'rgba(255, 255, 255, 0.012)';
             for (let x = 50; x < width; x += 50) {
@@ -2575,9 +2564,9 @@ function createCosmicClockEngine(root, popup) {
             drawCenter();
 
             if (speedMultiplier === 1) {
-                simulatedTime = nowInEventYear();
+                simulatedTime = new Date();
             } else {
-                simulatedTime = new Date(simulatedTime.getTime() + 16 * speedMultiplier);
+                simulatedTime = new Date(simulatedTime.getTime() + deltaMs * speedMultiplier);
             }
 
             updateTimeDisplay();
@@ -2664,9 +2653,11 @@ function createCosmicClockEngine(root, popup) {
             start() {
                 if (running) return;
                 handleResize();
+                simulatedTime = new Date();
+                lastFrameTimestamp = performance.now();
                 updateTimeDisplay();
                 running = true;
-                frame();
+                rafId = requestAnimationFrame(frame);
             },
             stop() {
                 running = false;
@@ -2674,6 +2665,7 @@ function createCosmicClockEngine(root, popup) {
                     cancelAnimationFrame(rafId);
                     rafId = null;
                 }
+                lastFrameTimestamp = 0;
                 tooltip.style.display = 'none';
                 canvas.style.cursor = 'default';
             }

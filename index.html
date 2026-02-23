@@ -257,35 +257,27 @@
 
     <!-- Right Side Quick Sidebar -->
     <aside class="right-sidebar" aria-label="Quick navigation sidebar">
-        <button type="button" class="right-sidebar-link" data-action="recruiter" data-label="Recruiter" aria-label="Recruiter Mode" title="Recruiter Mode">
+        <button type="button" class="right-sidebar-link" data-action="recruiter" data-label="Recruiter Mode" aria-label="Recruiter Mode" title="Recruiter Mode">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <rect x="5" y="5" width="14" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
                 <path d="M9 10h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
                 <path d="M9 14h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
         </button>
-        <button type="button" class="right-sidebar-link" data-action="voice-intro" data-label="Voice Intro" aria-label="Voice Intro" title="Voice Intro">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="6.5" y="4.5" width="7" height="11" rx="3.5" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M4.5 11.5a5.5 5.5 0 0 0 11 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M10 17.5v2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M7.8 20h4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-        </button>
-        <button type="button" class="right-sidebar-link" data-action="tech-radar" data-label="Tech Radar" aria-label="Tech Radar" title="Tech Radar">
+        <button type="button" class="right-sidebar-link" data-action="tech-radar" data-label="Domain Radar" aria-label="Domain Radar" title="Domain Radar">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/>
                 <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
                 <path d="M12 12l5-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
         </button>
-        <button type="button" class="right-sidebar-link" data-action="availability" data-label="Availability" aria-label="Availability" title="Availability">
+        <button type="button" class="right-sidebar-link" data-action="availability" data-label="Availability + Voice" aria-label="Availability and Voice Introduction" title="Availability and Voice Introduction">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.8"/>
                 <circle cx="12" cy="12" r="2.4" fill="currentColor"/>
             </svg>
         </button>
-        <button type="button" class="right-sidebar-link" data-action="courses" data-label="Courses" aria-label="Courses" title="Courses">
+        <button type="button" class="right-sidebar-link" data-action="courses" data-label="Courses Notes" aria-label="Courses Notes" title="Courses Notes">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M4.5 5.5h15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
                 <path d="M4.5 12h15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -295,7 +287,7 @@
                 <circle cx="6.8" cy="18.5" r="1" fill="currentColor"/>
             </svg>
         </button>
-        <button type="button" class="right-sidebar-link" data-action="games" data-label="Games" aria-label="Games" title="Games">
+        <button type="button" class="right-sidebar-link" data-action="games" data-label="Play Games" aria-label="Play Games" title="Play Games">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <rect x="3.5" y="7.5" width="17" height="9" rx="4.5" stroke="currentColor" stroke-width="1.8"/>
                 <path d="M8 12h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -318,25 +310,34 @@
         </button>
 
         <div class="sidebar-mini-panels" aria-live="polite">
-            <section id="sidebarAvailabilityCard" class="sidebar-mini-card" aria-hidden="true">
-                <h4>Live Availability</h4>
-                <p class="sidebar-mini-line"><span class="availability-dot" aria-hidden="true"></span>Open for internships, freelance, and full-time roles</p>
-                <p class="sidebar-mini-sub">Typical response time: within 2 hours</p>
-                <div class="sidebar-mini-pills" role="list" aria-label="Availability roles">
-                    <span class="sidebar-mini-pill" role="listitem">Internship</span>
-                    <span class="sidebar-mini-pill" role="listitem">Freelance</span>
-                    <span class="sidebar-mini-pill" role="listitem">Full-time</span>
+            <section id="sidebarAvailabilityCard" class="sidebar-mini-card sidebar-presence-card" aria-hidden="true">
+                <div class="sidebar-presence-header">
+                    <h4>Availability &amp; Voice Introduction</h4>
+                    <span class="sidebar-presence-badge">Live</span>
                 </div>
-                <div class="sidebar-mini-meta" aria-label="Availability details">
-                    <p><strong>Address:</strong> Sambhal, Uttar Pradesh, India</p>
-                    <p><strong>Work type:</strong> Hybrid / Onsite</p>
-                </div>
-            </section>
 
-            <section id="sidebarVoiceCard" class="sidebar-mini-card" aria-hidden="true">
-                <h4>Voice Intro (Full About)</h4>
-                <p class="sidebar-mini-sub">Audio playback of my full About Me section.</p>
-                <button type="button" id="sidebarVoicePlayBtn" class="sidebar-mini-btn">Play Intro</button>
+                <div class="sidebar-presence-grid">
+                    <div class="sidebar-presence-block" aria-label="Availability details">
+                        <h5>Live Availability</h5>
+                        <p class="sidebar-mini-line"><span class="availability-dot" aria-hidden="true"></span>Open for internships, freelance, and full-time roles</p>
+                        <p class="sidebar-mini-sub">Typical response time: within 2 hours</p>
+                        <div class="sidebar-mini-pills" role="list" aria-label="Availability roles">
+                            <span class="sidebar-mini-pill" role="listitem">Internship</span>
+                            <span class="sidebar-mini-pill" role="listitem">Freelance</span>
+                            <span class="sidebar-mini-pill" role="listitem">Full-time</span>
+                        </div>
+                        <div class="sidebar-mini-meta" aria-label="Availability details">
+                            <p><strong>Address:</strong> Sambhal, Uttar Pradesh, India</p>
+                            <p><strong>Work type:</strong> Hybrid / Onsite</p>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-presence-block sidebar-voice-block" aria-label="Voice introduction details">
+                        <h5>Voice Introduction</h5>
+                        <p class="sidebar-mini-sub">Listen to my full About section in a clear spoken format.</p>
+                        <button type="button" id="sidebarVoicePlayBtn" class="sidebar-mini-btn">Play Intro</button>
+                    </div>
+                </div>
             </section>
 
             <section id="sidebarTechRadarCard" class="sidebar-mini-card" aria-hidden="true">
