@@ -19,5 +19,6 @@ jobs:
         with:
           app-name: 'asimhusain'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_82E5CFB594DD4DFA8A0213A83A0CF4F4 }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
+
